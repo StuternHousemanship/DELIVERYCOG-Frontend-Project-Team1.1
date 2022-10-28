@@ -2,350 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  background-color: #f0f0f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
 
-@layer base {
-  body {
-    
+/* @layer base {
+  @font-face {
+    font-family: 'GraphikBlack';
+    font-weight: 900;
+    src: local('GraphikBlack'),
+        url(./assets/fonts/GraphikBlack.otf) format('opentype');
   }
+} */
 
-.login-pg {
-  /* Create account */
-  position: relative;
-  width: 1440px;
-  height: 1056px;
-  left: 250px;
-  top: 0px;
-  background:#F0F0F0;
-}
-
-
-
-h2 {
-   /* Create account */
-
-
-position: absolute;
-width: 271px;
-height: 44px;
-left: calc(50% - 271px/2 - 89px);
-top: 48px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 36px;
-line-height: 44px;
-/* identical to box height */
-
-
-color: #424242;
-  
-  
- 
-}
-
-form {
-/* Group 1 */
-
-
-  position: absolute;
-  width: 609px;
-  height: 914px;
-  left: 415.5px;
-  top: 71px;
-  background-color: #FFFFFF;
-}
-
-.input_field1 {
-  /* Group 26 */
-    width: 450px;
-    height: 82px; 
-  
-    /* Inside auto layout */  
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-.input_field2 {
-  /* Group 27 */
-  width: 450px;
-  height: 82px;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-}
-.input_field3 {
-  /* Group 28 */
-  width: 450px;
-  height: 82px;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 2;
-  flex-grow: 0;
-}
-.input_field4 {
-  /* Group 29 */
-  width: 450px;
-  height: 82px;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 3;
-  flex-grow: 0;
-}
-.input_field5 {
-  /* Group 30 */
-  width: 450px;
-  height: 82px;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 4;
-  flex-grow: 0;
-}
-.input_field6 {
-  /* Group 31 */
-  width: 450px;
-  height: 82px;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 5;
-  flex-grow: 0;
-}
-.input_field7 {
-/* Frame 6 */
-
-
-  width: 450px;
-  height: 56px;
-
-  background: #424242;
-  border-radius: 3px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 6;
-  flex-grow: 0;
-}
-
-.label1 {
-  /* First name */  
-  
-    position: absolute;
-    left: 0%;
-    right: 83.11%;
-    top: 0%;
-    bottom: 97.55%;
-  
-    font-family: 'Microsoft Sans Serif';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
-  
-    color: #424242;
-}
-.label2 {
-  /* Last name */
-  
-  
-    position: absolute;
-    left: 0%;
-    right: 83.33%;
-    top: 14.44%;
-    bottom: 83.11%;
-  
-    font-family: 'Microsoft Sans Serif';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
-  
-    color: #424242;
-}
-.label3 {
-  /* Email */  
-  
-    position: absolute;
-    left: 0%;
-    right: 90.89%;
-    top: 28.88%;
-    bottom: 68.66%;
-  
-    font-family: 'Microsoft Sans Serif';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
-  
-    color: #424242;
-}
-.label4 {
-  /* Mobile */
-  
-  
-    position: absolute;
-    left: 0%;
-    right: 89.33%;
-    top: 43.32%;
-    bottom: 54.22%;  
-    font-family: 'Microsoft Sans Serif';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;  
-    color: #424242;
-}
-.label5 {
-  /* Password */  
-  
-    position: absolute;
-    left: 0%;
-    right: 84.22%;
-    top: 57.77%;
-    bottom: 39.78%;  
-    font-family: 'Microsoft Sans Serif';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;  
-    color: #424242;
-}
-.label6{
-  /* Re-enter password */  
-  
-    position: absolute;
-    left: 0%;
-    right: 69.78%;
-    top: 72.21%;
-    bottom: 25.34%;  
-    font-family: 'Microsoft Sans Serif';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;  
-    color: #424242;
-}
-
-
-.input1 {
-    /* Frame 4 */    
-    
-      box-sizing: border-box;    
-      position: absolute;
-      width: 450px;
-      height: 56px;
-      left: 0px;
-      top: 26px;    
-      border: 1px solid #717171;
-      border-radius: 4px;
-}
-.input2 {
-    /* Frame 5 */    
-    
-      box-sizing: border-box;    
-      position: absolute;
-      width: 450px;
-      height: 56px;
-      left: 0px;
-      top: 132px;    
-      border: 1px solid #717171;
-      border-radius: 4px;
-
-}
-.input3 {
-    /* Frame 6 */    
-    
-      box-sizing: border-box;    
-      position: absolute;
-      width: 450px;
-      height: 56px;
-      left: 0px;
-      top: 238px;    
-      border: 1px solid #717171;
-      border-radius: 4px;
-}
-.input4 {
-    /* Frame 7 */    
-    
-      box-sizing: border-box;    
-      position: absolute;
-      width: 450px;
-      height: 56px;
-      left: 0px;
-      top: 344px;    
-      border: 1px solid #717171;
-      border-radius: 4px;
-      
-}
-.input5 {
-    /* Frame 8 */    
-    
-      box-sizing: border-box;    
-      position: absolute;
-      width: 450px;
-      height: 56px;
-      left: 0px;
-      top: 450px;    
-      border: 1px solid #717171;
-      border-radius: 4px;
-
-}
-.input6 {
-    /* Frame 9 */    
-    
-      box-sizing: border-box;    
-      position: absolute;
-      width: 450px;
-      height: 56px;
-      left: 0px;
-      top: 556px;    
-      border: 1px solid #717171;
-      border-radius: 4px;
-
-}
-/* .input7 {
-        width: 450px;
-        height: 56px;
-        background: #424242;
-        border-radius: 3px; */
-        /* Inside auto layout */
 /* 
-        flex: none;
-        order: 6;
-        flex-grow: 0;
-}   */
+ Font Weight Numerical Figures
 
-.form-footer {
-  /* Log into existing account */
-  
-  
-    width: 450px;
-    height: 18px;
-  
-    font-family: 'Microsoft Sans Serif';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
-    text-decoration-line: underline;
-  
-    color: #424242;
-  
-  
-    /* Inside auto layout */
-  
-    flex: none;
-    order: 7;
-    flex-grow: 0;
+"Thin", "Hairline"	100
+"Extra Light", "Ultra Light"	200
+"Light", "Book"	300
+"Normal", "Regular", "Roman", "Standard", "Plain"	400/Normal
+"Medium", "Demi"	500
+"Semi Bold", "Semi Bld", "Demi Bold", "Demi Bld"	600
+"Bold", "Bld"	700/Bold
+"Extra Bold", "Ultra Bold", "Extra Bld", "Ultra Bld"	800
+"Black", "Heavy", "Ultra", "Fat", "Poster", "Ultra Black" 	 900 
+*/
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #d8d9da;
+  border-radius: 20px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
 }
 
-
+.suspense-loading-icon {
+  animation-name: suspense-loading-icon;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes suspense-loading-icon {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
