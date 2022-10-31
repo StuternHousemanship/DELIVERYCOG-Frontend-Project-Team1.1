@@ -10,6 +10,8 @@ module.exports = {
       colors: {
         "deliverycog-background-grey-color": "#F0F0F0",
         "deliverycog-grey-text-color": "#424242",
+        "deliverycog-white-text-color": "#FFFFFF",
+        "deliverycog-grey-background2-color": "#424242",
       },
       fontFamily: {
         Inter: ["Inter"],

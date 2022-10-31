@@ -7,7 +7,8 @@ import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 // import { NonAuthRoutes } from "../url";
 
-function SignUp() {
+function signUpMobile() {
+  const [value, setValue] = useState();
   /** handles show Password text */
   const [showPassword, setShowPassword] = useState(false);
   /** handles navigating pages */
@@ -17,17 +18,15 @@ function SignUp() {
     setShowPassword(!showPassword);
   };
 
-  const [value, setValue] = useState();
-
   return (
     <div className="">
       <div className="flex justify-center items-center">
-        <div className="my-[71px] h-914 w-[609px] bg-white">
+        <div className="h-926 w-[428px] bg-white">
           <p className="mt-12 ml-20 font-Inter font-[700] text-4xl text-black">
             Create account
           </p>
           <form>
-            <div className="mt-10 mx-20 w-[450]">
+            <div className="mt-10 mx-20 w-[348]">
               <label className="" htmlFor="firstName">
                 <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                   First Name
@@ -40,7 +39,7 @@ function SignUp() {
                 />
               </label>
             </div>
-            <div className="mt-6 mx-20 w-[450]">
+            <div className="mt-6 mx-20 w-[348]">
               <label className="" htmlFor="lastName">
                 <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                   Last Name
@@ -53,7 +52,7 @@ function SignUp() {
                 />
               </label>
             </div>
-            <div className="mt-6 mx-20 w-[450]">
+            <div className="mt-6 mx-20 w-[348]">
               <label className="" htmlFor="email">
                 <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                   Email
@@ -66,7 +65,7 @@ function SignUp() {
                 />
               </label>
             </div>
-            <div className="mt-6 mx-20 w-[450]">
+            <div className="mt-6 mx-20 w-[348]">
               <label className="" htmlFor="mobile">
                 <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                   Mobile
@@ -80,7 +79,7 @@ function SignUp() {
                 />
               </label>
             </div>
-            <div className="mt-6 mx-20 w-[450]">
+            <div className="mt-6 mx-20 w-[348]">
               <label className="" htmlFor="password">
                 <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                   Password
@@ -106,7 +105,7 @@ function SignUp() {
                 </span>
               </label>
             </div>
-            <div className="mt-6 mx-20 w-[450]">
+            <div className="mt-6 mx-20 w-[348]">
               <label className="" htmlFor="re-enter password">
                 <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                   Re-enter Password
@@ -132,15 +131,15 @@ function SignUp() {
                 </span>
               </label>
             </div>
-            <div className="mt-6 mx-20 w-[450] ">
+            <div className="mt-6 mx-20 w-[348] ">
               <input
                 id="button"
                 type="button"
                 value="Continue"
                 className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
               />
-              <div className="mt-6 mx-20 w-[450] text-center">
-                <a href="/signUpMobile">Log into an existing account</a>
+              <div className="mt-6 mx-20 w-[348] text-center">
+                <a href="/login">Log into an existing account</a>
               </div>
             </div>
           </form>
@@ -150,4 +149,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default signUpMobile;

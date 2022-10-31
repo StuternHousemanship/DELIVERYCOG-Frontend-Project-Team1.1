@@ -7,6 +7,8 @@ const AuthRoutes = {
 const NonAuthRoutes = {
   landingPage: "/",
   signUp: "/sign-up",
+  login: "/login",
+  signUpMobile: "/sign-up-mobile",
 };
 
 export { AuthRoutes, NonAuthRoutes };
