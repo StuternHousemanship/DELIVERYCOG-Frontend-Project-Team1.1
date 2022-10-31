@@ -29,6 +29,13 @@
         "singleQuote": false,
         "tabWidth": 2
       }
+    ],
+    "import/no-cycle": [
+      "error",
+      {
+        "maxDepth": 10,
+        "ignoreExternal": true
+      }
     ]
   }
 }
