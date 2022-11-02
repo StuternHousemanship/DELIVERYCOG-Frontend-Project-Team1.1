@@ -4,6 +4,7 @@ import { NonAuthRoutes } from "./url";
 import { ReactComponent as LoadingIcon } from "./assets/svg/loading-icon.svg";
 import LandingPage from "./pages/landingPage";
 import SignUp from "./pages/signUp";
+import LogIn from "./pages/logIn";
 
 function Routers() {
   return (
@@ -19,6 +20,7 @@ function Routers() {
         <Routes>
           <Route path={NonAuthRoutes.landingPage} element={<LandingPage />} />
           <Route path={NonAuthRoutes.signUp} element={<SignUp />} />
+          <Route exact path={NonAuthRoutes.logIn} element={<LogIn />} />
         </Routes>
       </Suspense>
     </div>

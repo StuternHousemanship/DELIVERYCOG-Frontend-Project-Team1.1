@@ -24,6 +24,14 @@ function App() {
         >
           SIGN UP NOW!
         </button>
+        <button
+          type="button"
+          title="Log In"
+          className=" bg-purple-500 py-4 px-6 mt-6 rounded-md text-white text-sm"
+          onClick={() => navigate(NonAuthRoutes.logIn)}
+        >
+          LOG IN
+        </button>
       </header>
     </div>
   );
