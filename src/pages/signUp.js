@@ -41,10 +41,10 @@ function SignUp() {
     //
   };
 
+  /** Handle Sign Up Button */
   const handleSignUp = (e) => {
     e.preventDefault();
     // setButtonIsLoading(true);
-
     onboarding.SignUp(firstName, lastName).then((response) => {
       if (response.status === 200) {
         const accessToken = response.access_token;
