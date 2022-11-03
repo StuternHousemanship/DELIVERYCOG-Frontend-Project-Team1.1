@@ -7,7 +7,7 @@ const AuthRoutes = {
 const NonAuthRoutes = {
   landingPage: "/",
   signUp: "/sign-up",
-  login: "/login",
+  logIn: "/login",
   signUpMobile: "/sign-up-mobile",
 };
 

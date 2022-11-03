@@ -61,14 +61,15 @@ function Login() {
                 <a href=" ">Forgot password</a>
               </div>
               <div className="mt-6 mx-20 w-[450] ">
-                <input
-                  id="button"
+                <button
                   type="button"
-                  value="Continue"
+                  title="Continue"
                   className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                />
+                >
+                  <a href="/dashboard">Continue</a>
+                </button>
                 <div className="mt-6 mb-12 mx-20 w-[450] underline text-center">
-                  <a href="/signUp">Do not have an account? Sign Up!</a>
+                  <a href="/sign-up">Do not have an account? Sign Up!</a>
                 </div>
               </div>
             </form>
@@ -126,14 +127,15 @@ function Login() {
                 <a href=" ">Forgot password</a>
               </div>
               <div className="mt-6 mx-20 w-[450] ">
-                <input
-                  id="button"
+                <button
                   type="button"
-                  value="Continue"
+                  title="Continue"
                   className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                />
+                >
+                  <a href="/dashboard">Continue</a>
+                </button>
                 <div className="mt-6 mb-12 mx-20 w-[450] underline text-center">
-                  <a href="/signUp">Do not have an account? Sign Up!</a>
+                  <a href="/sign-up">Do not have an account? Sign Up!</a>
                 </div>
               </div>
             </form>

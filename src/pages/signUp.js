@@ -182,7 +182,7 @@ function SignUp() {
                   className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 />
                 <div className="mt-6 mx-20 w-[450] text-center">
-                  <a href="/signUpMobile">Log into an existing account</a>
+                  <a href="/login">Log into an existing account</a>
                 </div>
               </div>
             </form>
@@ -310,7 +310,7 @@ function SignUp() {
                   className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 />
                 <div className="mt-6 mx-20 w-[450] text-center">
-                  <a href="/signUpMobile">Log into an existing account</a>
+                  <a href="/login">Log into an existing account</a>
                 </div>
               </div>
             </form>

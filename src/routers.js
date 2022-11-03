@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { NonAuthRoutes } from "./url";
+import { NonAuthRoutes, AuthRoutes } from "./url";
 import { ReactComponent as LoadingIcon } from "./assets/svg/loading-icon.svg";
 import LandingPage from "./pages/landingPage";
 import SignUp from "./pages/signUp";
@@ -18,6 +18,7 @@ function Routers() {
         }
       >
         <Routes>
+          <Route path={AuthRoutes.dashboard} element={<dashboard />} />
           <Route path={NonAuthRoutes.landingPage} element={<LandingPage />} />
           <Route path={NonAuthRoutes.signUp} element={<SignUp />} />
           <Route exact path={NonAuthRoutes.logIn} element={<LogIn />} />
