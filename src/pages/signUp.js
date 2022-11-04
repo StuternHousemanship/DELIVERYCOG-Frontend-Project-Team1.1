@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable import/no-cycle */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from "react";
@@ -41,10 +42,10 @@ function SignUp() {
     //
   };
 
-  /** Handle Sign Up Button */
   const handleSignUp = (e) => {
     e.preventDefault();
     // setButtonIsLoading(true);
+
     onboarding.SignUp(firstName, lastName).then((response) => {
       if (response.status === 200) {
         const accessToken = response.access_token;
@@ -56,6 +57,7 @@ function SignUp() {
   };
 
   return (
+    // large screen
     <div>
       <div className="hidden md:block lg:block">
         <div className="flex justify-center items-center">
@@ -76,6 +78,7 @@ function SignUp() {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    required
                   />
                 </label>
               </div>
@@ -91,6 +94,7 @@ function SignUp() {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    required
                   />
                 </label>
               </div>
@@ -104,6 +108,7 @@ function SignUp() {
                     type="email"
                     placeholder="Enter Your Email"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    required
                   />
                 </label>
               </div>
@@ -118,6 +123,7 @@ function SignUp() {
                     // value={value}
                     onChange={() => handleMobileNumber()}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    required
                   />
                 </label>
               </div>
@@ -131,16 +137,17 @@ function SignUp() {
                     type="password"
                     placeholder="Enter Password"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    required
                   />
-                  <span className="absolute inset-y-[1667/100] mr-9">
+                  <span>
                     {showPassword ? (
                       <PasswordShow
-                        className="absolute mt-5 pr-2"
+                        className="absolute -mt-10 pr-2 ml-[420px]"
                         onClick={() => handleShowPassword()}
                       />
                     ) : (
                       <PasswordHide
-                        className="absolute mt-5 pr-2"
+                        className="absolute -mt-10 pr-2 ml-[420px]"
                         onClick={() => handleShowPassword()}
                       />
                     )}
@@ -157,16 +164,17 @@ function SignUp() {
                     type="password"
                     placeholder="Re-enter Password"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    required
                   />
-                  <span className="absolute inset-y-[1667/100] mr-9 ">
+                  <span>
                     {showPassword ? (
                       <PasswordShow
-                        className="mt-5 pr-2"
+                        className="-mt-10 pr-2 ml-[420px]"
                         onClick={() => handleShowPassword()}
                       />
                     ) : (
                       <PasswordHide
-                        className="mt-5 pr-2"
+                        className="-mt-10 pr-2 ml-[420px]"
                         onClick={() => handleShowPassword()}
                       />
                     )}
@@ -189,60 +197,62 @@ function SignUp() {
           </div>
         </div>
       </div>
-
+      // small screeen
       <div className="md:hidden lg:hidden">
         <div className="flex justify-center items-center">
-          <div className="h-914 w-[609px] bg-white">
+          <div className="h-926  w-[428px] bg-white">
             <p className="ml-20 font-Inter font-[700] text-4xl text-black">
               Create account
             </p>
             <form>
-              <div className="mt-10 mx-20 w-[450]">
-                <label className="" htmlFor="firstName">
+              <div className="mt-10 mx-20 w-[348]">
+                <label className="" htmlFor="firstName-mobile">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                     First Name
                   </p>
                   <input
-                    id="firstName"
-                    type="firstName"
+                    id="firstName-mobile"
+                    type="firstName-mobile"
                     placeholder="Enter First Name"
+                    value={firstName}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[450]">
-                <label className="" htmlFor="lastName">
+              <div className="mt-6 mx-20 w-[348]">
+                <label className="" htmlFor="lastName-mobile">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                     Last Name
                   </p>
                   <input
-                    id="lastName"
-                    type="lastName"
+                    id="lastName-mobile"
+                    type="lastName-mobile"
                     placeholder="Enter Last Name"
+                    value={lastName}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[450]">
-                <label className="" htmlFor="email">
+              <div className="mt-6 mx-20 w-[348]">
+                <label className="" htmlFor="email-mobile">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                     Email
                   </p>
                   <input
-                    id="email"
-                    type="email"
+                    id="email-mobile"
+                    type="email-mobile"
                     placeholder="Enter Your Email"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[450]">
+              <div className="mt-6 mx-20 w-[348]">
                 <label className="" htmlFor="mobile">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                     Mobile
                   </p>
                   <PhoneInput
-                    id="mobile"
+                    id="mobile2"
                     type="tel"
                     // value={value}
                     onChange={() => handleMobileNumber()}
@@ -250,66 +260,66 @@ function SignUp() {
                   />
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[450]">
-                <label className="" htmlFor="password">
+              <div className="mt-6 mx-20 w-[348]">
+                <label className="" htmlFor="password-mobile">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                     Password
                   </p>
                   <input
-                    id="password"
-                    type="password"
+                    id="password-mobile"
+                    type="password-mobile"
                     placeholder="Enter Password"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                   <span className="absolute inset-y-[1667/100] mr-9">
                     {showPassword ? (
                       <PasswordShow
-                        className="absolute mt-5 pr-2"
+                        className="absolute -mt-10 pr-2 ml-[318px]"
                         onClick={() => handleShowPassword()}
                       />
                     ) : (
                       <PasswordHide
-                        className="absolute mt-5 pr-2"
+                        className="absolute -mt-10 pr-2 ml-[318px]"
                         onClick={() => handleShowPassword()}
                       />
                     )}
                   </span>
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[450]">
-                <label className="" htmlFor="reEnterPassword">
+              <div className="mt-6 mx-20 w-[348]">
+                <label className="" htmlFor="reEnterPassword-mobile">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                     Re-enter Password
                   </p>
                   <input
-                    id="reEnterPassword"
-                    type="password"
+                    id="reEnterPassword-mobile"
+                    type="password-mobile"
                     placeholder="Re-enter Password"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                   <span className="absolute inset-y-[1667/100] mr-9 ">
                     {showPassword ? (
                       <PasswordShow
-                        className="mt-5 pr-2"
+                        className="absolute -mt-10 pr-2 ml-[318px]"
                         onClick={() => handleShowPassword()}
                       />
                     ) : (
                       <PasswordHide
-                        className="mt-5 pr-2"
+                        className="absolute -mt-10 pr-2 ml-[318px]"
                         onClick={() => handleShowPassword()}
                       />
                     )}
                   </span>
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[450] ">
+              <div className="mt-6 mx-20 w-[348] ">
                 <input
-                  id="button"
+                  id="button-mobile"
                   type="button"
                   value="Continue"
                   className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 />
-                <div className="mt-6 mx-20 w-[450] text-center">
+                <div className="mt-6 mx-20 w-[348] text-center sm:text-left">
                   <a href="/login">Log into an existing account</a>
                 </div>
               </div>
