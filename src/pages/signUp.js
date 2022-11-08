@@ -3,24 +3,42 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import validator from "validator";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 import onboarding from "../api/onboarding";
-// import { NonAuthRoutes } from "../url";
+import { NonAuthRoutes } from "../url";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
-  // const [value, setValue] = useState();
+  const [passwordStrong, setPasswordStrong] = useState(true);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  /** Function to handle password validation using the Validator package */
+  const handlePasswordOnChange = (value) => {
+    if (
+      validator.isStrongPassword(value, {
+        minLength: 8,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+      })
+    ) {
+      setPasswordStrong(true);
+    } else {
+      setPasswordStrong(false);
+    }
+
+    setPassword(value);
+  };
 
   useEffect(() => {
     const ac = new AbortController();
@@ -46,14 +64,16 @@ function SignUp() {
     e.preventDefault();
     // setButtonIsLoading(true);
 
-    onboarding.SignUp(firstName, lastName).then((response) => {
-      if (response.status === 200) {
-        const accessToken = response.access_token;
-        const refreshToken = response.refresh_token;
-        Cookies.set("accessToken", accessToken);
-        localStorage.setItem("token", refreshToken);
-      }
-    });
+    onboarding
+      .SignUp(firstName, lastName, email, phoneNumber, password)
+      .then((response) => {
+        if (response.status === 200) {
+          const accessToken = response.access_token;
+          const refreshToken = response.refresh_token;
+          Cookies.set("accessToken", accessToken);
+          localStorage.setItem("token", refreshToken);
+        }
+      });
   };
 
   return (
@@ -120,7 +140,7 @@ function SignUp() {
                   <PhoneInput
                     id="mobile"
                     type="tel"
-                    // value={value}
+                    value={phoneNumber}
                     onChange={() => handleMobileNumber()}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     required
@@ -154,6 +174,11 @@ function SignUp() {
                   </span>
                 </label>
               </div>
+              {passwordStrong ? null : (
+                <p className="text-rose-700 border border-rose-700 text-center rounded">
+                  Not strong enough
+                </p>
+              )}
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="reEnterPassword">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
@@ -215,6 +240,7 @@ function SignUp() {
                     type="firstName-mobile"
                     placeholder="Enter First Name"
                     value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                 </label>
@@ -229,6 +255,7 @@ function SignUp() {
                     type="lastName-mobile"
                     placeholder="Enter Last Name"
                     value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                 </label>
@@ -242,6 +269,8 @@ function SignUp() {
                     id="email-mobile"
                     type="email-mobile"
                     placeholder="Enter Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                 </label>
@@ -254,8 +283,8 @@ function SignUp() {
                   <PhoneInput
                     id="mobile2"
                     type="tel"
-                    // value={value}
-                    onChange={() => handleMobileNumber()}
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                 </label>
@@ -269,6 +298,8 @@ function SignUp() {
                     id="password-mobile"
                     type="password-mobile"
                     placeholder="Enter Password"
+                    value={password}
+                    onChange={(e) => handlePasswordOnChange(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                   <span className="absolute inset-y-[1667/100] mr-9">
@@ -313,14 +344,16 @@ function SignUp() {
                 </label>
               </div>
               <div className="mt-6 mx-20 w-[348] ">
-                <input
+                <button
                   id="button-mobile"
-                  type="button"
-                  value="Continue"
+                  type="submit"
                   className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                />
+                  onClick={handleSignUp}
+                >
+                  Continue
+                </button>
                 <div className="mt-6 mx-20 w-[348] text-center sm:text-left">
-                  <a href="/login">Log into an existing account</a>
+                  onClick={() => navigate(NonAuthRoutes.login)}
                 </div>
               </div>
             </form>
