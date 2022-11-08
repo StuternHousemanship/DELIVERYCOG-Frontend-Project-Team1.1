@@ -6,6 +6,9 @@ import { ReactComponent as LoadingIcon } from "./assets/svg/loading-icon.svg";
 import LandingPage from "./pages/landingPage";
 import SignUp from "./pages/signUp";
 import LogIn from "./pages/logIn";
+import Dashboard from "./pages/dashboard";
+import ResetPassword from "./pages/resetPassword";
+import AcctRecovered from "./pages/acctRecovered";
 
 function Routers() {
   return (
@@ -19,10 +22,18 @@ function Routers() {
         }
       >
         <Routes>
-          <Route path={AuthRoutes.dashboard} element={<dashboard />} />
+          <Route path={AuthRoutes.dashboard} element={<Dashboard />} />
           <Route path={NonAuthRoutes.landingPage} element={<LandingPage />} />
           <Route path={NonAuthRoutes.signUp} element={<SignUp />} />
-          <Route exact path={NonAuthRoutes.logIn} element={<LogIn />} />
+          <Route path={NonAuthRoutes.logIn} element={<LogIn />} />
+          <Route
+            path={NonAuthRoutes.resetPassword}
+            element={<ResetPassword />}
+          />
+          <Route
+            path={NonAuthRoutes.acctRecovered}
+            element={<AcctRecovered />}
+          />
         </Routes>
       </Suspense>
     </div>

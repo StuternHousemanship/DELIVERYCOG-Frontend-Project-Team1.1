@@ -8,7 +8,8 @@ const NonAuthRoutes = {
   landingPage: "/",
   signUp: "/sign-up",
   logIn: "/login",
-  signUpMobile: "/sign-up-mobile",
+  resetPassword: "/resetpassword",
+  acctRecovered: "/account-recovered",
 };
 
 export { AuthRoutes, NonAuthRoutes };

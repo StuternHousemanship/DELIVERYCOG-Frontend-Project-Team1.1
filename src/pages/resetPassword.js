@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 
-function Login() {
+function ResetPassword() {
   const [showPassword, setShowPassword] = useState(false);
 
   /** handles show Password text */
@@ -13,31 +13,44 @@ function Login() {
     <div>
       <div className="hidden md:block lg:block">
         <div className="flex justify-center items-center">
-          <div className="my-[71px] h-532px w-[609px] bg-white">
+          <div className="my-[71px] h-[490px] w-[609px] bg-white">
             <p className="mt-12 ml-20 font-Inter font-[700] text-4xl text-black">
-              Log In
+              Reset Password
             </p>
             <form>
               <div className="mt-6 mx-20  w-[450]">
-                <label className="" htmlFor="email">
+                <label className="" htmlFor="password">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    Email
+                    password
                   </p>
                   <input
-                    id="log-email"
-                    type="email"
-                    placeholder="Email Address"
+                    id="lostpass"
+                    type="passsword"
+                    placeholder="new password"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
+                  <span>
+                    {showPassword ? (
+                      <PasswordShow
+                        className="absolute -mt-10 pr-2 ml-[420px]"
+                        onClick={() => handleShowPassword()}
+                      />
+                    ) : (
+                      <PasswordHide
+                        className="absolute -mt-10 pr-2 ml-[420px]"
+                        onClick={() => handleShowPassword()}
+                      />
+                    )}
+                  </span>
                 </label>
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="password">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    Password
+                    Re-enter Password
                   </p>
                   <input
-                    id="log-password"
+                    id="repass"
                     type="password"
                     placeholder="Password"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
@@ -57,9 +70,6 @@ function Login() {
                   </span>
                 </label>
               </div>
-              <div className="mt-6 w-[450] text-right underline mr-20">
-                <a href=" ">Forgot password</a>
-              </div>
               <div className="mt-6 mx-20 w-[450] ">
                 <button
                   type="button"
@@ -68,9 +78,6 @@ function Login() {
                 >
                   <a href=" ">Continue</a>
                 </button>
-                <div className="mt-6 mb-12 mx-20 w-[450] underline text-center">
-                  <a href="/sign-up">Do not have an account? Sign Up!</a>
-                </div>
               </div>
             </form>
           </div>
@@ -81,29 +88,42 @@ function Login() {
         <div className="flex justify-center items-center">
           <div className="h-[926px] w-[609px] bg-white">
             <p className="mt-12 ml-20 font-Inter font-[700] text-4xl text-black">
-              Log In
+              Reset Password
             </p>
             <form>
               <div className="mt-6 mx-20  w-[450]">
-                <label className="" htmlFor="email">
+                <label className="" htmlFor="password">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    Email
+                    password
                   </p>
                   <input
-                    id="mobile-mail"
-                    type="email"
-                    placeholder="Email Address"
+                    id="mobile-lostpass"
+                    type="passsword"
+                    placeholder="new password"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
+                  <span className="absolute inset-y-[1667/100] mr-9">
+                    {showPassword ? (
+                      <PasswordShow
+                        className="absolute -ml-7 pr-2 mt-4"
+                        onClick={() => handleShowPassword()}
+                      />
+                    ) : (
+                      <PasswordHide
+                        className="absolute -ml-7 pr-2 mt-4"
+                        onClick={() => handleShowPassword()}
+                      />
+                    )}
+                  </span>
                 </label>
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="password">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    Password
+                    Re-enter Password
                   </p>
                   <input
-                    id="mobile-pass"
+                    id="mobile-repass"
                     type="password"
                     placeholder="Password"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
@@ -123,9 +143,6 @@ function Login() {
                   </span>
                 </label>
               </div>
-              <div className="mt-6 w-[450] text-right underline mr-20">
-                <a href="/resetPassword">Forgot password</a>
-              </div>
               <div className="mt-6 mx-20 w-[450] ">
                 <button
                   type="button"
@@ -134,9 +151,6 @@ function Login() {
                 >
                   <a href=" ">Continue</a>
                 </button>
-                <div className="mt-6 mb-12 mx-20 w-[450] underline text-center">
-                  <a href="/sign-up">Do not have an account? Sign Up!</a>
-                </div>
               </div>
             </form>
           </div>
@@ -145,4 +159,4 @@ function Login() {
     </div>
   );
 }
-export default Login;
+export default ResetPassword;
