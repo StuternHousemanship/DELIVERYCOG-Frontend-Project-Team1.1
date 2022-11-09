@@ -6,6 +6,8 @@ import { ReactComponent as LoadingIcon } from "./assets/svg/loading-icon.svg";
 import LandingPage from "./pages/landingPage";
 import SignUp from "./pages/signUp";
 import LogIn from "./pages/logIn";
+import VerifyEmail from "./pages/verifyEmail";
+import Dashboard from "./pages/dashboard";
 
 function Routers() {
   return (
@@ -19,10 +21,11 @@ function Routers() {
         }
       >
         <Routes>
-          <Route path={AuthRoutes.dashboard} element={<dashboard />} />
+          <Route path={AuthRoutes.dashboard} element={<Dashboard />} />
           <Route path={NonAuthRoutes.landingPage} element={<LandingPage />} />
           <Route path={NonAuthRoutes.signUp} element={<SignUp />} />
           <Route exact path={NonAuthRoutes.logIn} element={<LogIn />} />
+          <Route path={NonAuthRoutes.verifyEmail} element={<VerifyEmail />} />
         </Routes>
       </Suspense>
     </div>
