@@ -11,7 +11,7 @@ import { NonAuthRoutes } from "./url";
 const TokenValidate = async () => {
   const accessToken = Cookies.get("accessToken");
   const refresh_token = localStorage.getItem("token");
-  if (!refresh_token) return history.push(NonAuthRoutes.login);
+  if (!refresh_token) return history.push(NonAuthRoutes.logIn);
 
   let accessTokenExpireTime;
 
@@ -19,7 +19,7 @@ const TokenValidate = async () => {
     // extracting the token's expiry time with jwt_decode plugin
     accessTokenExpireTime = jwt_decode(accessToken).exp;
   } catch (error) {
-    return history.push(NonAuthRoutes.login);
+    return history.push(NonAuthRoutes.logIn);
   }
 
   if (moment.unix(accessTokenExpireTime) - moment(Date.now()) < 10000) {
@@ -29,7 +29,7 @@ const TokenValidate = async () => {
     try {
       refreshTokenExpireTime = jwt_decode(refresh_token).exp;
     } catch (error) {
-      return history.push(NonAuthRoutes.login);
+      return history.push(NonAuthRoutes.logIn);
     }
 
     if (moment.unix(refreshTokenExpireTime) - moment(Date.now()) > 10000) {
@@ -45,7 +45,7 @@ const TokenValidate = async () => {
               // the execution will never reach in this block, and if it did, it could be some backend issue.
               // eslint-disable-next-line no-console
               console.log("refresh token is gone");
-              history.push(NonAuthRoutes.login);
+              history.push(NonAuthRoutes.logIn);
             } else {
               const isAccessToken = res.data.access_token;
               const isRefreshToken = res.data.refresh_token;
@@ -60,7 +60,7 @@ const TokenValidate = async () => {
       // refreshToken expired
       Cookies.remove("accessToken");
       localStorage.removeItem("token");
-      history.push(NonAuthRoutes.login);
+      history.push(NonAuthRoutes.logIn);
       // eslint-disable-next-line no-console
       console.log("Your session has expired, please login again.");
       // eslint-disable-next-line no-alert

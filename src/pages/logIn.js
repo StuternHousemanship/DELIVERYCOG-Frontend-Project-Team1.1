@@ -1,14 +1,22 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
+import { NonAuthRoutes } from "../url";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   /** handles show Password text */
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  const handleClick = () => {
+    navigate(NonAuthRoutes.forgotPassword);
+  };
+
   return (
     <div>
       <div className="hidden md:block lg:block">
@@ -57,10 +65,17 @@ function Login() {
                   </span>
                 </label>
               </div>
+
               <div className="mt-6 w-[450] text-right underline mr-20">
-                <a href=" ">Forgot password</a>
+                <button
+                  type="button"
+                  title="Forgot password"
+                  onClick={handleClick}
+                >
+                  Forgot password
+                </button>
               </div>
-              <div className="mt-6 mx-20 w-[450] ">
+              <div className="mt-6 mx-20 w-[450]">
                 <button
                   type="button"
                   title="Continue"
@@ -123,8 +138,11 @@ function Login() {
                   </span>
                 </label>
               </div>
+
               <div className="mt-6 w-[450] text-right underline mr-20">
-                <a href="/resetPassword">Forgot password</a>
+                <button type="button" title="Forgot" onClick={handleClick}>
+                  Forgot password
+                </button>
               </div>
               <div className="mt-6 mx-20 w-[450] ">
                 <button
