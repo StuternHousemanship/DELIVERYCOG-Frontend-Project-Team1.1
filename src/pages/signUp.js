@@ -3,16 +3,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 import onboarding from "../api/onboarding";
-// import { NonAuthRoutes } from "../url";
+import { NonAuthRoutes } from "../url";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
   // const [value, setValue] = useState();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -107,6 +109,7 @@ function SignUp() {
                     id="email"
                     type="email"
                     placeholder="Enter Your Email"
+                    onChange={() => handleSignUp()}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     required
                   />
@@ -182,13 +185,14 @@ function SignUp() {
                 </label>
               </div>
               <div className="mt-6 mx-20 w-[450] ">
-                <input
+                <button
                   id="button"
-                  type="button"
-                  value="Continue"
-                  onClick={() => handleSignUp()}
+                  type="submit"
+                  onClick={() => navigate(NonAuthRoutes.verifyEmail)}
                   className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                />
+                >
+                  Continue
+                </button>
                 <div className="mt-6 mx-20 w-[450] text-center">
                   <a href="/login">Log into an existing account</a>
                 </div>

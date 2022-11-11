@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
-import { NonAuthRoutes } from "../url";
+import { AuthRoutes, NonAuthRoutes } from "../url";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -72,7 +72,7 @@ function Login() {
                   title="Forgot password"
                   onClick={handleClick}
                 >
-                  Forgot password
+                  Forgot password?
                 </button>
               </div>
               <div className="mt-6 mx-20 w-[450]">
@@ -80,8 +80,9 @@ function Login() {
                   type="button"
                   title="Continue"
                   className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  onClick={() => navigate(AuthRoutes.dashboard)}
                 >
-                  <a href=" ">Continue</a>
+                  Continue
                 </button>
                 <div className="mt-6 mb-12 mx-20 w-[450] underline text-center">
                   <a href="/sign-up">Do not have an account? Sign Up!</a>
@@ -149,8 +150,9 @@ function Login() {
                   type="button"
                   title="Continue"
                   className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  onClick={() => navigate(AuthRoutes.dashboard)}
                 >
-                  <a href=" ">Continue</a>
+                  Continue
                 </button>
                 <div className="mt-6 mb-12 mx-20 w-[450] underline text-center">
                   <a href="/sign-up">Do not have an account? Sign Up!</a>

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React from "react";
 // eslint-disable-next-line import/no-cycle
 import Routers from "./routers";
