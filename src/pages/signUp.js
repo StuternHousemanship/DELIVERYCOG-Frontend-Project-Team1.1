@@ -8,6 +8,8 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
+import HeaderImage from "../assets/Images/headerImage.png";
+import DesktopImage from "../assets/Images/desktopImage.png";
 import onboarding from "../api/onboarding";
 import { NonAuthRoutes } from "../url";
 
@@ -61,11 +63,12 @@ function SignUp() {
   return (
     // large screen
     <div>
+      <img src={HeaderImage} alt="headerImage" className="ml-[120px] mt-14" />
       <div className="hidden md:block lg:block">
-        <div className="flex justify-center items-center">
+        <div className="flex">
           <div className="my-[71px] h-914 w-[609px] bg-white">
             <p className="mt-12 ml-20 font-Inter font-[700] text-4xl text-black">
-              Create account
+              Sign up with us
             </p>
             <form>
               <div className="mt-10 mx-20 w-[450]">
@@ -184,24 +187,35 @@ function SignUp() {
                   </span>
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[450] ">
+              <div className="mt-6 mx-20 w-[450] bg-[#FFFFFF]">
                 <button
                   id="button"
                   type="submit"
                   onClick={() => navigate(NonAuthRoutes.verifyEmail)}
-                  className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
                   Continue
                 </button>
-                <div className="mt-6 mx-20 w-[450] text-center">
-                  <a href="/login">Log into an existing account</a>
+                <button
+                  id="button"
+                  type="submit"
+                  onClick={() => navigate(NonAuthRoutes.landingPage)}
+                  className="mt-4 py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                >
+                  Cancel
+                </button>
+                <div className="mt-6 mx-20 w-[full] text-center">
+                  <a href="/login">Already have an account? Sign in</a>
                 </div>
               </div>
             </form>
           </div>
         </div>
+        <div>
+          <img src={DesktopImage} alt="CreateAccountImage" />
+        </div>
       </div>
-      // small screeen
+      {/* Small Screen */}
       <div className="md:hidden lg:hidden">
         <div className="flex justify-center items-center">
           <div className="h-926  w-[428px] bg-white">
@@ -321,10 +335,20 @@ function SignUp() {
                   id="button-mobile"
                   type="button"
                   value="Continue"
+                  onClick={() => navigate(NonAuthRoutes.verifyEmail)}
                   className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 />
-                <div className="mt-6 mx-20 w-[348] text-center sm:text-left">
-                  <a href="/login">Log into an existing account</a>
+                <div className="mt-6 mx-20 w-[348] ">
+                  <input
+                    id="button-mobile"
+                    type="button"
+                    value="Continue"
+                    onClick={() => navigate(NonAuthRoutes.landingPage)}
+                    className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  />
+                  <div className="mt-6 mx-20 w-[348] text-center sm:text-left">
+                    <a href="/login">Log into an existing account</a>
+                  </div>
                 </div>
               </div>
             </form>

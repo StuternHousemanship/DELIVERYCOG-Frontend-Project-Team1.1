@@ -28,6 +28,7 @@ function Routers() {
           <Route path={NonAuthRoutes.landingPage} element={<LandingPage />} />
           <Route path={NonAuthRoutes.signUp} element={<SignUp />} />
           <Route path={NonAuthRoutes.logIn} element={<LogIn />} />
+          <Route path={NonAuthRoutes.verifyEmail} element={<verifyEmail />} />
           <Route
             path={NonAuthRoutes.resetPassword}
             element={<ResetPassword />}
