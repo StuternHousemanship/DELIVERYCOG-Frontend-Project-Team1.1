@@ -8,7 +8,7 @@ import SignUp from "./pages/signUp";
 import LogIn from "./pages/logIn";
 import Dashboard from "./pages/dashboard";
 import ResetPassword from "./pages/resetPassword";
-import AcctRecovered from "./pages/acctRecovered";
+import AcctRecovered from "./pages/accountRecovered";
 import ForgotPassword from "./pages/forgotPassword";
 import ForgotPassword2 from "./pages/forgotPassword2";
 
@@ -34,7 +34,7 @@ function Routers() {
             element={<ResetPassword />}
           />
           <Route
-            path={NonAuthRoutes.acctRecovered}
+            path={NonAuthRoutes.accountRecovered}
             element={<AcctRecovered />}
           />
           <Route
