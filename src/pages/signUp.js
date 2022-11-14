@@ -8,8 +8,10 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
-import HeaderImage from "../assets/Images/headerImage.png";
-import DesktopImage from "../assets/Images/desktopImage.png";
+import { ReactComponent as DeliverycogLogo } from "../assets/svg/delivery-cog-logo.svg";
+import { ReactComponent as DeliverycogLogoMobile } from "../assets/svg/delivery-cog-logo-mobile.svg";
+import FooterImage1 from "../assets/Images/broCoronavirus.png";
+import FooterImage2 from "../assets/Images/brodeliveryCog.png";
 import onboarding from "../api/onboarding";
 import { NonAuthRoutes } from "../url";
 
@@ -20,11 +22,6 @@ function SignUp() {
   // const [value, setValue] = useState();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const navigate = useNavigate();
 
   useEffect(() => {
     const ac = new AbortController();
@@ -63,9 +60,9 @@ function SignUp() {
   return (
     // large screen
     <div>
-      <img src={HeaderImage} alt="headerImage" className="ml-[120px] mt-14" />
       <div className="hidden md:block lg:block">
-        <div className="flex">
+        <DeliverycogLogo className="ml-[120px] mt-[60px]" />
+        <div className="flex justify-center">
           <div className="my-[71px] h-914 w-[609px] bg-white">
             <p className="mt-12 ml-20 font-Inter font-[700] text-4xl text-black">
               Sign up with us
@@ -73,8 +70,8 @@ function SignUp() {
             <form>
               <div className="mt-10 mx-20 w-[450]">
                 <label className="" htmlFor="firstName">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    First Name
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    First name
                   </p>
                   <input
                     id="firstName"
@@ -89,8 +86,8 @@ function SignUp() {
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="lastName">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    Last Name
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    Last name
                   </p>
                   <input
                     id="lastName"
@@ -105,7 +102,7 @@ function SignUp() {
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="email">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
                     Email
                   </p>
                   <input
@@ -120,8 +117,8 @@ function SignUp() {
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="mobile">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    Mobile
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    Phone number
                   </p>
                   <PhoneInput
                     id="mobile"
@@ -135,7 +132,7 @@ function SignUp() {
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="password">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
+                  <p className="mb-2 text-base font-sans font-[400]  text-black">
                     Password
                   </p>
                   <input
@@ -162,8 +159,8 @@ function SignUp() {
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="reEnterPassword">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    Re-enter Password
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    Confirm password
                   </p>
                   <input
                     id="reEnterPassword"
@@ -189,44 +186,49 @@ function SignUp() {
               </div>
               <div className="mt-6 mx-20 w-[450] bg-[#FFFFFF]">
                 <button
-                  id="button"
+                  id="createAccount-button"
                   type="submit"
-                  onClick={() => navigate(NonAuthRoutes.verifyEmail)}
-                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  onClick={() => navigate(NonAuthRoutes.accountSuccess)}
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
-                  Continue
+                  Create account
                 </button>
                 <button
-                  id="button"
+                  id="cancel-button"
                   type="submit"
                   onClick={() => navigate(NonAuthRoutes.landingPage)}
-                  className="mt-4 py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  className="mt-4 py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
                   Cancel
                 </button>
                 <div className="mt-6 mx-20 w-[full] text-center">
-                  <a href="/login">Already have an account? Sign in</a>
+                  <a href="/login">
+                    Already have an account?{" "}
+                    <span className="text-[#16D176]"> Sign in</span>
+                  </a>
                 </div>
               </div>
             </form>
           </div>
         </div>
-        <div>
-          <img src={DesktopImage} alt="CreateAccountImage" />
+        <div className="flex justify-between">
+          <img src={FooterImage1} alt="footerImage1" />
+          <img src={FooterImage2} alt="footerImage2" />
         </div>
       </div>
       {/* Small Screen */}
-      <div className="md:hidden lg:hidden">
+      <div className="md:hidden lg:hidden h-[976px]  w-[390px]">
+        <DeliverycogLogoMobile className="ml-6 mt-[46px]" />
         <div className="flex justify-center items-center">
-          <div className="h-926  w-[428px] bg-white">
-            <p className="ml-20 font-Inter font-[700] text-4xl text-black">
+          <div className="h-[696px]  w-[342px] bg-white">
+            <p className="ml-6 mt-6 font-Inter font-[700] text-2xl text-black">
               Create account
             </p>
             <form>
-              <div className="mt-10 mx-20 w-[348]">
+              <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="firstName-mobile">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    First Name
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    First name
                   </p>
                   <input
                     id="firstName-mobile"
@@ -237,10 +239,10 @@ function SignUp() {
                   />
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[348]">
+              <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="lastName-mobile">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    Last Name
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    Last name
                   </p>
                   <input
                     id="lastName-mobile"
@@ -251,9 +253,9 @@ function SignUp() {
                   />
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[348]">
+              <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="email-mobile">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
                     Email
                   </p>
                   <input
@@ -264,10 +266,10 @@ function SignUp() {
                   />
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[348]">
+              <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="mobile">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    Mobile
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    Phone number
                   </p>
                   <PhoneInput
                     id="mobile2"
@@ -278,9 +280,9 @@ function SignUp() {
                   />
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[348]">
+              <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="password-mobile">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
                     Password
                   </p>
                   <input
@@ -292,22 +294,22 @@ function SignUp() {
                   <span className="absolute inset-y-[1667/100] mr-9">
                     {showPassword ? (
                       <PasswordShow
-                        className="absolute -mt-10 pr-2 ml-[318px]"
+                        className="absolute -ml-7 pr-2 mt-4"
                         onClick={() => handleShowPassword()}
                       />
                     ) : (
                       <PasswordHide
-                        className="absolute -mt-10 pr-2 ml-[318px]"
+                        className="absolute -ml-7 pr-2 mt-4"
                         onClick={() => handleShowPassword()}
                       />
                     )}
                   </span>
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[348]">
+              <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="reEnterPassword-mobile">
-                  <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    Re-enter Password
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    Confirm password
                   </p>
                   <input
                     id="reEnterPassword-mobile"
@@ -318,37 +320,39 @@ function SignUp() {
                   <span className="absolute inset-y-[1667/100] mr-9 ">
                     {showPassword ? (
                       <PasswordShow
-                        className="absolute -mt-10 pr-2 ml-[318px]"
+                        className="absolute  -ml-7 pr-2 mt-4"
                         onClick={() => handleShowPassword()}
                       />
                     ) : (
                       <PasswordHide
-                        className="absolute -mt-10 pr-2 ml-[318px]"
+                        className="absolute  -ml-7 pr-2 mt-4"
                         onClick={() => handleShowPassword()}
                       />
                     )}
                   </span>
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[348] ">
-                <input
-                  id="button-mobile"
-                  type="button"
-                  value="Continue"
-                  onClick={() => navigate(NonAuthRoutes.verifyEmail)}
-                  className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                />
-                <div className="mt-6 mx-20 w-[348] ">
-                  <input
-                    id="button-mobile"
-                    type="button"
-                    value="Continue"
-                    onClick={() => navigate(NonAuthRoutes.landingPage)}
-                    className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                  />
-                  <div className="mt-6 mx-20 w-[348] text-center sm:text-left">
-                    <a href="/login">Log into an existing account</a>
-                  </div>
+              <div className="mt-6 mx-6 w-[342] ">
+                <button
+                  id="createAccount-button-mobile"
+                  type="submit"
+                  onClick={() => navigate(NonAuthRoutes.accountSuccess)}
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                >
+                  Create account
+                </button>
+              </div>
+              <div className="mt-6 mx-6 w-[342] ">
+                <button
+                  id="cancel-button-mobile"
+                  type="submit"
+                  onClick={() => navigate(NonAuthRoutes.landingPage)}
+                  className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                >
+                  Cancel
+                </button>
+                <div className="mt-6 mx-6 w-[342] text-center text-sm">
+                  <a href="/login">Already have an account? sign in</a>
                 </div>
               </div>
             </form>

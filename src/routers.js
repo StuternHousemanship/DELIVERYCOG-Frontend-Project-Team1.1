@@ -8,9 +8,10 @@ import SignUp from "./pages/signUp";
 import LogIn from "./pages/logIn";
 import Dashboard from "./pages/dashboard";
 import ResetPassword from "./pages/resetPassword";
-import AcctRecovered from "./pages/accountRecovered";
+import AcctRecovered from "./pages/accounttRecovered";
 import ForgotPassword from "./pages/forgotPassword";
 import ForgotPassword2 from "./pages/forgotPassword2";
+import AccountSuccess from "./pages/accountSuccess";
 
 function Routers() {
   return (
@@ -34,7 +35,7 @@ function Routers() {
             element={<ResetPassword />}
           />
           <Route
-            path={NonAuthRoutes.accountRecovered}
+            path={NonAuthRoutes.acctRecovered}
             element={<AcctRecovered />}
           />
           <Route
@@ -44,6 +45,10 @@ function Routers() {
           <Route
             path={NonAuthRoutes.forgotPassword2}
             element={<ForgotPassword2 />}
+          />
+          <Route
+            path={NonAuthRoutes.accountSuccess}
+            element={<AccountSuccess />}
           />
         </Routes>
       </Suspense>

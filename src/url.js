@@ -9,9 +9,10 @@ const NonAuthRoutes = {
   signUp: "/sign-up",
   logIn: "/login",
   resetPassword: "/resetpassword",
-  accountRecovered: "/account-recovered",
+  acctRecovered: "/account-recovered",
   forgotPassword: "/forgot-password",
   forgotPassword2: "/forgot-password2",
+  accountSuccess: "/account-success",
 };
 
 export { AuthRoutes, NonAuthRoutes };
