@@ -31,7 +31,6 @@ function Login() {
     e.preventDefault();
     // setButtonIsLoading(true);
 
-    // eslint-disable-next-line no-undef
     onboarding.Login(email, password).then((response) => {
       if (response.status === 200) {
         const accessToken = response.access_token;
@@ -41,6 +40,7 @@ function Login() {
       }
     });
   };
+
   return (
     <div>
       <div className="hidden md:block lg:block bg-deliverycog-white-text-color">

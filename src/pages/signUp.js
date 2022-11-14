@@ -57,9 +57,9 @@ function SignUp() {
     });
   };
 
-  return (
-    // large screen
-    <div>
+  /** Displays Sign Up Large Screen Layout */
+  const signUpLargeScreenLayout = () => {
+    return (
       <div className="hidden md:block lg:block">
         <DeliverycogLogo className="ml-[120px] mt-[60px]" />
         <div className="flex justify-center">
@@ -214,8 +214,27 @@ function SignUp() {
         <div className="flex justify-between">
           <img src={FooterImage1} alt="footerImage1" />
           <img src={FooterImage2} alt="footerImage2" />
+          {/* <CitroneBgDown className="citrone-bg fixed  bottom-0 left-0" />
+  const header = () => {
+    return (
+      <div className="sticky top-0 z-50 citrone-background-color-css">
+        <div className="border-b-2 border-gray-100 pb-4 pt-4 text-center ">
+          <button type="button" onClick={handleLandingPageRoute}>
+            <CitroneLogo className="" />
+          </button>
         </div>
       </div>
+    );
+  }; */}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    // large screen
+    <div>
+      {signUpLargeScreenLayout()}
       {/* Small Screen */}
       <div className="md:hidden lg:hidden h-[976px]  w-[390px]">
         <DeliverycogLogoMobile className="ml-6 mt-[46px]" />
