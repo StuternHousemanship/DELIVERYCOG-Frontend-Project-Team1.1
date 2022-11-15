@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import Footer from "../footer";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 import { ReactComponent as DeliverycogLogo } from "../assets/svg/delivery-cog-logo.svg";
 import { NonAuthRoutes } from "../url";
+
 // eslint-disable-next-line import/no-cycle
 import onboarding from "../api/onboarding";
 
@@ -126,11 +128,13 @@ function Login() {
           </form>
         </div>
       </div>
-      <div className="flex justify-between">{footerIcons()}</div>
+      <div>
+        <Footer />
+      </div>
     </div>;
   };
 
-  const logInMobile = ()=> {
+  const logInMobile = () => {
     <div className="md:hidden lg:hidden">
       <div className="flex justify-center items-center">
         <div className="h-[926px] w-[609px] bg-white">
@@ -206,7 +210,8 @@ function Login() {
 
   return (
     <div>
-      
+      {logInLargeScreen()}
+      {logInMobile()}
     </div>
   );
 }
