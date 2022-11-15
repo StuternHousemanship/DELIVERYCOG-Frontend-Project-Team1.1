@@ -10,7 +10,6 @@ import Dashboard from "./pages/dashboard";
 import ResetPassword from "./pages/resetPassword";
 import AccountRecovered from "./pages/accountRecovered";
 import ForgotPassword from "./pages/forgotPassword";
-import AccountSuccess from "./pages/accountSuccess";
 
 function Routers() {
   return (
@@ -40,10 +39,6 @@ function Routers() {
           <Route
             path={NonAuthRoutes.forgotPassword}
             element={<ForgotPassword />}
-          />
-          <Route
-            path={NonAuthRoutes.accountSuccess}
-            element={<AccountSuccess />}
           />
         </Routes>
       </Suspense>

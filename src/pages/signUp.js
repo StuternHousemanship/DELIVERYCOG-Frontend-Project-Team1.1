@@ -6,35 +6,15 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import Header from "../header";
+import Footer from "../footer";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
-import { ReactComponent as DeliverycogLogo } from "../assets/svg/delivery-cog-logo.svg";
-import { ReactComponent as DeliverycogLogoMobile } from "../assets/svg/delivery-cog-logo-mobile.svg";
-import FooterImage1 from "../assets/Images/broCoronavirus.png";
-import FooterImage2 from "../assets/Images/brodeliveryCog.png";
+import { ReactComponent as SuccessIcon } from "../assets/svg/successIcon.svg";
 import onboarding from "../api/onboarding";
 import { NonAuthRoutes } from "../url";
 
 const navigate = useNavigate();
-
-/** Header Logo */
-const header = () => {
-  return (
-    <div className="sticky top-0 z-50 bg-fixed">
-      <div className="border-b-2 border-gray-100 pb-4 pt-4 ">
-        <button
-          type="button"
-          onClick={() => {
-            navigate(NonAuthRoutes.landingPage);
-          }}
-        >
-          <DeliverycogLogo className="ml-[120px] mt-[60px]" />{" "}
-          {/* <CitroneLogo className="" /> */}
-        </button>
-      </div>
-    </div>
-  );
-};
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -42,6 +22,13 @@ function SignUp() {
   // const [value, setValue] = useState();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+
+  const [isCreateAccountSuccessful, setIsCreateAccountSuccessful] =
+    useState(false);
+
+  const handleCreateAccount = () => {
+    setIsCreateAccountSuccessful(true);
+  };
 
   useEffect(() => {
     const ac = new AbortController();
@@ -81,6 +68,7 @@ function SignUp() {
   const signUpLargeScreenLayout = () => {
     return (
       <div className="hidden md:block lg:block">
+        <Header />
         <div className="flex justify-center">
           <div className="my-[71px] h-914 w-[609px] bg-white">
             <p className="mt-12 ml-20 font-Inter font-[700] text-4xl text-black">
@@ -207,7 +195,7 @@ function SignUp() {
                 <button
                   id="createAccount-button"
                   type="submit"
-                  onClick={() => navigate(NonAuthRoutes.accountSuccess)}
+                  onClick={() => handleCreateAccount()}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
                   Create account
@@ -230,18 +218,13 @@ function SignUp() {
             </form>
           </div>
         </div>
-        <div className="flex justify-between">
-          <img src={FooterImage1} alt="footerImage1" />
-          <img src={FooterImage2} alt="footerImage2" />
-          {/* <CitroneBgDown className="citrone-bg fixed  bottom-0 left-0" />
-           */}
-        </div>
+        <Footer />
       </div>
     );
   };
   const signUpSmallScreenLayout = () => {
     <div className="md:hidden lg:hidden h-[976px]  w-[390px]">
-      <DeliverycogLogoMobile className="ml-6 mt-[46px]" />
+      <Header />
       <div className="flex justify-center items-center">
         <div className="h-[696px]  w-[342px] bg-white">
           <p className="ml-6 mt-6 font-Inter font-[700] text-2xl text-black">
@@ -383,14 +366,123 @@ function SignUp() {
       </div>
     </div>;
   };
-
-  return (
-    // large screen
+  /** Create Account Success Layout */
+  const createAccountSuccessLayout = () => {
     <div>
-      {header()}
+      <div className="hidden md:block lg:block">
+        <Header />
+        <div className="flex justify-center items-center">
+          <div className="my-[211px] mx-[426px] h-[446px] w-[588px] bg-white border-gray-200 border-2">
+            <SuccessIcon className="mx-[238.11px] mt-[54.11px]" />
+            <p className="mt-[39.11px] ml-[113px] font-Inter font-[400] text-2xl h-14 w-[400px] text-black text-center">
+              Your account has successfully <br /> been created
+            </p>
+            <div className="mt-6 mx-6 w-[342] ">
+              <button
+                id="button-mobile1"
+                type="submit"
+                onClick={() => navigate(NonAuthRoutes.logIn)}
+                className=" mt-[72px] mb-[51px] py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+              >
+                Sign in
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>;
+  };
+  /** Create Account Success Layout Mobile */
+  const createAccountSuccessLayoutMobile = () => {
+    <div>
+      <div className="hidden md:block lg:block">
+        <Header />
+        <div className="flex justify-center items-center">
+          <div className="my-[211px] mx-[426px] h-[446px] w-[588px] bg-white border-gray-200 border-2">
+            <SuccessIcon className="mx-[238.11px] mt-[54.11px]" />
+            <p className="mt-[39.11px] ml-[113px] font-Inter font-[400] text-2xl h-14 w-[400px] text-black text-center">
+              Your account has successfully <br /> been created
+            </p>
+            <div className="mt-6 mx-6 w-[342] ">
+              <button
+                id="button-mobile1"
+                type="submit"
+                onClick={() => navigate(NonAuthRoutes.logIn)}
+                className=" mt-[72px] mb-[51px] py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+              >
+                Sign in
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>;
+  };
+  /** Create Account Error Layout */
+  const createAccountErrorLayout = () => {
+    <div>
+      <div className="hidden md:block lg:block">
+        <Header />
+        <div className="flex justify-center items-center">
+          <div className="my-[211px] mx-[426px] h-[446px] w-[588px] bg-white border-gray-200 border-2">
+            <SuccessIcon className="mx-[238.11px] mt-[54.11px]" />
+            <p className="mt-[39.11px] ml-[113px] font-Inter font-[400] text-2xl h-14 w-[400px] text-black text-center">
+              Your account has successfully <br /> been created
+            </p>
+            <div className="mt-6 mx-6 w-[342] ">
+              <button
+                id="button-mobile1"
+                type="submit"
+                onClick={() => navigate(NonAuthRoutes.logIn)}
+                className=" mt-[72px] mb-[51px] py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+              >
+                Sign in
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>;
+  };
+  /** Create Account Error Layout Mobile */
+  const createAccountErrorLayoutMobile = () => {
+    <div>
+      <div className="hidden md:block lg:block">
+        <Header />
+        <div className="flex justify-center items-center">
+          <div className="my-[211px] mx-[426px] h-[446px] w-[588px] bg-white border-gray-200 border-2">
+            <SuccessIcon className="mx-[238.11px] mt-[54.11px]" />
+            <p className="mt-[39.11px] ml-[113px] font-Inter font-[400] text-2xl h-14 w-[400px] text-black text-center">
+              Your account has successfully <br /> been created
+            </p>
+            <div className="mt-6 mx-6 w-[342] ">
+              <button
+                id="button-mobile1"
+                type="submit"
+                onClick={() => navigate(NonAuthRoutes.logIn)}
+                className=" mt-[72px] mb-[51px] py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+              >
+                Sign in
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>;
+  };
+  return (
+    <div>
+      {/* {Large Screen} */}
       {signUpLargeScreenLayout()}
+      {isCreateAccountSuccessful
+        ? createAccountSuccessLayout
+        : createAccountErrorLayout}
+
       {/* Small Screen */}
       {signUpSmallScreenLayout()}
+      {isCreateAccountSuccessful
+        ? createAccountSuccessLayoutMobile
+        : createAccountErrorLayoutMobile}
     </div>
   );
 }
