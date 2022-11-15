@@ -14,11 +14,9 @@ import { ReactComponent as SuccessIcon } from "../assets/svg/successIcon.svg";
 import onboarding from "../api/onboarding";
 import { NonAuthRoutes } from "../url";
 
-const navigate = useNavigate();
-
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
-
+  const navigate = useNavigate();
   // const [value, setValue] = useState();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
