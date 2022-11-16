@@ -7,6 +7,7 @@ import LandingPage from "./pages/landingPage";
 import SignUp from "./pages/signUp";
 import LogIn from "./pages/logIn";
 import Dashboard from "./pages/dashboard";
+import VerifyEmail from "./pages/emailVerificationPage";
 import ResetPassword from "./pages/resetPassword";
 import AccountRecovered from "./pages/accountRecovered";
 import ForgotPassword from "./pages/forgotPassword";
@@ -27,7 +28,10 @@ function Routers() {
           <Route path={NonAuthRoutes.landingPage} element={<LandingPage />} />
           <Route path={NonAuthRoutes.signUp} element={<SignUp />} />
           <Route path={NonAuthRoutes.logIn} element={<LogIn />} />
-          <Route path={NonAuthRoutes.verifyEmail} element={<verifyEmail />} />
+          <Route
+            path={NonAuthRoutes.emailVerificationPage}
+            element={<VerifyEmail />}
+          />
           <Route
             path={NonAuthRoutes.resetPassword}
             element={<ResetPassword />}

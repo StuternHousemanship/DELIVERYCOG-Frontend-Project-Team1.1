@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as Deliverycoglogo } from "../assets/svg/delivery-cog-logo.svg";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -14,15 +15,34 @@ function Dashboard() {
   };
 
   return (
-    <div className="relative ">
-      <nav className="bg-gray-300 w-full h-20 ">
-        <button
-          onClick={handleLogOut}
-          className="absolute mr-4 top-0 right-0 bg-[#424242] text-white h-10 w-28 my-4 rounded "
-        >
-          Log out
-        </button>
-      </nav>
+    <div>
+      <div className="hidden md:block lg:block">
+        <div className=" flex flex-col justify-center items-center">
+          <Deliverycoglogo className=" mt-[65px]  " />
+          <div>
+            <button
+              onClick={handleLogOut}
+              className=" bg-[#16D176] w-[496px] h-[56px] mt-[374px] text-white"
+            >
+              Log out
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* mobile screen */}
+      <div className=" md:hidden lg:hidden">
+        <div className=" flex flex-col justify-center items-center">
+          <Deliverycoglogo className=" mt-[53px]  " />
+          <div>
+            <button
+              onClick={handleLogOut}
+              className=" bg-[#16D176] w-[342px] h-[40px] mt-[320px] text-white"
+            >
+              Log out
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

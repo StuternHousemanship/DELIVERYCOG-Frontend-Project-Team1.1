@@ -12,6 +12,7 @@ module.exports = {
         "deliverycog-grey-text-color": "#424242",
         "deliverycog-white-text-color": "#FFFFFF",
         "deliverycog-grey-background2-color": "#424242",
+        "deliverycog-buttons-green-colour": "#12AE62",
       },
       fontFamily: {
         Inter: ["Inter"],
