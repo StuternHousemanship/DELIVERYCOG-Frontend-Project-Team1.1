@@ -20,6 +20,9 @@ function SignUp() {
   // const [value, setValue] = useState();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
 
   const [isCreateAccountSuccessful, setIsCreateAccountSuccessful] =
     useState(false);
@@ -129,8 +132,8 @@ function SignUp() {
                   <PhoneInput
                     id="mobile"
                     type="tel"
-                    // value={value}
-                    onChange={() => handleMobileNumber()}
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     required
                   />
@@ -145,6 +148,7 @@ function SignUp() {
                     id="password"
                     type="password"
                     placeholder="Enter Password"
+                    onChange={(e) => setPassword(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     required
                   />
@@ -267,6 +271,8 @@ function SignUp() {
                   id="email-mobile"
                   type="email-mobile"
                   placeholder="Enter Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 />
               </label>
@@ -279,7 +285,7 @@ function SignUp() {
                 <PhoneInput
                   id="mobile2"
                   type="tel"
-                  // value={value}
+                  value={phoneNumber}
                   onChange={() => handleMobileNumber()}
                   className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 />
@@ -294,6 +300,7 @@ function SignUp() {
                   id="password-mobile"
                   type="password-mobile"
                   placeholder="Enter Password"
+                  value={password}
                   className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 />
                 <span className="absolute inset-y-[1667/100] mr-9">
