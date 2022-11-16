@@ -26,6 +26,7 @@ function SignUp() {
 
   const handleCreateAccount = () => {
     setIsCreateAccountSuccessful(true);
+    navigate(NonAuthRoutes.emailVerificationPage);
   };
 
   useEffect(() => {
