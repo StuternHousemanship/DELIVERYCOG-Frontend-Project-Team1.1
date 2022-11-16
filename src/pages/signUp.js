@@ -118,6 +118,7 @@ function SignUp() {
                     id="email"
                     type="email"
                     placeholder="Enter Your Email"
+                    value={email}
                     onChange={() => handleSignUp()}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     required

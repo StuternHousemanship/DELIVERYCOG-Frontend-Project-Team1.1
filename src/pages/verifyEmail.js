@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { NonAuthRoutes } from "../url";
-import { ReactComponent as Deliverycoglogo } from "../assets/svg/delivery-cog-logo.svg";
+import Header from "../header";
 import { ReactComponent as DeliverycoglogoMobile } from "../assets/svg/delivery-cog-logo-mobile.svg";
 
 export default function verifyEmailMsg() {
@@ -11,7 +11,7 @@ export default function verifyEmailMsg() {
     <div>
       {/** Large screen */}
       <div className="hidden md:block lg:block">
-        <Deliverycoglogo className=" mt-[65px] ml-[65px] " />
+        <Header />
         <div className="flex justify-center items-center">
           <div className="my-[90px] h-[520px] w-[624px] bg-white  rounded-xl border-[#092C4C] border-[1px]">
             <h1 className=" ml-[189px]  w-[260px] h-10  mt-10 font-Inter  font-[700] text-[32px] leading-10  text-[#092C4C] text-left">
@@ -81,5 +81,4 @@ export default function verifyEmailMsg() {
       </div>
     </div>
   );
-  /** Create Account Success Layout */
 }
