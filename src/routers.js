@@ -11,7 +11,6 @@ import VerifyEmail from "./pages/emailVerificationPage";
 import ResetPassword from "./pages/resetPassword";
 import AccountRecovered from "./pages/accountRecovered";
 import ForgotPassword from "./pages/forgotPassword";
-import LogOutErrorPage from "./pages/logOutErrorPage";
 
 function Routers() {
   return (
@@ -44,10 +43,6 @@ function Routers() {
           <Route
             path={NonAuthRoutes.forgotPassword}
             element={<ForgotPassword />}
-          />
-          <Route
-            path={NonAuthRoutes.logOutErrorPage}
-            element={<LogOutErrorPage />}
           />
         </Routes>
       </Suspense>
