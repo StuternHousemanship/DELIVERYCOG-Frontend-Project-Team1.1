@@ -6,10 +6,12 @@ function Footer() {
   /** global footerIcons */
   /* eslint no-undef: "error" */
   const footerIcons = () => {
-    <div className="flex justify-between md:block lg:block">
-      <MaskDelivery className=" fixed  bottom-0 left-0" />
-      <BikeDelivery className=" fixed  bottom-0 right-0" />
-    </div>;
+    return (
+      <div className="flex justify-between">
+        <MaskDelivery />
+        <BikeDelivery />
+      </div>
+    );
   };
   return <div>{footerIcons()}</div>;
 }

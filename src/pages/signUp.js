@@ -10,7 +10,6 @@ import Header from "../header";
 import Footer from "../footer";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
-import { ReactComponent as SuccessIcon } from "../assets/svg/successIcon.svg";
 import onboarding from "../api/onboarding";
 import { NonAuthRoutes } from "../url";
 
@@ -24,13 +23,13 @@ function SignUp() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
 
-  const [isCreateAccountSuccessful, setIsCreateAccountSuccessful] =
-    useState(false);
+  // const [isCreateAccountSuccessful, setIsCreateAccountSuccessful] =
+  //   useState(false);
 
-  const handleCreateAccount = () => {
-    setIsCreateAccountSuccessful(true);
-    navigate(NonAuthRoutes.emailVerificationPage);
-  };
+  // const handleCreateAccount = () => {
+  //   setIsCreateAccountSuccessful(true);
+  //   navigate(NonAuthRoutes.emailVerificationPage);
+  // };
 
   useEffect(() => {
     const ac = new AbortController();
@@ -70,7 +69,9 @@ function SignUp() {
   const signUpLargeScreenLayout = () => {
     return (
       <div className="hidden md:block lg:block">
-        <Header />
+        <nav className="fixed">
+          <Header />
+        </nav>
         <div className="flex justify-center">
           <div className="my-[71px] h-914 w-[609px] bg-white">
             <p className="mt-12 ml-20 font-Inter font-[700] text-4xl text-black">
@@ -199,7 +200,7 @@ function SignUp() {
                 <button
                   id="createAccount-button"
                   type="submit"
-                  onClick={() => handleCreateAccount()}
+                  // onClick={() => handleCreateAccount()}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
                   Create account
@@ -227,269 +228,167 @@ function SignUp() {
     );
   };
   const signUpSmallScreenLayout = () => {
-    <div className="md:hidden lg:hidden h-[976px]  w-[390px]">
-      <Header />
-      <div className="flex justify-center items-center">
-        <div className="h-[696px]  w-[342px] bg-white">
-          <p className="ml-6 mt-6 font-Inter font-[700] text-2xl text-black">
-            Create account
-          </p>
-          <form>
-            <div className="mt-6 mx-6 w-[342]">
-              <label className="" htmlFor="firstName-mobile">
-                <p className="mb-2 text-base font-sans font-[400] text-black">
-                  First name
-                </p>
-                <input
-                  id="firstName-mobile"
-                  type="firstName-mobile"
-                  placeholder="Enter First Name"
-                  value={firstName}
-                  className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                />
-              </label>
-            </div>
-            <div className="mt-6 mx-6 w-[342]">
-              <label className="" htmlFor="lastName-mobile">
-                <p className="mb-2 text-base font-sans font-[400] text-black">
-                  Last name
-                </p>
-                <input
-                  id="lastName-mobile"
-                  type="lastName-mobile"
-                  placeholder="Enter Last Name"
-                  value={lastName}
-                  className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                />
-              </label>
-            </div>
-            <div className="mt-6 mx-6 w-[342]">
-              <label className="" htmlFor="email-mobile">
-                <p className="mb-2 text-base font-sans font-[400] text-black">
-                  Email
-                </p>
-                <input
-                  id="email-mobile"
-                  type="email-mobile"
-                  placeholder="Enter Your Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                />
-              </label>
-            </div>
-            <div className="mt-6 mx-6 w-[342]">
-              <label className="" htmlFor="mobile">
-                <p className="mb-2 text-base font-sans font-[400] text-black">
-                  Phone number
-                </p>
-                <PhoneInput
-                  id="mobile2"
-                  type="tel"
-                  value={phoneNumber}
-                  onChange={() => handleMobileNumber()}
-                  className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                />
-              </label>
-            </div>
-            <div className="mt-6 mx-6 w-[342]">
-              <label className="" htmlFor="password-mobile">
-                <p className="mb-2 text-base font-sans font-[400] text-black">
-                  Password
-                </p>
-                <input
-                  id="password-mobile"
-                  type="password-mobile"
-                  placeholder="Enter Password"
-                  value={password}
-                  className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                />
-                <span className="absolute inset-y-[1667/100] mr-9">
-                  {showPassword ? (
-                    <PasswordShow
-                      className="absolute -ml-7 pr-2 mt-4"
-                      onClick={() => handleShowPassword()}
-                    />
-                  ) : (
-                    <PasswordHide
-                      className="absolute -ml-7 pr-2 mt-4"
-                      onClick={() => handleShowPassword()}
-                    />
-                  )}
-                </span>
-              </label>
-            </div>
-            <div className="mt-6 mx-6 w-[342]">
-              <label className="" htmlFor="reEnterPassword-mobile">
-                <p className="mb-2 text-base font-sans font-[400] text-black">
-                  Confirm password
-                </p>
-                <input
-                  id="reEnterPassword-mobile"
-                  type="password-mobile"
-                  placeholder="Re-enter Password"
-                  className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                />
-                <span className="absolute inset-y-[1667/100] mr-9 ">
-                  {showPassword ? (
-                    <PasswordShow
-                      className="absolute  -ml-7 pr-2 mt-4"
-                      onClick={() => handleShowPassword()}
-                    />
-                  ) : (
-                    <PasswordHide
-                      className="absolute  -ml-7 pr-2 mt-4"
-                      onClick={() => handleShowPassword()}
-                    />
-                  )}
-                </span>
-              </label>
-            </div>
-            <div className="mt-6 mx-6 w-[342] ">
-              <button
-                id="createAccount-button-mobile"
-                type="submit"
-                onClick={() => navigate(NonAuthRoutes.accountSuccess)}
-                className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-              >
-                Create account
-              </button>
-            </div>
-            <div className="mt-6 mx-6 w-[342] ">
-              <button
-                id="cancel-button-mobile"
-                type="submit"
-                onClick={() => navigate(NonAuthRoutes.landingPage)}
-                className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-              >
-                Cancel
-              </button>
-              <div className="mt-6 mx-6 w-[342] text-center text-sm">
-                <a href="/login">Already have an account? sign in</a>
+    return (
+      <div className="md:hidden lg:hidden h-[976px]  w-[390px]">
+        <Header />
+        <div className="flex justify-center items-center">
+          <div className="h-[696px]  w-[342px] bg-white">
+            <p className="ml-6 mt-6 font-Inter font-[700] text-2xl text-black">
+              Create account
+            </p>
+            <form>
+              <div className="mt-6 mx-6 w-[342]">
+                <label className="" htmlFor="firstName-mobile">
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    First name
+                  </p>
+                  <input
+                    id="firstName-mobile"
+                    type="firstName-mobile"
+                    placeholder="Enter First Name"
+                    value={firstName}
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  />
+                </label>
               </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>;
-  };
-  /** Create Account Success Layout */
-  const createAccountSuccessLayout = () => {
-    <div>
-      <div className="hidden md:block lg:block">
-        <Header />
-        <div className="flex justify-center items-center">
-          <div className="my-[211px] mx-[426px] h-[446px] w-[588px] bg-white border-gray-200 border-2">
-            <SuccessIcon className="mx-[238.11px] mt-[54.11px]" />
-            <p className="mt-[39.11px] ml-[113px] font-Inter font-[400] text-2xl h-14 w-[400px] text-black text-center">
-              Your account has successfully <br /> been created
-            </p>
-            <div className="mt-6 mx-6 w-[342] ">
-              <button
-                id="button-mobile1"
-                type="submit"
-                onClick={() => navigate(NonAuthRoutes.logIn)}
-                className=" mt-[72px] mb-[51px] py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-              >
-                Sign in
-              </button>
-            </div>
+              <div className="mt-6 mx-6 w-[342]">
+                <label className="" htmlFor="lastName-mobile">
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    Last name
+                  </p>
+                  <input
+                    id="lastName-mobile"
+                    type="lastName-mobile"
+                    placeholder="Enter Last Name"
+                    value={lastName}
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  />
+                </label>
+              </div>
+              <div className="mt-6 mx-6 w-[342]">
+                <label className="" htmlFor="email-mobile">
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    Email
+                  </p>
+                  <input
+                    id="email-mobile"
+                    type="email-mobile"
+                    placeholder="Enter Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  />
+                </label>
+              </div>
+              <div className="mt-6 mx-6 w-[342]">
+                <label className="" htmlFor="mobile">
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    Phone number
+                  </p>
+                  <PhoneInput
+                    id="mobile2"
+                    type="tel"
+                    value={phoneNumber}
+                    onChange={() => handleMobileNumber()}
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  />
+                </label>
+              </div>
+              <div className="mt-6 mx-6 w-[342]">
+                <label className="" htmlFor="password-mobile">
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    Password
+                  </p>
+                  <input
+                    id="password-mobile"
+                    type="password-mobile"
+                    placeholder="Enter Password"
+                    value={password}
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  />
+                  <span className="absolute inset-y-[1667/100] mr-9">
+                    {showPassword ? (
+                      <PasswordShow
+                        className="absolute -ml-7 pr-2 mt-4"
+                        onClick={() => handleShowPassword()}
+                      />
+                    ) : (
+                      <PasswordHide
+                        className="absolute -ml-7 pr-2 mt-4"
+                        onClick={() => handleShowPassword()}
+                      />
+                    )}
+                  </span>
+                </label>
+              </div>
+              <div className="mt-6 mx-6 w-[342]">
+                <label className="" htmlFor="reEnterPassword-mobile">
+                  <p className="mb-2 text-base font-sans font-[400] text-black">
+                    Confirm password
+                  </p>
+                  <input
+                    id="reEnterPassword-mobile"
+                    type="password-mobile"
+                    placeholder="Re-enter Password"
+                    value={password}
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  />
+                  <span className="absolute inset-y-[1667/100] mr-9 ">
+                    {showPassword ? (
+                      <PasswordShow
+                        className="absolute  -ml-7 pr-2 mt-4"
+                        onClick={() => handleShowPassword()}
+                      />
+                    ) : (
+                      <PasswordHide
+                        className="absolute  -ml-7 pr-2 mt-4"
+                        onClick={() => handleShowPassword()}
+                      />
+                    )}
+                  </span>
+                </label>
+              </div>
+              <div className="mt-6 mx-6 w-[342] ">
+                <button
+                  id="createAccount-button-mobile"
+                  type="submit"
+                  onClick={() => navigate(NonAuthRoutes.accountSuccess)}
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                >
+                  Create account
+                </button>
+              </div>
+              <div className="mt-6 mx-6 w-[342] ">
+                <button
+                  id="cancel-button-mobile"
+                  type="submit"
+                  onClick={() => navigate(NonAuthRoutes.landingPage)}
+                  className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                >
+                  Cancel
+                </button>
+                <div className="mt-6 mx-6 w-[342] text-center text-sm">
+                  <a href="/login">Already have an account? sign in</a>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </div>;
-  };
-  /** Create Account Success Layout Mobile */
-  const createAccountSuccessLayoutMobile = () => {
-    <div>
-      <div className="hidden md:block lg:block">
-        <Header />
-        <div className="flex justify-center items-center">
-          <div className="my-[211px] mx-[426px] h-[446px] w-[588px] bg-white border-gray-200 border-2">
-            <SuccessIcon className="mx-[238.11px] mt-[54.11px]" />
-            <p className="mt-[39.11px] ml-[113px] font-Inter font-[400] text-2xl h-14 w-[400px] text-black text-center">
-              Your account has successfully <br /> been created
-            </p>
-            <div className="mt-6 mx-6 w-[342] ">
-              <button
-                id="button-mobile1"
-                type="submit"
-                onClick={() => navigate(NonAuthRoutes.logIn)}
-                className=" mt-[72px] mb-[51px] py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-              >
-                Sign in
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>;
-  };
-  /** Create Account Error Layout */
-  const createAccountErrorLayout = () => {
-    <div>
-      <div className="hidden md:block lg:block">
-        <Header />
-        <div className="flex justify-center items-center">
-          <div className="my-[211px] mx-[426px] h-[446px] w-[588px] bg-white border-gray-200 border-2">
-            <SuccessIcon className="mx-[238.11px] mt-[54.11px]" />
-            <p className="mt-[39.11px] ml-[113px] font-Inter font-[400] text-2xl h-14 w-[400px] text-black text-center">
-              Your account has successfully <br /> been created
-            </p>
-            <div className="mt-6 mx-6 w-[342] ">
-              <button
-                id="button-mobile1"
-                type="submit"
-                onClick={() => navigate(NonAuthRoutes.logIn)}
-                className=" mt-[72px] mb-[51px] py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-              >
-                Sign in
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>;
-  };
-  /** Create Account Error Layout Mobile */
-  const createAccountErrorLayoutMobile = () => {
-    <div>
-      <div className="hidden md:block lg:block">
-        <Header />
-        <div className="flex justify-center items-center">
-          <div className="my-[211px] mx-[426px] h-[446px] w-[588px] bg-white border-gray-200 border-2">
-            <SuccessIcon className="mx-[238.11px] mt-[54.11px]" />
-            <p className="mt-[39.11px] ml-[113px] font-Inter font-[400] text-2xl h-14 w-[400px] text-black text-center">
-              Your account has successfully <br /> been created
-            </p>
-            <div className="mt-6 mx-6 w-[342] ">
-              <button
-                id="button-mobile1"
-                type="submit"
-                onClick={() => navigate(NonAuthRoutes.logIn)}
-                className=" mt-[72px] mb-[51px] py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-              >
-                Sign in
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>;
+    );
   };
   return (
     <div>
       {/* {Large Screen} */}
       {signUpLargeScreenLayout()}
-      {isCreateAccountSuccessful
+      {/* {isCreateAccountSuccessful
         ? createAccountSuccessLayout
-        : createAccountErrorLayout}
-
+        : createAccountErrorLayout} */}
       {/* Small Screen */}
       {signUpSmallScreenLayout()}
-      {isCreateAccountSuccessful
+      {/* {isCreateAccountSuccessful
         ? createAccountSuccessLayoutMobile
-        : createAccountErrorLayoutMobile}
+        : createAccountErrorLayoutMobile} */}
     </div>
   );
 }

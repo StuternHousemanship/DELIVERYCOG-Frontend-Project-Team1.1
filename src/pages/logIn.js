@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Footer from "../footer";
+import Header from "../header";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
-import { ReactComponent as DeliverycogLogo } from "../assets/svg/delivery-cog-logo.svg";
+// import { ReactComponent as DeliverycogLogo } from "../assets/svg/delivery-cog-logo.svg";
 import { NonAuthRoutes } from "../url";
-
 // eslint-disable-next-line import/no-cycle
 import onboarding from "../api/onboarding";
 
-function Login() {
+function LogIn() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ function Login() {
     e.preventDefault();
     // setButtonIsLoading(true);
 
-    onboarding.Login(email, password).then((response) => {
+    onboarding.LogIn(email, password).then((response) => {
       if (response.status === 200) {
         const accessToken = response.access_token;
         const refreshToken = response.refresh_token;
@@ -42,8 +42,9 @@ function Login() {
   };
 
   const logInLargeScreen = () => {
-    <div className="hidden md:block lg:block bg-deliverycog-white-text-color">
-      <DeliverycogLogo />
+    <div className="hidden md:block lg:block">
+      {/* <DeliverycogLogo /> */}
+      <Header />
       <div className="flex justify-center items-center">
         <div className="my-[71px] h-532px w-[609px] bg-white">
           <p className="mt-12 ml-60 font-Inter font-[700] text-4xl text-black">
@@ -215,4 +216,4 @@ function Login() {
     </div>
   );
 }
-export default Login;
+export default LogIn;
