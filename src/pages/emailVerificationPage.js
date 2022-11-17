@@ -29,7 +29,7 @@ function verifyEmail() {
               type="submit"
               title="verify-email"
               className=" ml-[72px]  bg-[#12AE62] w-[496px] h-14  rounded text-white  leading-5 text-sm font-semibold mt-[40px]"
-              onClick={() => navigate(NonAuthRoutes.logIn)}
+              onClick={() => navigate(NonAuthRoutes.logOutErrorPage)}
             >
               Verify My Email
             </button>
@@ -62,7 +62,7 @@ function verifyEmail() {
               type="submit"
               title="verify-email"
               className=" ml-[30px]  bg-[#12AE62] w-[342px] h-10  rounded text-white  leading-5 text-sm font-semibold mt-[40px]"
-              onClick={() => navigate(NonAuthRoutes.logIn)}
+              onClick={() => navigate(NonAuthRoutes.logOutErrorPage)}
             >
               Verify My Email
             </button>
