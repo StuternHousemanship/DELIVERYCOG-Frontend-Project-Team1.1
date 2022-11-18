@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Footer from "../footer";
@@ -13,13 +13,41 @@ import onboarding from "../api/onboarding";
 function LogIn() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [isEmailValid, setIsEmailValid] = useState(false);
+
+  // These clear the error when it reload
+  useEffect(() => {
+    if (email.length < 1) {
+      setIsEmailValid(true);
+    }
+  });
 
   /** handles show Password text */
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  /** handles Validate Email input */
+  const validateEmail = (userEmail) => {
+    setEmail(userEmail);
+    // const regex = /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/;
+    const regex =
+      /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,4}))$/;
+    if (regex.test(email)) {
+      setIsEmailValid(true);
+    } else {
+      setIsEmailValid(false);
+    }
+  };
+  /** displays email error text */
+  const displayEmailErrorText = () => {
+    return (
+      <p className="text-red-600 text-xs font-semibold mt-2">
+        Please enter a valid email address
+      </p>
+    );
   };
 
   const handleClick = () => {
@@ -37,6 +65,7 @@ function LogIn() {
         const refreshToken = response.refresh_token;
         Cookies.set("accessToken", accessToken);
         localStorage.setItem("token", refreshToken);
+        // navigate(AuthRoutes.dashboard);
       }
     });
   };
@@ -52,7 +81,7 @@ function LogIn() {
             <p className="mt-12 ml-60 font-Inter font-[700] text-4xl text-black">
               Log In
             </p>
-            <form>
+            <form onSubmit={() => handleLogin()}>
               <div className="mt-6 mx-20  w-[450]">
                 <label className="" htmlFor="email">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
@@ -63,9 +92,11 @@ function LogIn() {
                     type="email"
                     placeholder="Email Address"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => validateEmail(e.target.value)}
+                    onKeyUp={(e) => validateEmail(e.target.value)}
                   />
                 </label>
+                {isEmailValid ? null : displayEmailErrorText()}
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="password">
@@ -74,7 +105,8 @@ function LogIn() {
                   </p>
                   <input
                     id="log-password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Password"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
@@ -99,17 +131,21 @@ function LogIn() {
                 <button
                   type="button"
                   title="Forgot password"
-                  onClick={handleClick}
+                  onClick={() => {
+                    handleClick();
+                  }}
                 >
                   Forgot password?
                 </button>
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <button
-                  type="button"
+                  type="submit"
                   title="submit"
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                  onClick={handleLogin}
+                  onClick={() => {
+                    handleLogin();
+                  }}
                 >
                   Continue
                 </button>
@@ -161,8 +197,10 @@ function LogIn() {
                     placeholder="Email Address"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     onChange={(e) => setEmail(e.target.value)}
+                    onKeyUp={(e) => validateEmail(e.target.value)}
                   />
                 </label>
+                {isEmailValid ? null : displayEmailErrorText()}
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="password">
@@ -171,7 +209,8 @@ function LogIn() {
                   </p>
                   <input
                     id="mobile-pass"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Password"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
@@ -193,16 +232,24 @@ function LogIn() {
               </div>
 
               <div className="mt-6 w-[450] text-right underline mr-20">
-                <button type="button" title="Forgot" onClick={handleClick}>
+                <button
+                  type="button"
+                  title="Forgot"
+                  onClick={() => {
+                    handleClick();
+                  }}
+                >
                   Forgot password
                 </button>
               </div>
               <div className="mt-6 mx-20 w-[342] ">
                 <button
-                  type="button"
+                  type="submit"
                   title="Continue"
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                  onClick={handleLogin}
+                  onClick={() => {
+                    handleLogin();
+                  }}
                 >
                   Continue
                 </button>
