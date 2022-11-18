@@ -393,11 +393,11 @@ function SignUp() {
   };
   const signUpSmallScreenLayout = () => {
     return (
-      <div className="md:hidden lg:hidden h-[976px]  w-[390px]">
+      <div className="md:hidden lg:hidden h-[976px]  w-[609px]">
         <Header />
         <div className="flex justify-center items-center">
-          <div className="h-[696px]  w-[342px] bg-white">
-            <p className="ml-6 mt-6 font-Inter font-[700] text-2xl text-black">
+          <div className="h-[696px]  w-[342] bg-white">
+            <p className="ml-6 mt-2 font-Inter font-[700] text-2xl text-black">
               Create account
             </p>
             <form onSubmit={() => handleSignUp()}>
