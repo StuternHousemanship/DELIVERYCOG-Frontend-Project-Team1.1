@@ -10,8 +10,10 @@ function ResetPassword() {
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
-  return (
-    <div>
+
+  /** Desktop and Tablet Screen Layout */
+  const displayResetPasswordLargeScreen = () => {
+    return (
       <div className="hidden md:block lg:block">
         <Header />
         <div className="flex justify-center items-center">
@@ -97,7 +99,12 @@ function ResetPassword() {
           </div>
         </div>
       </div>
+    );
+  };
 
+  /** Mobile Screen Layout */
+  const displayResetPasswordMobileScreen = () => {
+    return (
       <div className="md:hidden lg:hidden">
         <div className="flex justify-center items-center">
           <div className="h-[926px] w-[609px] bg-white">
@@ -170,6 +177,13 @@ function ResetPassword() {
           </div>
         </div>
       </div>
+    );
+  };
+
+  return (
+    <div>
+      {displayResetPasswordLargeScreen()}
+      {displayResetPasswordMobileScreen()}
     </div>
   );
 }
