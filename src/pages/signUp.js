@@ -68,13 +68,13 @@ function SignUp() {
   /** Displays Sign Up Large Screen Layout */
   const signUpLargeScreenLayout = () => {
     return (
-      <div className="hidden md:block lg:block">
+      <div className="relative hidden md:block lg:block">
         <nav className="fixed">
           <Header />
         </nav>
         <div className="flex justify-center">
           <div className="my-[71px] h-914 w-[609px] bg-white">
-            <p className="mt-12 ml-20 font-Inter font-[700] text-4xl text-black">
+            <p className="mt-[72px] ml-20 font-Inter font-[700] text-4xl text-black">
               Sign up with us
             </p>
             <form>
@@ -196,7 +196,7 @@ function SignUp() {
                   </span>
                 </label>
               </div>
-              <div className="mt-6 mx-20 w-[450] bg-[#FFFFFF]">
+              <div className="mt-10 mx-20 w-[450] bg-[#FFFFFF]">
                 <button
                   id="createAccount-button"
                   type="submit"

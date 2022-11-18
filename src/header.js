@@ -10,7 +10,7 @@ function Header() {
   /* eslint no-undef: "error" */
   const largeScreenHeader = () => {
     return (
-      <div className="sticky top-0 z-50 md:block lg:block">
+      <div className="sticky top-0 z-50 hidden md:block lg:block">
         <div className=" pb-4 pt-4 ">
           <button
             type="button"
