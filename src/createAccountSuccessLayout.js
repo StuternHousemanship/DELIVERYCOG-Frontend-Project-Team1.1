@@ -5,7 +5,7 @@ import Header from "./header";
 import SuccessIcon from "./assets/svg/successIcon.svg";
 import SuccessIconMobile from "./assets/svg/successIconMobile.svg";
 
-function SuccessLayout() {
+function CreateAccountSuccessLayout() {
   const navigate = useNavigate();
   /** Create Account Success Layout */
   const createAccountSuccessLayout = () => {
@@ -68,4 +68,4 @@ function SuccessLayout() {
   );
 }
 
-export default SuccessLayout;
+export default CreateAccountSuccessLayout;

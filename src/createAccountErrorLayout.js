@@ -5,7 +5,7 @@ import Header from "./header";
 import ErrorIcon from "./assets/svg/failureIcon.svg";
 import ErrorIconMobile from "./assets/svg/failureIconMobile.svg";
 
-function ErrorLayout() {
+function CreateAccountErrorLayout() {
   const navigate = useNavigate();
   // /** Create Account Error Layout */
   const createAccountErrorLayout = () => {
@@ -61,10 +61,10 @@ function ErrorLayout() {
   };
   return (
     <div>
-      {createAccountErrorLayoutMobile()}
       {createAccountErrorLayout()}
+      {createAccountErrorLayoutMobile()}
     </div>
   );
 }
 
-export default ErrorLayout;
+export default CreateAccountErrorLayout;
