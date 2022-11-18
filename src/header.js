@@ -35,7 +35,7 @@ function Header() {
               navigate(NonAuthRoutes.landingPage);
             }}
           >
-            <DeliverycogLogoMobile className="ml-6 mt-[46px]" />
+            <DeliverycogLogoMobile className="ml-12 mt-[46px]" />
             {/* <CitroneLogo className="" /> */}
           </button>
         </div>

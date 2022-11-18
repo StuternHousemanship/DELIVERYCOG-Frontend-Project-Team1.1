@@ -143,7 +143,7 @@ function LogIn() {
                   title="submit"
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   onClick={() => {
-                    handleLogin();
+                    navigate(AuthRoutes.dashboard);
                   }}
                 >
                   Continue
@@ -247,7 +247,7 @@ function LogIn() {
                   title="Continue"
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   onClick={() => {
-                    handleLogin();
+                    navigate(AuthRoutes.dashboard);
                   }}
                 >
                   Continue
