@@ -6,7 +6,7 @@ import Header from "../header";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 // import { ReactComponent as DeliverycogLogo } from "../assets/svg/delivery-cog-logo.svg";
-import { NonAuthRoutes } from "../url";
+import { AuthRoutes, NonAuthRoutes } from "../url";
 // eslint-disable-next-line import/no-cycle
 import onboarding from "../api/onboarding";
 
@@ -58,14 +58,13 @@ function LogIn() {
   const handleLogin = (e) => {
     e.preventDefault();
     // setButtonIsLoading(true);
-
+    navigate(AuthRoutes.dashboard);
     onboarding.Login(email, password).then((response) => {
       if (response.status === 200) {
         const accessToken = response.access_token;
         const refreshToken = response.refresh_token;
         Cookies.set("accessToken", accessToken);
         localStorage.setItem("token", refreshToken);
-        // navigate(AuthRoutes.dashboard);
       }
     });
   };

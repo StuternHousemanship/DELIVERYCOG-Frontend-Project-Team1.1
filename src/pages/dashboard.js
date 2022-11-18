@@ -129,15 +129,11 @@ function Dashboard() {
     <div>
       {/* {Large Screen} */}
       {logOutLargeScreen()}
-      {isLogOutSuccessful
-        ? logOutSuccessLargeScreen()
-        : logOutErrorLargeScreen()}
+      {isLogOutSuccessful ? logOutSuccessLargeScreen : logOutErrorLargeScreen}
 
       {/* Small Screen */}
       {logOutSmallScreen()}
-      {isLogOutSuccessful
-        ? logOutSuccessSmallScreen()
-        : logOutErrorSmallScreen()}
+      {isLogOutSuccessful ? logOutSuccessSmallScreen : logOutErrorSmallScreen}
     </div>
   );
 }

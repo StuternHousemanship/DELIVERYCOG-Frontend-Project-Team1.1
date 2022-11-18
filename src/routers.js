@@ -11,6 +11,8 @@ import VerifyEmail from "./pages/emailVerificationPage";
 import ResetPassword from "./pages/resetPassword";
 import AccountRecovered from "./pages/accountRecovered";
 import ForgotPassword from "./pages/forgotPassword";
+import CreateAccountErrorLayout from "./createAccountErrorLayout";
+import CreateAccountSuccessLayout from "./createAccountSuccessLayout";
 
 function Routers() {
   return (
@@ -43,6 +45,14 @@ function Routers() {
           <Route
             path={NonAuthRoutes.forgotPassword}
             element={<ForgotPassword />}
+          />
+          <Route
+            path={NonAuthRoutes.createAccountErrorLayout}
+            element={<CreateAccountErrorLayout />}
+          />
+          <Route
+            path={NonAuthRoutes.createAccountSuccessLayout}
+            element={<CreateAccountSuccessLayout />}
           />
         </Routes>
       </Suspense>
