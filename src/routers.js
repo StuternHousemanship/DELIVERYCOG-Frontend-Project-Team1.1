@@ -13,6 +13,8 @@ import AccountRecovered from "./pages/accountRecovered";
 import ForgotPassword from "./pages/forgotPassword";
 import CreateAccountErrorLayout from "./createAccountErrorLayout";
 import CreateAccountSuccessLayout from "./createAccountSuccessLayout";
+import LogOutErrorLayout from "./logOutErrorLayout";
+import LogOutSuccessLayout from "./logOutSuccessLayout";
 
 function Routers() {
   return (
@@ -53,6 +55,14 @@ function Routers() {
           <Route
             path={NonAuthRoutes.createAccountSuccessLayout}
             element={<CreateAccountSuccessLayout />}
+          />
+          <Route
+            path={NonAuthRoutes.logOutErrorLayout}
+            element={<LogOutErrorLayout />}
+          />
+          <Route
+            path={NonAuthRoutes.logOutSuccessLayout}
+            element={<LogOutSuccessLayout />}
           />
         </Routes>
       </Suspense>
