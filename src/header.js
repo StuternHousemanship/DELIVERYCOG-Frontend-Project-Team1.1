@@ -11,14 +11,14 @@ function Header() {
   const largeScreenHeader = () => {
     return (
       <div className="sticky top-0 z-50 hidden md:block lg:block">
-        <div className=" pb-4 pt-4 ">
+        <div className="border-b-1 bg-white pb-4 pt-4 ">
           <button
             type="button"
             onClick={() => {
               navigate(NonAuthRoutes.landingPage);
             }}
           >
-            <DeliverycogLogo className="ml-[120px] mt-[60px]" />
+            <DeliverycogLogo className="ml-[120px] mt-[20px]" />
             {/* <CitroneLogo className="" /> */}
           </button>
         </div>
@@ -28,14 +28,14 @@ function Header() {
   const smallScreenHeader = () => {
     return (
       <div className="sticky top-0 z-50  md:hidden lg:hidden">
-        <div className=" border-gray-100 pb-4 pt-4 ">
+        <div className=" bg-white border-b-1 pb-4 pt-4 text-left">
           <button
             type="button"
             onClick={() => {
               navigate(NonAuthRoutes.landingPage);
             }}
           >
-            <DeliverycogLogoMobile className="ml-12 mt-[46px]" />
+            <DeliverycogLogoMobile className="ml-6 mt-[20px]" />
             {/* <CitroneLogo className="" /> */}
           </button>
         </div>

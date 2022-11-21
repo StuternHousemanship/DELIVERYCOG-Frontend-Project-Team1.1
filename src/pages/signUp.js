@@ -219,7 +219,7 @@ function SignUp() {
   const signUpLargeScreenLayout = () => {
     return (
       <div className="relative hidden md:block lg:block">
-        <nav className="fixed">
+        <nav className="fixed w-full">
           <Header />
         </nav>
         <div className="flex justify-center">
@@ -377,12 +377,6 @@ function SignUp() {
                 >
                   <span> Already have an account? </span>Sign in
                 </button>
-                {/* <div className="mt-6 mx-20 w-[full] text-center">
-                  <a href="/login">
-                    Already have an account?{" "}
-                    <span className="text-[#16D176]"> Sign in</span>
-                  </a>
-                </div> */}
               </div>
             </form>
           </div>
@@ -393,11 +387,13 @@ function SignUp() {
   };
   const signUpSmallScreenLayout = () => {
     return (
-      <div className="md:hidden lg:hidden h-[976px]  w-[609px]">
-        <Header />
-        <div className="flex justify-center items-center">
-          <div className="h-[696px]  w-[342] bg-white">
-            <p className="ml-6 mt-2 font-Inter font-[700] text-2xl text-black">
+      <div className="md:hidden lg:hidden h-6  w-[390px]">
+        <nav className="fixed w-full">
+          <Header />
+        </nav>
+        <div className="flex justify-start items-center ">
+          <div className="h-[696px]  w-[390px] bg-white mb-12">
+            <p className="ml-6 mt-[120px] font-Inter font-[700] text-2xl text-black">
               Create account
             </p>
             <form onSubmit={() => handleSignUp()}>
@@ -544,7 +540,7 @@ function SignUp() {
                 >
                   Cancel
                 </button>
-                <div className="mt-6 mx-6 w-[342] text-center text-sm">
+                <div className="mt-6 mb-6 mx-6 w-[342] text-center text-sm">
                   <a href="/login">Already have an account? sign in</a>
                 </div>
               </div>
@@ -558,14 +554,8 @@ function SignUp() {
     <div>
       {/* {Large Screen} */}
       {signUpLargeScreenLayout()}
-      {/* {isCreateAccountSuccessful
-        ? createAccountSuccessLayout
-        : createAccountErrorLayout} */}
       {/* Small Screen */}
       {signUpSmallScreenLayout()}
-      {/* {isCreateAccountSuccessful
-        ? createAccountSuccessLayoutMobile
-        : createAccountErrorLayoutMobile} */}
     </div>
   );
 }
