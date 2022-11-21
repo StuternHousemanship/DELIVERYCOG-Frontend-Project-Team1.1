@@ -16,6 +16,8 @@ const NonAuthRoutes = {
   createAccountSuccessLayout: "/success-layout",
   logOutErrorLayout: "/logout-error",
   logOutSuccessLayout: "/logout-success",
+  verifyEmailSuccessLayout: "/email-verification-success",
+  verifyEmailErrorLayout: "/email-verification-failed",
 };
 
 export { AuthRoutes, NonAuthRoutes };
