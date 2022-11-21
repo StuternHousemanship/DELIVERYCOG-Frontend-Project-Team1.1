@@ -7,9 +7,9 @@ function Footer() {
   /* eslint no-undef: "error" */
   const footerIcons = () => {
     return (
-      <div className="flex justify-between">
-        <MaskDelivery />
-        <BikeDelivery />
+      <div className="sticky top-0 z-50">
+        <MaskDelivery className="fixed bottom-0 left-0" />
+        <BikeDelivery className="fixed bottom-0 right-1" />
       </div>
     );
   };
