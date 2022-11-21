@@ -67,11 +67,11 @@ function Routers() {
             element={<LogOutSuccessLayout />}
           />
           <Route
-            path={NonAuthRoutes.verifyEmailSuccess}
+            path={NonAuthRoutes.verifyEmailSuccessLayout}
             element={<VerifyEmailSuccess />}
           />
           <Route
-            path={NonAuthRoutes.verifyEmailFailure}
+            path={NonAuthRoutes.verifyEmailErrorLayout}
             element={<VerifyEmailFailure />}
           />
         </Routes>

@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { NonAuthRoutes } from "./url";
 import Header from "./header";
-import ErrorIcon from "./assets/svg/failureIcon.svg";
-import ErrorIconMobile from "./assets/svg/failureIconMobile.svg";
+import FailureIcon from "./assets/svg/failureIcon.svg";
+import FailureIconMobile from "./assets/svg/failureIconMobile.svg";
 
 function CreateAccountErrorLayout() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ function CreateAccountErrorLayout() {
           <Header />
           <div className="flex justify-center items-center">
             <div className="my-[211px] mx-[426px] h-[446px] w-[588px] bg-white border-gray-200 border-2">
-              <ErrorIcon className="mx-[238.11px] mt-[54.11px]" />
+              <FailureIcon className="mx-[238.11px] mt-[54.11px]" />
               <p className="mt-[39.11px] ml-[113px] font-Inter font-[400] text-2xl h-14 w-[400px] text-black text-center">
                 An error occured while trying to create your account
               </p>
@@ -43,7 +43,7 @@ function CreateAccountErrorLayout() {
           <Header />
           <div className="flex justify-center items-center">
             <div className="w-[390px] h-[405px] bg-white border-gray-200 border-2">
-              <ErrorIconMobile className="ml-6 mt-12" />
+              <FailureIconMobile className="ml-6 mt-12" />
               <p className="mt-[45.56px] mx-[51px] font-Inter font-[400] text-2xl h-14 w-[288px] text-black text-center">
                 An error occured while trying to create your account
               </p>
