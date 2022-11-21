@@ -374,8 +374,12 @@ function SignUp() {
                   onClick={() => {
                     navigate(NonAuthRoutes.logIn);
                   }}
+                  className="mt-6 mb-10 mx-24 text-center"
                 >
-                  <span> Already have an account? </span>Sign in
+                  Already have an account?
+                  <span className="text-[#16D176]">
+                    <text> Sign in</text>
+                  </span>
                 </button>
               </div>
             </form>
@@ -387,12 +391,12 @@ function SignUp() {
   };
   const signUpSmallScreenLayout = () => {
     return (
-      <div className="md:hidden lg:hidden h-6  w-[390px]">
+      <div className="md:hidden lg:hidden   w-[390px]">
         <nav className="fixed w-full">
           <Header />
         </nav>
         <div className="flex justify-start items-center ">
-          <div className="h-[696px]  w-[390px] bg-white mb-12">
+          <div className="h-[890px]  w-[390px] bg-white mb-12">
             <p className="ml-6 mt-[120px] font-Inter font-[700] text-2xl text-black">
               Create account
             </p>
@@ -540,9 +544,19 @@ function SignUp() {
                 >
                   Cancel
                 </button>
-                <div className="mt-6 mb-6 mx-6 w-[342] text-center text-sm">
-                  <a href="/login">Already have an account? sign in</a>
-                </div>
+                <button
+                  id="login-mobile-button"
+                  type="submit"
+                  onClick={() => {
+                    navigate(NonAuthRoutes.logIn);
+                  }}
+                  className="mt-6 mx-14 mb-8 w-[342] text-center text-sm"
+                >
+                  Already have an account?
+                  <span className="text-[#16D176]">
+                    <text> Sign in</text>
+                  </span>
+                </button>
               </div>
             </form>
           </div>

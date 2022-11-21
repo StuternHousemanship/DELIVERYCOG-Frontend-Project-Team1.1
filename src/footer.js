@@ -9,7 +9,7 @@ function Footer() {
     return (
       <div className="sticky top-0 z-50">
         <MaskDelivery className="fixed bottom-0 left-0" />
-        <BikeDelivery className="fixed bottom-0 right-1" />
+        <BikeDelivery className="fixed bottom-0 right-0" />
       </div>
     );
   };

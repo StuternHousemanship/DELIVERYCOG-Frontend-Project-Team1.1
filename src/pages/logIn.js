@@ -72,7 +72,7 @@ function LogIn() {
   const logInLargeScreen = () => {
     return (
       <div className="hidden md:block lg:block">
-        <nav className="fixed">
+        <nav className="fixed w-full">
           <Header />
         </nav>
         <div className="flex justify-center items-center">
@@ -177,15 +177,18 @@ function LogIn() {
 
   const logInMobile = () => {
     return (
-      <div className="md:hidden lg:hidden">
-        <Header />
+      <div className="md:hidden lg:hidden w-[390px]">
+        <nav className="fixed w-full">
+          {" "}
+          <Header />
+        </nav>
         <div className="flex justify-center items-center">
-          <div className="h-[926px] w-[609px] bg-white">
-            <p className="mt-12 ml-20 font-Inter font-[700] text-4xl text-black">
+          <div className="h-[716px] w-[390px] bg-white">
+            <p className="mt-[120px] ml-6 font-Inter font-[700] text-2xl text-black">
               Log In
             </p>
-            <form>
-              <div className="mt-6 mx-20  w-[450]">
+            <form onSubmit={() => handleLogin()}>
+              <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="email">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                     Email
@@ -201,7 +204,7 @@ function LogIn() {
                 </label>
                 {isEmailValid ? null : displayEmailErrorText()}
               </div>
-              <div className="mt-6 mx-20 w-[450]">
+              <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="password">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                     Password
@@ -211,6 +214,7 @@ function LogIn() {
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Password"
+                    value={password}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -230,7 +234,7 @@ function LogIn() {
                 </label>
               </div>
 
-              <div className="mt-6 w-[450] text-right underline mr-20">
+              <div className="mt-6 w-[342] text-right text-sm underline mr-7">
                 <button
                   type="button"
                   title="Forgot"
@@ -241,7 +245,7 @@ function LogIn() {
                   Forgot password
                 </button>
               </div>
-              <div className="mt-6 mx-20 w-[342] ">
+              <div className="mt-6 mx-6 w-[342] ">
                 <button
                   type="submit"
                   title="Continue"
@@ -253,7 +257,7 @@ function LogIn() {
                   Continue
                 </button>
               </div>
-              <div className="mt-6 mx-20 w-[342] ">
+              <div className="mt-6 mx-6 w-[342] ">
                 <button
                   id="cancel-button-mobile"
                   type="submit"
@@ -262,9 +266,22 @@ function LogIn() {
                 >
                   Cancel
                 </button>
-                <div className="mt-6 mb-12 mx-20 w-[450] underline text-center">
+                {/* <div className="mt-6 mb-12 mx-20 w-[450] underline text-center">
                   <a href="/sign-up">Do not have an account? Sign Up!</a>
-                </div>
+                </div> */}
+                <button
+                  id="login-mobile-button"
+                  type="submit"
+                  onClick={() => {
+                    navigate(NonAuthRoutes.signUp);
+                  }}
+                  className="mt-6 mx-14  w-[342] text-center text-sm"
+                >
+                  Do not have an account?
+                  <span className="text-[#16D176]">
+                    <text> Sign Up!</text>
+                  </span>
+                </button>
               </div>
             </form>
           </div>
