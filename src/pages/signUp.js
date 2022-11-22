@@ -161,7 +161,7 @@ function SignUp() {
   /** displays email error text */
   const displayEmailErrorText = () => {
     return (
-      <p className="text-red-600 text-xs font-semibold mb-6 mt-[6px]">
+      <p className="text-red-600 text-xs font-semibold mb-6 mt-[6px] mx-20">
         Please enter a valid email address
       </p>
     );
@@ -169,12 +169,12 @@ function SignUp() {
   /** displays password criteria texts */
   const displayPasswordCriteria = () => {
     return (
-      <div className="ml-4 mb-4 mt-[6px]">
+      <div className="ml-4 mb-4 mt-[6px]  mx-20">
         <p
           className={
             hasUpperCase && hasLowerCase
-              ? "text-green-600 text-xs font-semibold"
-              : "text-red-600 text-xs font-semibold"
+              ? "text-green-600 text-xs font-semibold mx-16"
+              : "text-red-600 text-xs font-semibold mx-16"
           }
         >
           *Must include one uppercase and one lowercase
@@ -182,8 +182,8 @@ function SignUp() {
         <p
           className={
             hasEightCharacters
-              ? "text-green-600 text-xs font-semibold"
-              : "text-red-600 text-xs font-semibold"
+              ? "text-green-600 text-xs font-semibold mx-16"
+              : "text-red-600 text-xs font-semibold mx-16"
           }
         >
           *Contain at least 8 characters
@@ -191,8 +191,8 @@ function SignUp() {
         <p
           className={
             hasNumber || hasSymbol
-              ? "text-green-600 text-xs font-semibold"
-              : "text-red-600 text-xs font-semibold"
+              ? "text-green-600 text-xs font-semibold mx-16"
+              : "text-red-600 text-xs font-semibold mx-16"
           }
         >
           *Contain a number or symbol
@@ -206,8 +206,8 @@ function SignUp() {
       <p
         className={
           matchFirstPassword
-            ? "text-green-600 text-xs font-semibold mt-[6px]"
-            : "text-red-600 text-xs font-semibold mt-[6px]"
+            ? "text-green-600 text-xs font-semibold mb-6 mt-[22px] ml-20 "
+            : "text-red-600 text-xs font-semibold mb-6 mt-[22px] ml-20 "
         }
       >
         *Must match first password
@@ -349,8 +349,8 @@ function SignUp() {
                     )}
                   </span>
                 </label>
-                {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
               </div>
+              {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
               <div className="mt-10 mx-20 w-[450] bg-[#FFFFFF]">
                 <button
                   id="createAccount-button"
