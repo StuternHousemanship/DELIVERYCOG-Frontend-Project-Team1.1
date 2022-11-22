@@ -433,7 +433,7 @@ function SignUp() {
                   className="mt-6 mb-10 mx-24 text-center"
                 >
                   Already have an account?
-                  <span className="text-[#16D176]"> Sign in</span>
+                  <span className="text-[#16D176]"> Log In</span>
                 </button>
               </div>
             </form>
@@ -613,7 +613,7 @@ function SignUp() {
                   className="mt-6 mx-14 mb-8 w-[342] text-center text-sm"
                 >
                   Already have an account?
-                  <span className="text-[#16D176]"> Sign in</span>
+                  <span className="text-[#16D176]"> Log In </span>
                 </button>
               </div>
             </form>
