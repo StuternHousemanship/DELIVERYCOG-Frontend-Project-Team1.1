@@ -1,20 +1,9 @@
+/* eslint-disable import/no-cycle */
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+// eslint-disable-next-line import/no-cycle
+import Routers from "./routers";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>An interstate delivery platform</p>
-        <p>
-          This platform allows people to send items to other geographical states
-          through individuals traveling to those destinations.
-        </p>
-      </header>
-    </div>
-  );
+  return <Routers />;
 }
-
 export default App;
