@@ -166,6 +166,15 @@ function SignUp() {
       </p>
     );
   };
+  /** displays email error text mobile */
+  const displayEmailErrorTextMobile = () => {
+    return (
+      <p className="text-red-600 text-xs font-semibold mb-6 mt-[6px] mx-8">
+        Please enter a valid email address
+      </p>
+    );
+  };
+
   /** displays password criteria texts */
   const displayPasswordCriteria = () => {
     return (
@@ -200,6 +209,40 @@ function SignUp() {
       </div>
     );
   };
+  /** displays password criteria texts mobile */
+  const displayPasswordCriteriaMobile = () => {
+    return (
+      <div className="ml-4 mb-4 mt-[6px]  mx-6">
+        <p
+          className={
+            hasUpperCase && hasLowerCase
+              ? "text-green-600 text-xs font-semibold mx-4"
+              : "text-red-600 text-xs font-semibold mx-4"
+          }
+        >
+          *Must include one uppercase and one lowercase
+        </p>
+        <p
+          className={
+            hasEightCharacters
+              ? "text-green-600 text-xs font-semibold mx-4"
+              : "text-red-600 text-xs font-semibold mx-4"
+          }
+        >
+          *Contain at least 8 characters
+        </p>
+        <p
+          className={
+            hasNumber || hasSymbol
+              ? "text-green-600 text-xs font-semibold mx-4"
+              : "text-red-600 text-xs font-semibold mx-4"
+          }
+        >
+          *Contain a number or symbol
+        </p>
+      </div>
+    );
+  };
   /** displays confirm password error text */
   const displayConfirmPasswordErrorText = () => {
     return (
@@ -214,7 +257,20 @@ function SignUp() {
       </p>
     );
   };
-
+  /** displays confirm password error text mobile */
+  const displayConfirmPasswordErrorTextMobile = () => {
+    return (
+      <p
+        className={
+          matchFirstPassword
+            ? "text-green-600 text-xs font-semibold mb-6 mt-[6px] mx-8 "
+            : "text-red-600 text-xs font-semibold mb-6 mt-[6px] mx-8 "
+        }
+      >
+        *Must match first password
+      </p>
+    );
+  };
   /** Displays Sign Up Large Screen Layout */
   const signUpLargeScreenLayout = () => {
     return (
@@ -328,7 +384,7 @@ function SignUp() {
                   </p>
                   <input
                     id="reEnterPassword"
-                    type={showPassword ? "text" : "password"}
+                    type={showConfirmPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Re-enter Password"
                     onChange={(e) => setConfirmPassword(e.target.value)}
@@ -377,9 +433,7 @@ function SignUp() {
                   className="mt-6 mb-10 mx-24 text-center"
                 >
                   Already have an account?
-                  <span className="text-[#16D176]">
-                    <text> Sign in</text>
-                  </span>
+                  <span className="text-[#16D176]"> Sign in</span>
                 </button>
               </div>
             </form>
@@ -449,7 +503,7 @@ function SignUp() {
                   />
                 </label>
               </div>
-              {isEmailValid ? null : displayEmailErrorText()}
+              {isEmailValid ? null : displayEmailErrorTextMobile()}
               <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="mobile">
                   <p className="mb-2 text-base font-sans font-[400] text-black">
@@ -476,6 +530,7 @@ function SignUp() {
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Enter Password"
                     value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     required
                   />
@@ -494,18 +549,21 @@ function SignUp() {
                   </span>
                 </label>
               </div>
-              {isPasswordValid ? null : displayPasswordCriteria()}
+
+              {isPasswordValid ? null : displayPasswordCriteriaMobile()}
+
               <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="reEnterPassword-mobile">
                   <p className="mb-2 text-base font-sans font-[400] text-black">
                     Confirm password
                   </p>
                   <input
-                    id="reEnterPassword-mobile"
-                    type={showPassword ? "text" : "password"}
+                    id="re-enter-password-mobile"
+                    type={showConfirmPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Re-enter Password"
                     value={password}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     required
                   />
@@ -523,8 +581,10 @@ function SignUp() {
                     )}
                   </span>
                 </label>
-                {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
               </div>
+              {matchFirstPassword
+                ? null
+                : displayConfirmPasswordErrorTextMobile()}
               <div className="mt-6 mx-6 w-[342] ">
                 <button
                   id="createAccount-button-mobile"
@@ -553,9 +613,7 @@ function SignUp() {
                   className="mt-6 mx-14 mb-8 w-[342] text-center text-sm"
                 >
                   Already have an account?
-                  <span className="text-[#16D176]">
-                    <text> Sign in</text>
-                  </span>
+                  <span className="text-[#16D176]"> Sign in</span>
                 </button>
               </div>
             </form>
