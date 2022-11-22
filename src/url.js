@@ -18,6 +18,8 @@ const NonAuthRoutes = {
   logOutSuccessLayout: "/logout-success",
   verifyEmailSuccessLayout: "/email-verification-success",
   verifyEmailErrorLayout: "/email-verification-failed",
+  resetPasswordErrorLayout: "/reset-password-failed",
+  resetPasswordSuccessLayout: "/reset-password-success",
 };
 
 export { AuthRoutes, NonAuthRoutes };

@@ -17,6 +17,8 @@ import LogOutErrorLayout from "./logOutErrorLayout";
 import LogOutSuccessLayout from "./logOutSuccessLayout";
 import VerifyEmailSuccess from "./verifyEmailSuccessLayout";
 import VerifyEmailFailure from "./verifyEmailErrorLayout";
+import ResetPasswordFailure from "./resetPasswordErrorLayout";
+import ResetPasswordSuccess from "./resetPasswordSuccessLayout";
 
 function Routers() {
   return (
@@ -73,6 +75,14 @@ function Routers() {
           <Route
             path={NonAuthRoutes.verifyEmailErrorLayout}
             element={<VerifyEmailFailure />}
+          />
+          <Route
+            path={NonAuthRoutes.resetPasswordErrorLayout}
+            element={<ResetPasswordFailure />}
+          />
+          <Route
+            path={NonAuthRoutes.resetPasswordSuccessLayout}
+            element={<ResetPasswordSuccess />}
           />
         </Routes>
       </Suspense>
