@@ -20,19 +20,40 @@ function ForgotPassword() {
   /* displays Forgot Password Layout */
   const forgotPasswordLayout = () => {
     return (
-            <><p className="text-[#424242] text-[16px] sm:font-[650] leading-[16px] mb-[6px] ">
-        Email
-      </p><input
-          type="email"
-          id="mail"
-          placeholder="example@gmail.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className=" p-3 sm:w-[450px] xs:w-[348px] h-[56px] rounded-[4px] border-[1px] border-[#717171] outline-0  " /><div>
+      <div className="sm:h-[100vh] sm:w-screen sm:bg-[#FFFFFF] flex justify-center items-center xs:w-[428px] xs:h-[900px] xs:bg-white">
+        <div className="bg-white rounded-[5px] p-5 border-[2px] border-[#16D176] sm:w-[600px] sm:h-[700px] xs:w-full xs:h-full relative">
+          <div className="sm:top-[4px] sm:left-[80px] xs:top-[335px] xs:left-[45px] mb-[40px]">
+            <h1 className="text-[#424242] font-Inter font-[700] text-[30px] sm:top-[470px] leading-[44px] mt-5 xs:top-[680px] text-center">
+              Forgot Password?
+            </h1>
+          </div>
+
+          <div className="flex justify-center items-center">
+            <p className="text-[#424242] xs:w-[349px] sm:w-[418px] text-[17px] text-center leading-[19.36px] sm:top-[200px] sm:left-[80px] xs:top-[350px] xs:left-[45px] mb-[40px]">
+              Enter the email address you use on DeliveryCOG. We&apos;ll send a
+              link to reset your password.
+            </p>
+          </div>
+          <form className="flex justify-center items-center sm:top-[600px] sm:left-[80px] xs:top-[750px] xs:left-[45px] mb-[40px]">
+            <label className="" htmlFor="email">
+              <p className="text-[#424242] text-[16px] sm:font-[650] leading-[16px] mb-[6px] ">
+                Email
+              </p>
+
+              <input
+                type="email"
+                id="mail"
+                placeholder="example@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className=" p-3 sm:w-[450px] xs:w-[348px] h-[56px] rounded-[4px] border-[1px] border-[#717171] outline-0"
+              />
+            </label>
+          </form>
           <button
             type="submit"
-            className=" xs:w-[348px] sm:w-[450px]  h-[56px] rounded-[4px] border-[1px] border-[#717171] outline-0 bg-[#16D176] text-white font-sans text-[20px] leading-[23px] font-[400] absolute sm:top-[365px] sm:left-[80px] xs:top-[655px] xs:left-[40px] mb-2"
+            className=" xs:w-[348px] sm:w-[450px]  h-[56px] rounded-[4px] border-[1px] border-[#717171] outline-0 bg-[#16D176] text-white font-sans text-[20px] leading-[23px] font-[400] absolute sm:top-[405px] sm:left-[80px] xs:top-[705px] xs:left-[40px] mb-2"
             onClick={() => handleForgotPasswordButton()}
           >
             Continue
@@ -40,13 +61,12 @@ function ForgotPassword() {
 
           <button
             type="submit"
-            className=" xs:w-[348px] sm:w-[450px]  h-[56px] rounded-[5px] border-[2px] border-[#16D176] outline-0 text-black font-sans text-[20px] leading-[23px] font-[400] absolute sm:top-[435px] sm:left-[80px] xs:top-[735px] xs:left-[40px] "
+            className=" xs:w-[348px] sm:w-[450px]  h-[56px] rounded-[5px] border-[2px] border-[#16D176] outline-0 text-black font-sans text-[20px] leading-[23px] font-[400] absolute sm:top-[475px] sm:left-[80px] xs:top-[775px] xs:left-[40px] "
             onClick={() => handleForgotPasswordButton()}
           >
             Cancel
           </button>
-        </div></>
-        </form>
+        </div>
       </div>
     );
   };
@@ -55,6 +75,9 @@ function ForgotPassword() {
   const forgotPasswordSuccessLayout = () => {
     return (
       <div className="sm:h-[100vh] sm:w-screen sm:bg-[#FFFFFF] flex justify-center items-center xs:w-[428px] xs:h-[900px] xs:bg-white  ">
+        <nav className="fixed w-full">
+          <Header />
+        </nav>
         <div className="bg-white rounded-[5px] border-[2px] border-[#16D176] sm:w-[600px] sm:h-[650px] xs:w-full xs:h-full relative">
           <div className="w-[100%] flex justify-center">
             <img
