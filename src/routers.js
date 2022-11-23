@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { NonAuthRoutes, AuthRoutes } from "./url";
 import { ReactComponent as LoadingIcon } from "./assets/svg/loading-icon.svg";
-import LandingPage from "./pages/landingPage";
+
 import SignUp from "./pages/signUp";
 import LogIn from "./pages/logIn";
 import Dashboard from "./pages/dashboard";
@@ -20,6 +20,8 @@ import VerifyEmailFailure from "./verifyEmailErrorLayout";
 import ResetPasswordFailure from "./resetPasswordErrorLayout";
 import ResetPasswordSuccess from "./resetPasswordSuccessLayout";
 
+const LandingPage = React.lazy(() => import("./pages/landingPage"));
+
 function Routers() {
   return (
     <div>
@@ -27,7 +29,6 @@ function Routers() {
         fallback={
           <div className="flex justify-center mt-60">
             <LoadingIcon className="suspense-loading-icon" />
-            <p className="text-center">Is Loading...</p>
           </div>
         }
       >

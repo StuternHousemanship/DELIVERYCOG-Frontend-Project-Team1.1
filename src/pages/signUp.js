@@ -16,6 +16,7 @@ import { NonAuthRoutes } from "../url";
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const [buttonIsLoading, setButtonIsLoading] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -142,20 +143,29 @@ function SignUp() {
     setPhoneNumber(false);
   };
 
+  /** Handles The Sign Up Button */
   const handleSignUp = (e) => {
     e.preventDefault();
-    // setButtonIsLoading(true);
-    navigate(NonAuthRoutes.emailVerificationPage);
-    onboarding
-      .SignUp(firstName, lastName, phoneNumber, password)
-      .then((response) => {
-        if (response.status === 200) {
-          const accessToken = response.access_token;
-          const refreshToken = response.refresh_token;
-          Cookies.set("accessToken", accessToken);
-          localStorage.setItem("token", refreshToken);
-        }
-      });
+    setButtonIsLoading(true);
+    try {
+      onboarding
+        .SignUp(firstName, lastName, phoneNumber, password)
+        .then((response) => {
+          if (response.status === 200) {
+            const accessToken = response.access_token;
+            const refreshToken = response.refresh_token;
+            Cookies.set("accessToken", accessToken);
+            localStorage.setItem("token", refreshToken);
+            setButtonIsLoading(false);
+            navigate(NonAuthRoutes.verifyEmailSuccessLayout);
+          }
+        });
+    } catch (error) {
+      setTimeout(() => {
+        setButtonIsLoading(false);
+      }, 5000);
+      navigate(NonAuthRoutes.verifyEmailErrorLayout);
+    }
   };
 
   /** displays email error text */
@@ -411,7 +421,7 @@ function SignUp() {
                 <button
                   id="createAccount-button"
                   type="submit"
-                  onClick={() => navigate(NonAuthRoutes.emailVerificationPage)}
+                  onClick={() => handleSignUp()}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
                   Create account
@@ -592,7 +602,7 @@ function SignUp() {
                   onClick={() => handleSignUp()}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
-                  Create account
+                  {buttonIsLoading ? <LoadingButton /> : <p>Create account</p>}
                 </button>
               </div>
               <div className="mt-6 mx-6 w-[342] ">
