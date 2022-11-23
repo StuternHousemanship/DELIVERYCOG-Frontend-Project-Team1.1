@@ -10,6 +10,7 @@ import Header from "../header";
 import Footer from "../footer";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
+import { ReactComponent as LoadingButton } from "../assets/svg/loading-icon.svg";
 import onboarding from "../api/onboarding";
 import { NonAuthRoutes } from "../url";
 
@@ -424,7 +425,7 @@ function SignUp() {
                   onClick={() => handleSignUp()}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
-                  Create account
+                  {buttonIsLoading ? <LoadingButton /> : <p>Create account</p>}
                 </button>
                 <button
                   id="cancel-button"

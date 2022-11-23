@@ -1,8 +1,8 @@
 import React from "react";
-import { ReactComponent as Deliverycoglogo } from "./assets/svg/delivery-cog-logo.svg";
-import { ReactComponent as SuccessIcon } from "./assets/svg/successIcon.svg";
-import { ReactComponent as SuccessIconMobile } from "./assets/svg/successIconMobile.svg";
-import { ReactComponent as DeliverycoglogoMobile } from "./assets/svg/delivery-cog-logo-mobile.svg";
+import { ReactComponent as Deliverycoglogo } from "../../assets/svg/delivery-cog-logo.svg";
+import { ReactComponent as SuccessIcon } from "../../assets/svg/successIcon.svg";
+import { ReactComponent as SuccessIconMobile } from "../../assets/svg/successIconMobile.svg";
+import { ReactComponent as DeliverycoglogoMobile } from "../../assets/svg/delivery-cog-logo-mobile.svg";
 
 function LogOutSuccessLayout() {
   const logOutSuccessLargeScreen = () => {

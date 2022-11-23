@@ -4,23 +4,38 @@ import { Routes, Route } from "react-router-dom";
 import { NonAuthRoutes, AuthRoutes } from "./url";
 import { ReactComponent as LoadingIcon } from "./assets/svg/loading-icon.svg";
 
-import SignUp from "./pages/signUp";
-import LogIn from "./pages/logIn";
-import Dashboard from "./pages/dashboard";
-import VerifyEmail from "./pages/emailVerificationPage";
-import ResetPassword from "./pages/resetPassword";
-import AccountRecovered from "./pages/accountRecovered";
-import ForgotPassword from "./pages/forgotPassword";
-import CreateAccountErrorLayout from "./createAccountErrorLayout";
-import CreateAccountSuccessLayout from "./createAccountSuccessLayout";
-import LogOutErrorLayout from "./logOutErrorLayout";
-import LogOutSuccessLayout from "./logOutSuccessLayout";
-import VerifyEmailSuccess from "./verifyEmailSuccessLayout";
-import VerifyEmailFailure from "./verifyEmailErrorLayout";
-import ResetPasswordFailure from "./resetPasswordErrorLayout";
-import ResetPasswordSuccess from "./resetPasswordSuccessLayout";
-
+const SignUp = React.lazy(() => import("./pages/signUp"));
 const LandingPage = React.lazy(() => import("./pages/landingPage"));
+const LogIn = React.lazy(() => import("./pages/logIn"));
+const Dashboard = React.lazy(() => import("./pages/dashboard"));
+const VerifyEmail = React.lazy(() => import("./pages/emailVerificationPage"));
+const ResetPassword = React.lazy(() => import("./pages/resetPassword"));
+const AccountRecovered = React.lazy(() => import("./pages/accountRecovered"));
+const ForgotPassword = React.lazy(() => import("./pages/forgotPassword"));
+const CreateAccountErrorLayout = React.lazy(() =>
+  import("./components/errors/createAccountErrorLayout")
+);
+const CreateAccountSuccessLayout = React.lazy(() =>
+  import("./components/success/createAccountSuccessLayout")
+);
+const LogOutErrorLayout = React.lazy(() =>
+  import("./components/errors/logOutErrorLayout")
+);
+const LogOutSuccessLayout = React.lazy(() =>
+  import("./components/success/logOutSuccessLayout")
+);
+const VerifyEmailSuccess = React.lazy(() =>
+  import("./components/success/verifyEmailSuccessLayout")
+);
+const VerifyEmailFailure = React.lazy(() =>
+  import("./components/errors/verifyEmailErrorLayout")
+);
+const ResetPasswordFailure = React.lazy(() =>
+  import("./components/errors/resetPasswordErrorLayout")
+);
+const ResetPasswordSuccess = React.lazy(() =>
+  import("./components/success/resetPasswordSuccessLayout")
+);
 
 function Routers() {
   return (
