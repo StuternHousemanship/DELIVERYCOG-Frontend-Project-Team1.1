@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 import Header from "../header";
+import { NonAuthRoutes } from "../url";
 
 function ResetPassword() {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,6 +11,110 @@ function ResetPassword() {
   /** handles show Password text */
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const [password, setPassword] = useState("");
+  const [, setConfirmPassword] = useState("");
+  // const [personalDataPageFilled, setPersonalDataPageFilled] = useState(false);
+  const [hasUpperCase, setHasUpperCase] = useState(false);
+  const [hasLowerCase, setHasLowerCase] = useState(false);
+  const [hasEightCharacters, setHasEightCharacters] = useState(false);
+  const [hasNumber, setHasNumber] = useState(false);
+  const [hasSymbol, setHasSymbol] = useState(false);
+  const [matchFirstPassword] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+
+  useEffect(() => {
+    // confirms all criterias of password are met
+    if (
+      hasLowerCase &&
+      hasUpperCase &&
+      hasEightCharacters &&
+      (hasNumber || hasSymbol)
+    ) {
+      setIsPasswordValid(true);
+    } else {
+      setIsPasswordValid(false);
+    }
+    // checks for lowercase in password
+    if (/[a-z]/.test(password)) {
+      setHasLowerCase(true);
+    } else {
+      setHasLowerCase(false);
+    }
+    // checks for uppercase in password
+    if (/[A-Z]/.test(password)) {
+      setHasUpperCase(true);
+    } else {
+      setHasUpperCase(false);
+    }
+    // checks length is up to 8
+    if (password.length >= 8) {
+      setHasEightCharacters(true);
+    } else {
+      setHasEightCharacters(false);
+    }
+    // checks for number in password
+    if (/\d/.test(password)) {
+      setHasNumber(true);
+    } else {
+      setHasNumber(false);
+    }
+    // checks for symbol in password
+    const regex = /[ `!@#$%^&*()_+\-=\\[\]{};':"\\|,.<>\\/?~]/;
+    if (regex.test(password)) {
+      setHasSymbol(true);
+    } else {
+      setHasSymbol(false);
+    }
+  }, [password]);
+
+  const displayPasswordCriteria = () => {
+    return (
+      <div className="">
+        <p
+          className={
+            hasUpperCase && hasLowerCase
+              ? "text-green-600 text-xs font-semibold"
+              : "text-red-600 text-xs font-semibold"
+          }
+        >
+          *Must include one uppercase and one lowercase
+        </p>
+        <p
+          className={
+            hasEightCharacters
+              ? "text-green-600 text-xs font-semibold"
+              : "text-red-600 text-xs font-semibold"
+          }
+        >
+          *Contain at least 8 characters
+        </p>
+        <p
+          className={
+            hasNumber || hasSymbol
+              ? "text-green-600 text-xs font-semibold"
+              : "text-red-600 text-xs font-semibold"
+          }
+        >
+          *Contain a number or symbol
+        </p>
+      </div>
+    );
+  };
+  /** displays confirm password error text */
+  const displayConfirmPasswordErrorText = () => {
+    return (
+      <p
+        className={
+          matchFirstPassword
+            ? "text-green-600 text-xs font-semibold mt-[6px]"
+            : "text-red-600 text-xs font-semibold mt-[6px]"
+        }
+      >
+        *Must match first password
+      </p>
+    );
   };
 
   /** Desktop and Tablet Screen Layout */
@@ -32,8 +138,10 @@ function ResetPassword() {
                   </p>
                   <input
                     id="lostpass"
-                    type="passsword"
+                    type={showPassword ? "text" : "password"}
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="new password"
+                    onChange={(e) => setPassword(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                   <span>
@@ -50,7 +158,9 @@ function ResetPassword() {
                     )}
                   </span>
                 </label>
+                {isPasswordValid ? null : displayPasswordCriteria()}
               </div>
+
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="password">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
@@ -60,6 +170,7 @@ function ResetPassword() {
                     id="repass"
                     type="password"
                     placeholder="Password"
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                   <span>
@@ -76,6 +187,7 @@ function ResetPassword() {
                     )}
                   </span>
                 </label>
+                {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
               </div>
               <div className="mt-6 mx-20 w-[450] ">
                 <button
@@ -90,9 +202,12 @@ function ResetPassword() {
                 <button
                   type="button"
                   title="Continue"
+                  onClick={() => {
+                    Navigate(NonAuthRoutes.logIn);
+                  }}
                   className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
-                  <a href=" ">Cancel</a>
+                  Cancel
                 </button>
               </div>
             </form>
@@ -168,9 +283,12 @@ function ResetPassword() {
                 <button
                   type="button"
                   title="Continue"
+                  onClick={() => {
+                    Navigate(NonAuthRoutes.logIn);
+                  }}
                   className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
-                  <a href=" ">Continue</a>
+                  Continue
                 </button>
               </div>
             </form>

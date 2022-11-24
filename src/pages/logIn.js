@@ -190,7 +190,7 @@ function LogIn() {
         <div className="flex justify-center items-center">
           <div className="h-[716px] w-[390px] bg-white">
             <p className="mt-[120px] ml-6 font-Inter font-[700] text-2xl text-black">
-              Log In
+              Log in
             </p>
             <form onSubmit={() => handleLogin()}>
               <div className="mt-6 mx-6 w-[342]">
@@ -201,7 +201,7 @@ function LogIn() {
                   <input
                     id="mobile-mail"
                     type="email"
-                    placeholder="Email Address"
+                    placeholder="you@domain.com"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     onChange={(e) => setEmail(e.target.value)}
                     onKeyUp={(e) => validateEmail(e.target.value)}
@@ -218,7 +218,7 @@ function LogIn() {
                     id="mobile-pass"
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    placeholder="Password"
+                    placeholder="Input text"
                     value={password}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
@@ -239,7 +239,7 @@ function LogIn() {
                 </label>
               </div>
 
-              <div className="mt-6 w-[342] text-right text-sm underline mr-7">
+              <div className="mt-3 mb-10 w-[342] text-right text-sm underline mr-7">
                 <button
                   type="button"
                   title="Forgot"
@@ -254,7 +254,7 @@ function LogIn() {
                 <button
                   type="submit"
                   title="Continue"
-                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                   onClick={() => {
                     navigate(AuthRoutes.dashboard);
                   }}
@@ -267,7 +267,7 @@ function LogIn() {
                   id="cancel-button-mobile"
                   type="submit"
                   onClick={() => navigate(NonAuthRoutes.landingPage)}
-                  className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
                   Cancel
                 </button>
@@ -275,7 +275,7 @@ function LogIn() {
                   <a href="/sign-up">Do not have an account? Sign Up!</a>
                 </div> */}
                 <button
-                  id="login-mobile-button"
+                  id="signup-mobile-button"
                   type="submit"
                   onClick={() => {
                     navigate(NonAuthRoutes.signUp);
@@ -284,7 +284,7 @@ function LogIn() {
                 >
                   Do not have an account?
                   <span className="text-[#16D176]">
-                    <text> Sign Up!</text>
+                    <text> Sign Up</text>
                   </span>
                 </button>
               </div>
