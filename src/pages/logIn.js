@@ -78,7 +78,7 @@ function LogIn() {
         <div className="flex justify-center items-center">
           <div className="my-[71px] h-532px w-[609px] bg-white">
             <p className="mt-12 ml-60 font-Inter font-[700] text-4xl text-black">
-              Log In
+              Log in
             </p>
             <form onSubmit={() => handleLogin()}>
               <div className="mt-6 mx-20  w-[450]">
@@ -89,8 +89,8 @@ function LogIn() {
                   <input
                     id="log-email"
                     type="email"
-                    placeholder="Email Address"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    placeholder="Enter your email address"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#424242] appearance-none focus:outline-none"
                     onChange={(e) => validateEmail(e.target.value)}
                     onKeyUp={(e) => validateEmail(e.target.value)}
                   />
@@ -106,8 +106,8 @@ function LogIn() {
                     id="log-password"
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    placeholder="Password"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    placeholder="Enter your password"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#424242] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <span>
@@ -126,7 +126,7 @@ function LogIn() {
                 </label>
               </div>
 
-              <div className="mt-6 w-[450] text-right underline mr-20">
+              <div className="mt-3 mb-10 w-[450] text-right underline mr-20">
                 <button
                   type="button"
                   title="Forgot password"
@@ -134,14 +134,14 @@ function LogIn() {
                     handleClick();
                   }}
                 >
-                  Forgot password?
+                  Forgot password
                 </button>
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <button
                   type="submit"
                   title="submit"
-                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                   onClick={() => {
                     navigate(AuthRoutes.dashboard);
                   }}
@@ -153,17 +153,22 @@ function LogIn() {
                     id="cancelButton-web"
                     type="submit"
                     onClick={() => navigate(NonAuthRoutes.landingPage)}
-                    className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                   >
                     Cancel
                   </button>
                 </div>
-                <div className="mt-6 mb-12 mx-20 w-[450] text-center">
+                <button
+                  id="signup-button"
+                  type="submit"
+                  onClick={() => {
+                    navigate(NonAuthRoutes.signUp);
+                  }}
+                  className="mt-6 mb-10 mx-24 text-center"
+                >
                   Do not have an account?
-                  <a href="/sign-up" className="text-[#16D176]">
-                    Sign Up!
-                  </a>
-                </div>
+                  <span className="text-[#16D176]"> Sign up</span>
+                </button>
               </div>
             </form>
           </div>
