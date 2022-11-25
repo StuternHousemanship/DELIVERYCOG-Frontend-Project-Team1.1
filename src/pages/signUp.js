@@ -158,14 +158,14 @@ function SignUp() {
             Cookies.set("accessToken", accessToken);
             localStorage.setItem("token", refreshToken);
             setButtonIsLoading(false);
-            navigate(NonAuthRoutes.verifyEmailSuccessLayout);
+            navigate(NonAuthRoutes.createAccountSuccessLayout);
           }
         });
     } catch (error) {
       setTimeout(() => {
         setButtonIsLoading(false);
       }, 5000);
-      navigate(NonAuthRoutes.verifyEmailErrorLayout);
+      navigate(NonAuthRoutes.createAccountErrorLayout);
     }
   };
 
@@ -306,7 +306,7 @@ function SignUp() {
                     placeholder="Enter First Name"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
                 </label>
@@ -322,7 +322,7 @@ function SignUp() {
                     placeholder="Enter Last Name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
                 </label>
@@ -338,7 +338,7 @@ function SignUp() {
                     placeholder="Enter Your Email"
                     value={email}
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     onChange={(e) => validateEmail(e.target.value)}
                   />
                 </label>
@@ -354,7 +354,7 @@ function SignUp() {
                     type="tel"
                     value={phoneNumber}
                     onChange={() => handleMobileNumber()}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                   />
                 </label>
               </div>
@@ -369,7 +369,7 @@ function SignUp() {
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Enter Password"
                     onChange={(e) => setPassword(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
                   <span>
@@ -399,7 +399,7 @@ function SignUp() {
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Re-enter Password"
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
                   <span>
@@ -477,7 +477,7 @@ function SignUp() {
                     placeholder="Enter First Name"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
                 </label>
@@ -493,7 +493,7 @@ function SignUp() {
                     placeholder="Enter Last Name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
                 </label>
@@ -510,7 +510,7 @@ function SignUp() {
                     value={email}
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     onChange={(e) => validateEmail(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                   />
                 </label>
               </div>
@@ -525,7 +525,7 @@ function SignUp() {
                     type="tel"
                     value={phoneNumber}
                     onChange={() => handleMobileNumber()}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
                 </label>
@@ -542,7 +542,7 @@ function SignUp() {
                     placeholder="Enter Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
                   <span className="absolute inset-y-[1667/100] mr-9">
@@ -575,7 +575,7 @@ function SignUp() {
                     placeholder="Re-enter Password"
                     value={password}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176]  appearance-none focus:outline-none"
                     required
                   />
                   <span className="absolute inset-y-[1667/100] mr-9 ">

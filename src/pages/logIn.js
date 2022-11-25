@@ -63,14 +63,14 @@ function LogIn() {
           Cookies.set("accessToken", accessToken);
           localStorage.setItem("token", refreshToken);
           setButtonIsLoading(false);
-          // navigate(NonAuthRoutes.LoginSuccessLayout);
+          navigate(NonAuthRoutes.LoginSuccessLayout);
         }
       });
     } catch (error) {
       setTimeout(() => {
         setButtonIsLoading(false);
       }, 5000);
-      // navigate(NonAuthRoutes.LoginErrorLayout);
+      navigate(NonAuthRoutes.LoginErrorLayout);
     }
   };
 
@@ -95,7 +95,7 @@ function LogIn() {
                     id="log-email"
                     type="email"
                     placeholder="Enter your email address"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     onChange={(e) => validateEmail(e.target.value)}
                     onKeyUp={(e) => validateEmail(e.target.value)}
                   />
@@ -112,9 +112,8 @@ function LogIn() {
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Enter your password"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
-                    required
                   />
                   <span>
                     {showPassword ? (
@@ -205,7 +204,7 @@ function LogIn() {
                     id="mobile-mail"
                     type="email"
                     placeholder="you@domain.com"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176]  focus:border-[#c33434] appearance-none focus:outline-none"
                     onChange={(e) => setEmail(e.target.value)}
                     onKeyUp={(e) => validateEmail(e.target.value)}
                   />
@@ -223,18 +222,18 @@ function LogIn() {
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Your Password"
                     value={password}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] focus:border-[#c33434] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <span className="absolute inset-y-[1667/100] mr-9">
                     {showPassword ? (
                       <PasswordShow
-                        className="absolute -ml-7 pr-2 mt-4"
+                        className="absolute -ml-7 pr-2 mt-4 "
                         onClick={() => handleShowPassword()}
                       />
                     ) : (
                       <PasswordHide
-                        className="absolute -ml-7 pr-2 mt-4"
+                        className="absolute -ml-7 pr-2 mt-4 "
                         onClick={() => handleShowPassword()}
                       />
                     )}
