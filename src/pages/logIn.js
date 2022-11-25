@@ -6,7 +6,7 @@ import Header from "../header";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 // import { ReactComponent as DeliverycogLogo } from "../assets/svg/delivery-cog-logo.svg";
-import { AuthRoutes, NonAuthRoutes } from "../url";
+import { NonAuthRoutes } from "../url";
 // eslint-disable-next-line import/no-cycle
 import onboarding from "../api/onboarding";
 
@@ -16,6 +16,7 @@ function LogIn() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(false);
+  const [, /* buttonIsLoading */ setButtonIsLoading] = useState(false);
 
   // These clear the error when it reload
   useEffect(() => {
@@ -50,23 +51,27 @@ function LogIn() {
     );
   };
 
-  const handleClick = () => {
-    navigate(NonAuthRoutes.forgotPassword);
-  };
-
   /** Handle to Login */
   const handleLogin = (e) => {
     e.preventDefault();
-    // setButtonIsLoading(true);
-    navigate(AuthRoutes.dashboard);
-    onboarding.Login(email, password).then((response) => {
-      if (response.status === 200) {
-        const accessToken = response.access_token;
-        const refreshToken = response.refresh_token;
-        Cookies.set("accessToken", accessToken);
-        localStorage.setItem("token", refreshToken);
-      }
-    });
+    setButtonIsLoading(true);
+    try {
+      onboarding.Login(email, password).then((response) => {
+        if (response.status === 200) {
+          const accessToken = response.access_token;
+          const refreshToken = response.refresh_token;
+          Cookies.set("accessToken", accessToken);
+          localStorage.setItem("token", refreshToken);
+          setButtonIsLoading(false);
+          // navigate(NonAuthRoutes.LoginSuccessLayout);
+        }
+      });
+    } catch (error) {
+      setTimeout(() => {
+        setButtonIsLoading(false);
+      }, 5000);
+      // navigate(NonAuthRoutes.LoginErrorLayout);
+    }
   };
 
   const logInLargeScreen = () => {
@@ -131,7 +136,7 @@ function LogIn() {
                   type="button"
                   title="Forgot password"
                   onClick={() => {
-                    handleClick();
+                    navigate(NonAuthRoutes.forgotPassword);
                   }}
                 >
                   Forgot password
@@ -141,10 +146,8 @@ function LogIn() {
                 <button
                   type="submit"
                   title="submit"
-                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
-                  onClick={() => {
-                    navigate(AuthRoutes.dashboard);
-                  }}
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
+                  onClick={() => handleLogin()}
                 >
                   Continue
                 </button>
@@ -244,7 +247,7 @@ function LogIn() {
                   type="button"
                   title="Forgot"
                   onClick={() => {
-                    handleClick();
+                    navigate(NonAuthRoutes.forgotPassword);
                   }}
                 >
                   Forgot password
@@ -255,9 +258,7 @@ function LogIn() {
                   type="submit"
                   title="Continue"
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
-                  onClick={() => {
-                    navigate(AuthRoutes.dashboard);
-                  }}
+                  onClick={() => handleLogin()}
                 >
                   Continue
                 </button>
@@ -271,9 +272,6 @@ function LogIn() {
                 >
                   Cancel
                 </button>
-                {/* <div className="mt-6 mb-12 mx-20 w-[450] underline text-center">
-                  <a href="/sign-up">Do not have an account? Sign Up!</a>
-                </div> */}
                 <button
                   id="signup-mobile-button"
                   type="submit"

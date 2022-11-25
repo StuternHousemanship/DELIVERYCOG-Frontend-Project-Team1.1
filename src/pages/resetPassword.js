@@ -14,15 +14,24 @@ function ResetPassword() {
   };
 
   const [password, setPassword] = useState("");
-  const [, setConfirmPassword] = useState("");
-  // const [personalDataPageFilled, setPersonalDataPageFilled] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [hasUpperCase, setHasUpperCase] = useState(false);
   const [hasLowerCase, setHasLowerCase] = useState(false);
   const [hasEightCharacters, setHasEightCharacters] = useState(false);
   const [hasNumber, setHasNumber] = useState(false);
   const [hasSymbol, setHasSymbol] = useState(false);
-  const [matchFirstPassword] = useState(false);
+  const [matchFirstPassword, setMatchFirstPassword] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
+
+  // clears error messages when page loads
+  useEffect(() => {
+    if (password.length < 1) {
+      setIsPasswordValid(true);
+    }
+    if (confirmPassword.length < 1) {
+      setMatchFirstPassword(true);
+    }
+  });
 
   useEffect(() => {
     // confirms all criterias of password are met
@@ -102,6 +111,7 @@ function ResetPassword() {
       </div>
     );
   };
+
   /** displays confirm password error text */
   const displayConfirmPasswordErrorText = () => {
     return (
@@ -193,7 +203,7 @@ function ResetPassword() {
                 <button
                   type="button"
                   title="Continue"
-                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
                   <a href=" ">Continue</a>
                 </button>
@@ -201,7 +211,7 @@ function ResetPassword() {
               <div className="mt-6 mx-20 w-[450] ">
                 <button
                   type="button"
-                  title="Continue"
+                  title="Cancel"
                   onClick={() => {
                     Navigate(NonAuthRoutes.logIn);
                   }}
@@ -220,11 +230,15 @@ function ResetPassword() {
   /** Mobile Screen Layout */
   const displayResetPasswordMobileScreen = () => {
     return (
-      <div className="md:hidden lg:hidden">
+      <div className="md:block lg:hidden w-[390px]">
+        <Header />
         <div className="flex justify-center items-center">
-          <div className="h-[926px] w-[609px] bg-white">
-            <p className="mt-12 ml-20 font-Inter font-[700] text-4xl text-black">
+          <div className="my-[71px] h-[490px] w-[609px] bg-white">
+            <p className="mt-12 font-Inter font-[700] text-4xl text-black text-center">
               Reset Password
+            </p>
+            <p className="text-center font-sans font-[500] text-[#898989] mt-[24px]">
+              Kindly set your new password.
             </p>
             <form>
               <div className="mt-6 mx-20  w-[450]">
@@ -233,9 +247,11 @@ function ResetPassword() {
                     password
                   </p>
                   <input
-                    id="mobile-lostpass"
-                    type="passsword"
+                    id="lostpass"
+                    type={showPassword ? "text" : "password"}
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="new password"
+                    onChange={(e) => setPassword(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                   <span className="absolute inset-y-[1667/100] mr-9">
@@ -252,16 +268,19 @@ function ResetPassword() {
                     )}
                   </span>
                 </label>
+                {isPasswordValid ? null : displayPasswordCriteria()}
               </div>
+
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="password">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
                     Re-enter Password
                   </p>
                   <input
-                    id="mobile-repass"
+                    id="repass"
                     type="password"
                     placeholder="Password"
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                   />
                   <span className="absolute inset-y-[1667/100] mr-9">
@@ -278,17 +297,27 @@ function ResetPassword() {
                     )}
                   </span>
                 </label>
+                {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
               </div>
               <div className="mt-6 mx-20 w-[450] ">
                 <button
                   type="button"
                   title="Continue"
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                >
+                  <a href=" ">Continue</a>
+                </button>
+              </div>
+              <div className="mt-6 mx-20 w-[450] ">
+                <button
+                  type="button"
+                  title="Cancel"
                   onClick={() => {
                     Navigate(NonAuthRoutes.logIn);
                   }}
-                  className="py-2 px-2 font-sans font-[600] bg-deliverycog-grey-background2-color text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
                 >
-                  Continue
+                  Cancel
                 </button>
               </div>
             </form>
