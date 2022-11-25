@@ -63,14 +63,14 @@ function LogIn() {
           Cookies.set("accessToken", accessToken);
           localStorage.setItem("token", refreshToken);
           setButtonIsLoading(false);
-          navigate(NonAuthRoutes.LoginSuccessLayout);
+          navigate(NonAuthRoutes.logOutSuccessLayout);
         }
       });
     } catch (error) {
       setTimeout(() => {
         setButtonIsLoading(false);
       }, 5000);
-      navigate(NonAuthRoutes.LoginErrorLayout);
+      navigate(NonAuthRoutes.logOutErrorLayout);
     }
   };
 
