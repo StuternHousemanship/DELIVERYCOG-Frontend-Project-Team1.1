@@ -145,12 +145,12 @@ function SignUp() {
   };
 
   /** Handles The Sign Up Button */
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     setButtonIsLoading(true);
     try {
-      onboarding
-        .SignUp(firstName, lastName, phoneNumber, password)
+      await onboarding
+        .SignUp(firstName, lastName, phoneNumber, password, confirmPassword)
         .then((response) => {
           if (response.status === 200) {
             const accessToken = response.access_token;
