@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import Footer from "../footer";
+import OnboardingFooter from "../footer";
 import Header from "../header";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
@@ -95,7 +95,7 @@ function LogIn() {
                     id="log-email"
                     type="email"
                     placeholder="Enter your email address"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#424242] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     onChange={(e) => validateEmail(e.target.value)}
                     onKeyUp={(e) => validateEmail(e.target.value)}
                   />
@@ -112,8 +112,9 @@ function LogIn() {
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Enter your password"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#424242] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                   />
                   <span>
                     {showPassword ? (
@@ -130,7 +131,6 @@ function LogIn() {
                   </span>
                 </label>
               </div>
-
               <div className="mt-3 mb-10 w-[450] text-right underline mr-20">
                 <button
                   type="button"
@@ -177,7 +177,7 @@ function LogIn() {
           </div>
         </div>
         <div>
-          <Footer />
+          <OnboardingFooter />
         </div>
       </div>
     );
@@ -205,7 +205,7 @@ function LogIn() {
                     id="mobile-mail"
                     type="email"
                     placeholder="you@domain.com"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     onChange={(e) => setEmail(e.target.value)}
                     onKeyUp={(e) => validateEmail(e.target.value)}
                   />
@@ -221,9 +221,9 @@ function LogIn() {
                     id="mobile-pass"
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    placeholder="Input text"
+                    placeholder="Your Password"
                     value={password}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <span className="absolute inset-y-[1667/100] mr-9">
@@ -267,7 +267,7 @@ function LogIn() {
                 <button
                   id="cancel-button-mobile"
                   type="submit"
-                  onClick={() => navigate(NonAuthRoutes.landingPage)}
+                  onClick={() => navigate(NonAuthRoutes.logIn)}
                   className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
                   Cancel
@@ -281,9 +281,7 @@ function LogIn() {
                   className="mt-6 mx-14  w-[342] text-center text-sm"
                 >
                   Do not have an account?
-                  <span className="text-[#16D176]">
-                    <text> Sign Up</text>
-                  </span>
+                  <span className="text-[#16D176]"> Sign Up</span>
                 </button>
               </div>
             </form>

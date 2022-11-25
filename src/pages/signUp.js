@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import Header from "../header";
-import Footer from "../footer";
+import OnboardingFooter from "../footer";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 import { ReactComponent as LoadingButton } from "../assets/svg/loading-icon.svg";
@@ -306,7 +306,7 @@ function SignUp() {
                     placeholder="Enter First Name"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     required
                   />
                 </label>
@@ -322,7 +322,7 @@ function SignUp() {
                     placeholder="Enter Last Name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     required
                   />
                 </label>
@@ -338,7 +338,7 @@ function SignUp() {
                     placeholder="Enter Your Email"
                     value={email}
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     onChange={(e) => validateEmail(e.target.value)}
                   />
                 </label>
@@ -354,7 +354,7 @@ function SignUp() {
                     type="tel"
                     value={phoneNumber}
                     onChange={() => handleMobileNumber()}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                   />
                 </label>
               </div>
@@ -369,7 +369,7 @@ function SignUp() {
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Enter Password"
                     onChange={(e) => setPassword(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     required
                   />
                   <span>
@@ -399,7 +399,7 @@ function SignUp() {
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Re-enter Password"
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     required
                   />
                   <span>
@@ -423,7 +423,7 @@ function SignUp() {
                   id="createAccount-button"
                   type="submit"
                   onClick={() => handleSignUp()}
-                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
                   {buttonIsLoading ? <LoadingButton /> : <p>Create account</p>}
                 </button>
@@ -431,7 +431,7 @@ function SignUp() {
                   id="cancel-button"
                   type="submit"
                   onClick={() => navigate(NonAuthRoutes.landingPage)}
-                  className="mt-4 py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  className="mt-4 py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
                   Cancel
                 </button>
@@ -450,7 +450,7 @@ function SignUp() {
             </form>
           </div>
         </div>
-        <Footer />
+        <OnboardingFooter />
       </div>
     );
   };
@@ -477,7 +477,7 @@ function SignUp() {
                     placeholder="Enter First Name"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     required
                   />
                 </label>
@@ -493,7 +493,7 @@ function SignUp() {
                     placeholder="Enter Last Name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     required
                   />
                 </label>
@@ -510,7 +510,7 @@ function SignUp() {
                     value={email}
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     onChange={(e) => validateEmail(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                   />
                 </label>
               </div>
@@ -525,7 +525,7 @@ function SignUp() {
                     type="tel"
                     value={phoneNumber}
                     onChange={() => handleMobileNumber()}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     required
                   />
                 </label>
@@ -542,7 +542,7 @@ function SignUp() {
                     placeholder="Enter Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     required
                   />
                   <span className="absolute inset-y-[1667/100] mr-9">
@@ -575,7 +575,7 @@ function SignUp() {
                     placeholder="Re-enter Password"
                     value={password}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] appearance-none focus:outline-none"
                     required
                   />
                   <span className="absolute inset-y-[1667/100] mr-9 ">
@@ -601,7 +601,7 @@ function SignUp() {
                   id="createAccount-button-mobile"
                   type="submit"
                   onClick={() => handleSignUp()}
-                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
                   {buttonIsLoading ? <LoadingButton /> : <p>Create account</p>}
                 </button>
@@ -611,7 +611,7 @@ function SignUp() {
                   id="cancel-button-mobile"
                   type="submit"
                   onClick={() => navigate(NonAuthRoutes.landingPage)}
-                  className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
                   Cancel
                 </button>

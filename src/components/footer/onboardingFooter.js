@@ -2,7 +2,7 @@ import React from "react";
 import { ReactComponent as MaskDelivery } from "../../assets/svg/hand-mask-delivery-icon.svg";
 import { ReactComponent as BikeDelivery } from "../../assets/svg/bike-delivery-icon.svg";
 
-function Footer() {
+function OnboardingFooter() {
   /** global footerIcons */
   /* eslint no-undef: "error" */
   const footerIcons = () => {
@@ -16,4 +16,4 @@ function Footer() {
   return <div>{footerIcons()}</div>;
 }
 
-export default Footer;
+export default OnboardingFooter;
