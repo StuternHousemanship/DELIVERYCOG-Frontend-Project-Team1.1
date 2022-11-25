@@ -2,7 +2,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from "react";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
@@ -150,21 +149,15 @@ function SignUp() {
     setButtonIsLoading(true);
     try {
       await onboarding
-        .SignUp(firstName, lastName, phoneNumber, password, confirmPassword)
+        .SignUp(firstName, lastName, email, phoneNumber, password)
         .then((response) => {
           if (response.status === 200) {
-            const accessToken = response.access_token;
-            const refreshToken = response.refresh_token;
-            Cookies.set("accessToken", accessToken);
-            localStorage.setItem("token", refreshToken);
-            setButtonIsLoading(false);
             navigate(NonAuthRoutes.createAccountSuccessLayout);
+            setButtonIsLoading(false);
           }
         });
     } catch (error) {
-      setTimeout(() => {
-        setButtonIsLoading(false);
-      }, 5000);
+      setButtonIsLoading(false);
       navigate(NonAuthRoutes.createAccountErrorLayout);
     }
   };

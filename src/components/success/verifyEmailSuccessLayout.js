@@ -1,12 +1,35 @@
+/* eslint-disable import/no-cycle */
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { NonAuthRoutes } from "url";
 import Header from "../../header";
 import { ReactComponent as SuccessIcon } from "../../assets/svg/successIcon.svg";
 import { ReactComponent as SuccessIconMobile } from "../../assets/svg/successIconMobile.svg";
+import onboarding from "../../api/onboarding";
 
 function VerifyEmailSuccess() {
   const navigate = useNavigate();
+
+  const { userId } = useParams();
+  console.log("URL parameter User Id is =", userId);
+
+  /** Handles The Sign Up Button */
+  // eslint-disable-next-line no-unused-vars
+  const handleVerifyEmail = async (e) => {
+    e.preventDefault();
+    // setButtonIsLoading(true);
+    try {
+      await onboarding.VerifyEmail(userId).then((response) => {
+        if (response.status === 200) {
+          // setButtonIsLoading(false);
+        }
+      });
+    } catch (error) {
+      // setButtonIsLoading(false);
+      // navigate(NonAuthRoutes.createAccountErrorLayout);
+    }
+  };
+
   // /** Create Account Error Layout */
   const verifyEmailSuccess = () => {
     return (

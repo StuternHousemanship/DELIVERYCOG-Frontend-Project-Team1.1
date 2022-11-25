@@ -85,7 +85,7 @@ function Routers() {
             element={<LogOutSuccessLayout />}
           />
           <Route
-            path={NonAuthRoutes.verifyEmailSuccessLayout}
+            path={`${NonAuthRoutes.verifyEmailSuccessLayout}/:userId`}
             element={<VerifyEmailSuccess />}
           />
           <Route
