@@ -69,7 +69,7 @@ code {
 
 .suspense-loading-icon {
   animation-name: suspense-loading-icon;
-  animation-duration: 1000ms;
+  animation-duration: 2000ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }

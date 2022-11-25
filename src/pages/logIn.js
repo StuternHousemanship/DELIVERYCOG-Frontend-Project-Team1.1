@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import Footer from "../footer";
+import OnboardingFooter from "../footer";
 import Header from "../header";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 // import { ReactComponent as DeliverycogLogo } from "../assets/svg/delivery-cog-logo.svg";
-import { AuthRoutes, NonAuthRoutes } from "../url";
+import { NonAuthRoutes } from "../url";
 // eslint-disable-next-line import/no-cycle
 import onboarding from "../api/onboarding";
 
@@ -16,6 +16,7 @@ function LogIn() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(false);
+  const [, /* buttonIsLoading */ setButtonIsLoading] = useState(false);
 
   // These clear the error when it reload
   useEffect(() => {
@@ -50,23 +51,27 @@ function LogIn() {
     );
   };
 
-  const handleClick = () => {
-    navigate(NonAuthRoutes.forgotPassword);
-  };
-
   /** Handle to Login */
   const handleLogin = (e) => {
     e.preventDefault();
-    // setButtonIsLoading(true);
-    navigate(AuthRoutes.dashboard);
-    onboarding.Login(email, password).then((response) => {
-      if (response.status === 200) {
-        const accessToken = response.access_token;
-        const refreshToken = response.refresh_token;
-        Cookies.set("accessToken", accessToken);
-        localStorage.setItem("token", refreshToken);
-      }
-    });
+    setButtonIsLoading(true);
+    try {
+      onboarding.Login(email, password).then((response) => {
+        if (response.status === 200) {
+          const accessToken = response.access_token;
+          const refreshToken = response.refresh_token;
+          Cookies.set("accessToken", accessToken);
+          localStorage.setItem("token", refreshToken);
+          setButtonIsLoading(false);
+          navigate(NonAuthRoutes.logOutSuccessLayout);
+        }
+      });
+    } catch (error) {
+      setTimeout(() => {
+        setButtonIsLoading(false);
+      }, 5000);
+      navigate(NonAuthRoutes.logOutErrorLayout);
+    }
   };
 
   const logInLargeScreen = () => {
@@ -78,7 +83,7 @@ function LogIn() {
         <div className="flex justify-center items-center">
           <div className="my-[71px] h-532px w-[609px] bg-white">
             <p className="mt-12 ml-60 font-Inter font-[700] text-4xl text-black">
-              Log In
+              Log in
             </p>
             <form onSubmit={() => handleLogin()}>
               <div className="mt-6 mx-20  w-[450]">
@@ -89,8 +94,8 @@ function LogIn() {
                   <input
                     id="log-email"
                     type="email"
-                    placeholder="Email Address"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    placeholder="Enter your email address"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     onChange={(e) => validateEmail(e.target.value)}
                     onKeyUp={(e) => validateEmail(e.target.value)}
                   />
@@ -106,8 +111,8 @@ function LogIn() {
                     id="log-password"
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    placeholder="Password"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    placeholder="Enter your password"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <span>
@@ -125,26 +130,23 @@ function LogIn() {
                   </span>
                 </label>
               </div>
-
-              <div className="mt-6 w-[450] text-right underline mr-20">
+              <div className="mt-3 mb-10 w-[450] text-right underline mr-20">
                 <button
                   type="button"
                   title="Forgot password"
                   onClick={() => {
-                    handleClick();
+                    navigate(NonAuthRoutes.forgotPassword);
                   }}
                 >
-                  Forgot password?
+                  Forgot password
                 </button>
               </div>
               <div className="mt-6 mx-20 w-[450]">
                 <button
                   type="submit"
                   title="submit"
-                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                  onClick={() => {
-                    navigate(AuthRoutes.dashboard);
-                  }}
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
+                  onClick={() => handleLogin()}
                 >
                   Continue
                 </button>
@@ -153,23 +155,28 @@ function LogIn() {
                     id="cancelButton-web"
                     type="submit"
                     onClick={() => navigate(NonAuthRoutes.landingPage)}
-                    className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                   >
                     Cancel
                   </button>
                 </div>
-                <div className="mt-6 mb-12 mx-20 w-[450] text-center">
+                <button
+                  id="signup-button"
+                  type="submit"
+                  onClick={() => {
+                    navigate(NonAuthRoutes.signUp);
+                  }}
+                  className="mt-6 mb-10 mx-24 text-center"
+                >
                   Do not have an account?
-                  <a href="/sign-up" className="text-[#16D176]">
-                    Sign Up!
-                  </a>
-                </div>
+                  <span className="text-[#16D176]"> Sign up</span>
+                </button>
               </div>
             </form>
           </div>
         </div>
         <div>
-          <Footer />
+          <OnboardingFooter />
         </div>
       </div>
     );
@@ -185,7 +192,7 @@ function LogIn() {
         <div className="flex justify-center items-center">
           <div className="h-[716px] w-[390px] bg-white">
             <p className="mt-[120px] ml-6 font-Inter font-[700] text-2xl text-black">
-              Log In
+              Log in
             </p>
             <form onSubmit={() => handleLogin()}>
               <div className="mt-6 mx-6 w-[342]">
@@ -196,8 +203,8 @@ function LogIn() {
                   <input
                     id="mobile-mail"
                     type="email"
-                    placeholder="Email Address"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    placeholder="you@domain.com"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176]  focus:border-[#c33434] appearance-none focus:outline-none"
                     onChange={(e) => setEmail(e.target.value)}
                     onKeyUp={(e) => validateEmail(e.target.value)}
                   />
@@ -213,20 +220,20 @@ function LogIn() {
                     id="mobile-pass"
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    placeholder="Password"
+                    placeholder="Your Password"
                     value={password}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] focus:border-[#c33434] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <span className="absolute inset-y-[1667/100] mr-9">
                     {showPassword ? (
                       <PasswordShow
-                        className="absolute -ml-7 pr-2 mt-4"
+                        className="absolute -ml-7 pr-2 mt-4 "
                         onClick={() => handleShowPassword()}
                       />
                     ) : (
                       <PasswordHide
-                        className="absolute -ml-7 pr-2 mt-4"
+                        className="absolute -ml-7 pr-2 mt-4 "
                         onClick={() => handleShowPassword()}
                       />
                     )}
@@ -234,12 +241,12 @@ function LogIn() {
                 </label>
               </div>
 
-              <div className="mt-6 w-[342] text-right text-sm underline mr-7">
+              <div className="mt-3 mb-10 w-[342] text-right text-sm underline mr-7">
                 <button
                   type="button"
                   title="Forgot"
                   onClick={() => {
-                    handleClick();
+                    navigate(NonAuthRoutes.forgotPassword);
                   }}
                 >
                   Forgot password
@@ -249,10 +256,8 @@ function LogIn() {
                 <button
                   type="submit"
                   title="Continue"
-                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
-                  onClick={() => {
-                    navigate(AuthRoutes.dashboard);
-                  }}
+                  className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
+                  onClick={() => handleLogin()}
                 >
                   Continue
                 </button>
@@ -261,16 +266,13 @@ function LogIn() {
                 <button
                   id="cancel-button-mobile"
                   type="submit"
-                  onClick={() => navigate(NonAuthRoutes.landingPage)}
-                  className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                  onClick={() => navigate(NonAuthRoutes.logIn)}
+                  className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
                   Cancel
                 </button>
-                {/* <div className="mt-6 mb-12 mx-20 w-[450] underline text-center">
-                  <a href="/sign-up">Do not have an account? Sign Up!</a>
-                </div> */}
                 <button
-                  id="login-mobile-button"
+                  id="signup-mobile-button"
                   type="submit"
                   onClick={() => {
                     navigate(NonAuthRoutes.signUp);
@@ -278,9 +280,7 @@ function LogIn() {
                   className="mt-6 mx-14  w-[342] text-center text-sm"
                 >
                   Do not have an account?
-                  <span className="text-[#16D176]">
-                    <text> Sign Up!</text>
-                  </span>
+                  <span className="text-[#16D176]"> Sign Up</span>
                 </button>
               </div>
             </form>
