@@ -247,7 +247,7 @@ function ResetPassword() {
                     password
                   </p>
                   <input
-                    id="lostpass"
+                    id="lostpassMobile"
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="new password"
@@ -277,7 +277,7 @@ function ResetPassword() {
                     Re-enter Password
                   </p>
                   <input
-                    id="repass"
+                    id="repassMobile"
                     type="password"
                     placeholder="Password"
                     onChange={(e) => setConfirmPassword(e.target.value)}
