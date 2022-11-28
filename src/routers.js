@@ -12,30 +12,30 @@ const VerifyEmail = React.lazy(() => import("./pages/emailVerificationPage"));
 const ResetPassword = React.lazy(() => import("./pages/resetPassword"));
 const AccountRecovered = React.lazy(() => import("./pages/accountRecovered"));
 const ForgotPassword = React.lazy(() => import("./pages/forgotPassword"));
-const CreateAccountErrorLayout = React.lazy(() =>
-  import("./components/errors/createAccountErrorLayout")
-);
-const CreateAccountSuccessLayout = React.lazy(() =>
-  import("./components/success/createAccountSuccessLayout")
-);
-const LogOutErrorLayout = React.lazy(() =>
-  import("./components/errors/logOutErrorLayout")
-);
-const LogOutSuccessLayout = React.lazy(() =>
-  import("./components/success/logOutSuccessLayout")
-);
-const VerifyEmailSuccess = React.lazy(() =>
-  import("./components/success/verifyEmailSuccessLayout")
-);
-const VerifyEmailFailure = React.lazy(() =>
-  import("./components/errors/verifyEmailErrorLayout")
-);
-const ResetPasswordFailure = React.lazy(() =>
-  import("./components/errors/resetPasswordErrorLayout")
-);
-const ResetPasswordSuccess = React.lazy(() =>
-  import("./components/success/resetPasswordSuccessLayout")
-);
+// const CreateAccountErrorLayout = React.lazy(() =>
+//   import("./components/errors/createAccountErrorLayout")
+// );
+// const CreateAccountSuccessLayout = React.lazy(() =>
+//   import("./components/success/createAccountSuccessLayout")
+// );
+// const LogOutErrorLayout = React.lazy(() =>
+//   import("./components/errors/logOutErrorLayout")
+// );
+// const LogOutSuccessLayout = React.lazy(() =>
+//   import("./components/success/logOutSuccessLayout")
+// );
+// const VerifyEmailSuccess = React.lazy(() =>
+//   import("./components/success/verifyEmailSuccessLayout")
+// );
+// const VerifyEmailFailure = React.lazy(() =>
+//   import("./components/errors/verifyEmailErrorLayout")
+// );
+// const ResetPasswordFailure = React.lazy(() =>
+//   import("./components/errors/resetPasswordErrorLayout")
+// );
+// const ResetPasswordSuccess = React.lazy(() =>
+//   import("./components/success/resetPasswordSuccessLayout")
+// );
 
 function Routers() {
   return (
@@ -68,7 +68,7 @@ function Routers() {
             path={NonAuthRoutes.forgotPassword}
             element={<ForgotPassword />}
           />
-          <Route
+          {/* <Route
             path={NonAuthRoutes.createAccountErrorLayout}
             element={<CreateAccountErrorLayout />}
           />
@@ -99,7 +99,7 @@ function Routers() {
           <Route
             path={NonAuthRoutes.resetPasswordSuccessLayout}
             element={<ResetPasswordSuccess />}
-          />
+          /> */}
         </Routes>
       </Suspense>
     </div>

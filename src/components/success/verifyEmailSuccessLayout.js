@@ -11,7 +11,7 @@ function VerifyEmailSuccess() {
   const navigate = useNavigate();
 
   const { userId } = useParams();
-  console.log("URL parameter User Id is =", userId);
+  // console.log("URL parameter User Id is =", userId);
 
   /** Handles The Sign Up Button */
   // eslint-disable-next-line no-unused-vars

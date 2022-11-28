@@ -11,15 +11,14 @@ function Header() {
   const largeScreenHeader = () => {
     return (
       <div className="sticky top-0 z-50 hidden md:block lg:block">
-        <div className="border-b-1 bg-white pb-4 pt-4 ">
+        <div className="border-b-1 bg-white pb-2 pt-2 ">
           <button
             type="button"
             onClick={() => {
               navigate(NonAuthRoutes.landingPage);
             }}
           >
-            <DeliverycogLogo className="ml-[120px] mt-[20px]" />
-            {/* <CitroneLogo className="" /> */}
+            <DeliverycogLogo className="ml-[120px] mt-[10px]" />
           </button>
         </div>
       </div>
@@ -35,7 +34,7 @@ function Header() {
               navigate(NonAuthRoutes.landingPage);
             }}
           >
-            <DeliverycogLogoMobile className="ml-6 mt-[20px]" />
+            <DeliverycogLogoMobile className="ml-6 mt-[10px]" />
             {/* <CitroneLogo className="" /> */}
           </button>
         </div>

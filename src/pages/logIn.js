@@ -77,12 +77,12 @@ function LogIn() {
   const logInLargeScreen = () => {
     return (
       <div className="hidden md:block lg:block">
-        <nav className="fixed w-full">
+        <nav className="fixed h-0 w-full">
           <Header />
         </nav>
         <div className="flex justify-center items-center">
           <div className="my-[71px] h-532px w-[609px] bg-white">
-            <p className="mt-12 ml-60 font-Inter font-[700] text-4xl text-black">
+            <p className="mt-12 ml-60 font-Inter font-[700] text-3xl text-black">
               Log in
             </p>
             <form onSubmit={() => handleLogin()}>
@@ -175,7 +175,7 @@ function LogIn() {
             </form>
           </div>
         </div>
-        <div>
+        <div className="mt-10">
           <OnboardingFooter />
         </div>
       </div>
@@ -185,7 +185,7 @@ function LogIn() {
   const logInMobile = () => {
     return (
       <div className="md:hidden lg:hidden w-[390px]">
-        <nav className="fixed w-full">
+        <nav className="fixed h-2 w-full">
           {" "}
           <Header />
         </nav>
@@ -203,7 +203,7 @@ function LogIn() {
                   <input
                     id="mobile-mail"
                     type="email"
-                    placeholder="you@domain.com"
+                    placeholder="Enter your email"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176]  focus:border-[#c33434] appearance-none focus:outline-none"
                     onChange={(e) => setEmail(e.target.value)}
                     onKeyUp={(e) => validateEmail(e.target.value)}
@@ -220,7 +220,7 @@ function LogIn() {
                     id="mobile-pass"
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    placeholder="Your Password"
+                    placeholder="Enter your password"
                     value={password}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] focus:border-[#c33434] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}

@@ -284,7 +284,7 @@ function SignUp() {
         </nav>
         <div className="flex justify-center">
           <div className="my-[71px] h-914 w-[609px] bg-white">
-            <p className="mt-[72px] ml-20 font-Inter font-[700] text-4xl text-black">
+            <p className="mt-[72px] ml-20 font-Inter font-[700] text-3xl text-black">
               Sign up with us
             </p>
             <form onSubmit={() => handleSignUp()}>
