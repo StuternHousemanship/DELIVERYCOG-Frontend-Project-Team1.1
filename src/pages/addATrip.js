@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function addATrip() {
   return <div>addATrip</div>;
 }
 
-export default addATrip
+export default addATrip;

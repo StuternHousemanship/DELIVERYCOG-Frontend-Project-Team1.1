@@ -209,7 +209,7 @@ function ResetPassword() {
                 </label>
               </div>
               {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
-              <p className=" mx-20 font-sans font-[600] text-blue-700 text-xs">
+              <p className=" mt-2 mx-20 font-sans font-[600] text-blue-700 text-xs">
                 Must include uppercase letters (A-Z), lowercase letters (a-z)
                 and number (0-9)
               </p>
