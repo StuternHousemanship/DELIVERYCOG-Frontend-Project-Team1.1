@@ -7,6 +7,7 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import Header from "../header";
 import OnboardingFooter from "../footer";
+// import SuccessAccount from "../components/success/createAccountSuccessLayout";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 import { ReactComponent as LoadingButton } from "../assets/svg/loading-icon.svg";
@@ -149,11 +150,12 @@ function SignUp() {
     setButtonIsLoading(true);
     try {
       await onboarding
-        .SignUp(firstName, lastName, email, phoneNumber, password)
+        .SignUp(email, firstName, lastName, phoneNumber, password)
         .then((response) => {
           if (response.status === 200) {
-            navigate(NonAuthRoutes.createAccountSuccessLayout);
             setButtonIsLoading(false);
+            // eslint-disable-next-line no-alert
+            alert("submitted");
           }
         });
     } catch (error) {
