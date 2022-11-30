@@ -12,6 +12,7 @@ const VerifyEmail = React.lazy(() => import("./pages/emailVerificationPage"));
 const ResetPassword = React.lazy(() => import("./pages/resetPassword"));
 const AccountRecovered = React.lazy(() => import("./pages/accountRecovered"));
 const ForgotPassword = React.lazy(() => import("./pages/forgotPassword"));
+const AddTrip = React.lazy(() => import("./pages/addTrip"));
 // const CreateAccountErrorLayout = React.lazy(() =>
 //   import("./components/errors/createAccountErrorLayout")
 // );
@@ -49,6 +50,7 @@ function Routers() {
       >
         <Routes>
           <Route path={AuthRoutes.dashboard} element={<Dashboard />} />
+          <Route path={AuthRoutes.addTrip} element={<AddTrip />} />
           <Route path={NonAuthRoutes.landingPage} element={<LandingPage />} />
           <Route path={NonAuthRoutes.signUp} element={<SignUp />} />
           <Route path={NonAuthRoutes.logIn} element={<LogIn />} />

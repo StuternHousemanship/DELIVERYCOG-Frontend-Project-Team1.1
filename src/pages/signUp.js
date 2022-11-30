@@ -149,17 +149,21 @@ function SignUp() {
     e.preventDefault();
     setButtonIsLoading(true);
     try {
-      await onboarding
-        .SignUp(email, firstName, lastName, phoneNumber, password)
-        .then((response) => {
-          if (response.status === 200) {
-            setButtonIsLoading(false);
-            // eslint-disable-next-line no-alert
-            alert("submitted");
-          }
-        });
+      const response = await onboarding.SignUp(
+        email,
+        firstName,
+        lastName,
+        phoneNumber,
+        password
+      );
+      if (response.status === 200) {
+        setButtonIsLoading(false);
+        // console.log(response);
+        navigate(NonAuthRoutes.emailVerificationPage);
+      }
     } catch (error) {
       setButtonIsLoading(false);
+      // console.log({ error });
       navigate(NonAuthRoutes.createAccountErrorLayout);
     }
   };
@@ -445,7 +449,9 @@ function SignUp() {
             </form>
           </div>
         </div>
-        <OnboardingFooter />
+        <div className="">
+          <OnboardingFooter />
+        </div>
       </div>
     );
   };
@@ -630,9 +636,7 @@ function SignUp() {
   };
   return (
     <div>
-      {/* {Large Screen} */}
       {signUpLargeScreenLayout()}
-      {/* Small Screen */}
       {signUpSmallScreenLayout()}
     </div>
   );

@@ -6,7 +6,7 @@ import Header from "../header";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 // import { ReactComponent as DeliverycogLogo } from "../assets/svg/delivery-cog-logo.svg";
-import { NonAuthRoutes } from "../url";
+import { NonAuthRoutes, AuthRoutes } from "../url";
 // eslint-disable-next-line import/no-cycle
 import onboarding from "../api/onboarding";
 
@@ -63,7 +63,7 @@ function LogIn() {
           Cookies.set("accessToken", accessToken);
           localStorage.setItem("token", refreshToken);
           setButtonIsLoading(false);
-          navigate(NonAuthRoutes.logOutSuccessLayout);
+          navigate(AuthRoutes.dashboard);
         }
       });
     } catch (error) {
@@ -204,7 +204,7 @@ function LogIn() {
                     id="mobile-mail"
                     type="email"
                     placeholder="Enter your email"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176]  focus:border-[#c33434] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176]  appearance-none focus:outline-none"
                     onChange={(e) => setEmail(e.target.value)}
                     onKeyUp={(e) => validateEmail(e.target.value)}
                   />
@@ -222,7 +222,7 @@ function LogIn() {
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Enter your password"
                     value={password}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] focus:border-[#c33434] appearance-none focus:outline-none"
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <span className="absolute inset-y-[1667/100] mr-9">
