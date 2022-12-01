@@ -70,38 +70,6 @@ function Routers() {
             path={NonAuthRoutes.forgotPassword}
             element={<ForgotPassword />}
           />
-          {/* <Route
-            path={NonAuthRoutes.createAccountErrorLayout}
-            element={<CreateAccountErrorLayout />}
-          />
-          <Route
-            path={NonAuthRoutes.createAccountSuccessLayout}
-            element={<CreateAccountSuccessLayout />}
-          />
-          <Route
-            path={NonAuthRoutes.logOutErrorLayout}
-            element={<LogOutErrorLayout />}
-          />
-          <Route
-            path={NonAuthRoutes.logOutSuccessLayout}
-            element={<LogOutSuccessLayout />}
-          />
-          <Route
-            path={`${NonAuthRoutes.verifyEmailSuccessLayout}/:userId`}
-            element={<VerifyEmailSuccess />}
-          />
-          <Route
-            path={NonAuthRoutes.verifyEmailErrorLayout}
-            element={<VerifyEmailFailure />}
-          />
-          <Route
-            path={NonAuthRoutes.resetPasswordErrorLayout}
-            element={<ResetPasswordFailure />}
-          />
-          <Route
-            path={NonAuthRoutes.resetPasswordSuccessLayout}
-            element={<ResetPasswordSuccess />}
-          /> */}
         </Routes>
       </Suspense>
     </div>

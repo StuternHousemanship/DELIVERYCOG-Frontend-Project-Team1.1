@@ -8,8 +8,8 @@ function Footer() {
   const footerIcons = () => {
     return (
       <div className="sticky top-0 z-50">
-        <MaskDelivery className="fixed bottom-0 left-0" />
-        <BikeDelivery className="fixed bottom-0 right-0" />
+        <MaskDelivery className="fixed bottom-1 left-2 md:hidden lg:block" />
+        <BikeDelivery className="fixed bottom-1 right-2 md:hidden lg:block" />
       </div>
     );
   };

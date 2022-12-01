@@ -14,7 +14,7 @@ export default {
     };
     const stringifiedData = JSON.stringify(data);
 
-    return deliverycogOnboarding.post("/api/v1/auth/register", stringifiedData);
+    return deliverycogOnboarding.post("/register", stringifiedData);
   },
 
   /** Send a POST request to Verify Email Account OTP Code for Users */
@@ -38,6 +38,6 @@ export default {
     };
     const stringifiedData = JSON.stringify(data);
 
-    return deliverycogOnboarding.post("/api/v1/auth/login", stringifiedData);
+    return deliverycogOnboarding.post("/login", stringifiedData);
   },
 };

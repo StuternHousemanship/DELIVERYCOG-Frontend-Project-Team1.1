@@ -1,29 +1,35 @@
-import React, { useState, useEffect } from "react";
-import Cookies from "js-cookie";
+import React, { useState } from "react";
+// import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import OnboardingFooter from "../footer";
 import Header from "../header";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 // import { ReactComponent as DeliverycogLogo } from "../assets/svg/delivery-cog-logo.svg";
-import { NonAuthRoutes, AuthRoutes } from "../url";
+import { NonAuthRoutes } from "../url";
 // eslint-disable-next-line import/no-cycle
-import onboarding from "../api/onboarding";
+// import onboarding from "../api/onboarding";
 
 function LogIn() {
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(false);
-  const [, /* buttonIsLoading */ setButtonIsLoading] = useState(false);
+  // const [, /* buttonIsLoading */ setButtonIsLoading] = useState(false);
 
-  // These clear the error when it reload
-  useEffect(() => {
-    if (email.length < 1) {
-      setIsEmailValid(true);
-    }
-  });
+  // useEffect(() => {
+  //   const ac = new AbortController();
+
+  //   document.title = "Sign Up • Deliverycog";
+  //   if (email.length < 1) {
+  //     setIsEmailValid(true);
+  //   }
+
+  //   return function cleanup() {
+  //     ac.abort();
+  //   };
+  // }, []);
 
   /** handles show Password text */
   const handleShowPassword = () => {
@@ -42,6 +48,7 @@ function LogIn() {
       setIsEmailValid(false);
     }
   };
+
   /** displays email error text */
   const displayEmailErrorText = () => {
     return (
@@ -51,27 +58,30 @@ function LogIn() {
     );
   };
 
-  /** Handle to Login */
+  /** Handle Login to Dashboard */
   const handleLogin = (e) => {
     e.preventDefault();
-    setButtonIsLoading(true);
-    try {
-      onboarding.Login(email, password).then((response) => {
-        if (response.status === 200) {
-          const accessToken = response.access_token;
-          const refreshToken = response.refresh_token;
-          Cookies.set("accessToken", accessToken);
-          localStorage.setItem("token", refreshToken);
-          setButtonIsLoading(false);
-          navigate(AuthRoutes.dashboard);
-        }
-      });
-    } catch (error) {
-      setTimeout(() => {
-        setButtonIsLoading(false);
-      }, 5000);
-      navigate(NonAuthRoutes.logOutErrorLayout);
-    }
+    // setButtonIsLoading(true);
+    console.log("handleLogin Data", email, password);
+    // try {
+    //   onboarding.Login(email, password).then((response) => {
+    //     if (response.status === 200) {
+    //       console.log("handleLogin response", response);
+    //       const accessToken = response.access_token;
+    //       const refreshToken = response.refresh_token;
+    //       Cookies.set("accessToken", accessToken);
+    //       localStorage.setItem("token", refreshToken);
+    //       // setButtonIsLoading(false);
+    //       // navigate(AuthRoutes.dashboard);
+    //     }
+    //   });
+    // } catch (error) {
+    //   console.error("handleLogin error", error);
+    //   // setTimeout(() => {
+    //   //   setButtonIsLoading(false);
+    //   // }, 5000);
+    //   // navigate(NonAuthRoutes.logOutErrorLayout);
+    // }
   };
 
   const logInLargeScreen = () => {
@@ -142,14 +152,24 @@ function LogIn() {
                 </button>
               </div>
               <div className="mt-6 mx-20 w-[450]">
-                <button
+                {/* <button
                   type="submit"
                   title="submit"
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                   onClick={() => handleLogin()}
                 >
                   Continue
+                </button> */}
+
+                <button
+                  type="submit"
+                  disabled={password === ""}
+                  onClick={(e) => handleLogin(e)}
+                  className="h-11 mt-14 mb-20 text-lg w-full rounded-sm text-white py-2 bg-green-400 outline-none"
+                >
+                  Log In
                 </button>
+
                 <div className="mt-6 mx- w-[450] ">
                   <button
                     id="cancelButton-web"

@@ -140,31 +140,36 @@ function SignUp() {
   };
 
   /** Validates Users Mobile Number */
-  const handleMobileNumber = () => {
-    setPhoneNumber(false);
+  const handleMobileNumber = (userPhoneNumber) => {
+    setPhoneNumber(userPhoneNumber);
   };
 
   /** Handles The Sign Up Button */
   const handleSignUp = async (e) => {
     e.preventDefault();
     setButtonIsLoading(true);
+    console.log(
+      "handleSignUp Data",
+      email,
+      firstName,
+      lastName,
+      phoneNumber,
+      password
+    );
     try {
-      const response = await onboarding.SignUp(
-        email,
-        firstName,
-        lastName,
-        phoneNumber,
-        password
-      );
-      if (response.status === 200) {
-        setButtonIsLoading(false);
-        // console.log(response);
-        navigate(NonAuthRoutes.emailVerificationPage);
-      }
+      await onboarding
+        .SignUp(email, firstName, lastName, phoneNumber, password)
+        .then((response) => {
+          if (response.status === 200) {
+            setButtonIsLoading(false);
+            console.log("handleSignUp response", response);
+            // navigate(NonAuthRoutes.emailVerificationPage);
+          }
+        });
     } catch (error) {
       setButtonIsLoading(false);
-      // console.log({ error });
-      navigate(NonAuthRoutes.createAccountErrorLayout);
+      console.error("handleSignUp Error", error);
+      // navigate(NonAuthRoutes.createAccountErrorLayout);
     }
   };
 
@@ -293,7 +298,7 @@ function SignUp() {
             <p className="mt-[72px] ml-20 font-Inter font-[700] text-3xl text-black">
               Sign up with us
             </p>
-            <form onSubmit={() => handleSignUp()}>
+            <form onSubmit={(e) => handleSignUp(e)}>
               <div className="mt-10 mx-20 w-[450]">
                 <label className="" htmlFor="firstName">
                   <p className="mb-2 text-base font-sans font-[400] text-black">
@@ -352,7 +357,7 @@ function SignUp() {
                     id="mobile"
                     type="tel"
                     value={phoneNumber}
-                    onChange={() => handleMobileNumber()}
+                    onChange={(e) => handleMobileNumber(e)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                   />
                 </label>
@@ -419,15 +424,19 @@ function SignUp() {
               {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
               <div className="mt-10 mx-20 w-[450] bg-[#FFFFFF]">
                 <button
-                  id="createAccount-button"
                   type="submit"
-                  onClick={() => handleSignUp()}
+                  onClick={(e) => handleSignUp(e)}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
-                  {buttonIsLoading ? <LoadingButton /> : <p>Create account</p>}
+                  {buttonIsLoading ? (
+                    <div>
+                      <LoadingButton />
+                    </div>
+                  ) : (
+                    <p>Create account</p>
+                  )}
                 </button>
                 <button
-                  id="cancel-button"
                   type="submit"
                   onClick={() => navigate(NonAuthRoutes.landingPage)}
                   className="mt-4 py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
@@ -457,16 +466,16 @@ function SignUp() {
   };
   const signUpSmallScreenLayout = () => {
     return (
-      <div className="md:hidden lg:hidden   w-[390px]">
+      <div className="md:hidden lg:hidden w-full">
         <nav className="fixed w-full">
           <Header />
         </nav>
-        <div className="flex justify-start items-center ">
+        <div className="flex justify-center items-center">
           <div className="h-[890px]  w-[390px] bg-white mb-12">
             <p className="ml-6 mt-[120px] font-Inter font-[700] text-2xl text-black">
               Create account
             </p>
-            <form onSubmit={() => handleSignUp()}>
+            <form onSubmit={(e) => handleSignUp(e)}>
               <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="firstName-mobile">
                   <p className="mb-2 text-base font-sans font-[400] text-black">
@@ -601,7 +610,7 @@ function SignUp() {
                 <button
                   id="createAccount-button-mobile"
                   type="submit"
-                  onClick={() => handleSignUp()}
+                  onClick={(e) => handleSignUp(e)}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
                   {buttonIsLoading ? <LoadingButton /> : <p>Create account</p>}
@@ -634,6 +643,7 @@ function SignUp() {
       </div>
     );
   };
+
   return (
     <div>
       {signUpLargeScreenLayout()}
