@@ -608,12 +608,19 @@ function SignUp() {
                 : displayConfirmPasswordErrorTextMobile()}
               <div className="mt-6 mx-6 w-[342] ">
                 <button
-                  id="createAccount-button-mobile"
+                  id="createAccountButtonMobile"
                   type="submit"
                   onClick={(e) => handleSignUp(e)}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
-                  {buttonIsLoading ? <LoadingButton /> : <p>Create account</p>}
+                  {buttonIsLoading ? (
+                    <div>
+                      {" "}
+                      <LoadingButton />{" "}
+                    </div>
+                  ) : (
+                    <p>Create account</p>
+                  )}
                 </button>
               </div>
               <div className="mt-6 mx-6 w-[342] ">

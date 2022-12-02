@@ -24,10 +24,7 @@ export default {
     };
     const stringifiedData = JSON.stringify(data);
 
-    return deliverycogOnboarding.post(
-      "/api/v1/auth/account-activation",
-      stringifiedData
-    );
+    return deliverycogOnboarding.post("/account-activation", stringifiedData);
   },
 
   /** Send a POST request to Login users */

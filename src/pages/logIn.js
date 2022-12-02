@@ -95,7 +95,7 @@ function LogIn() {
             <p className="mt-12 ml-60 font-Inter font-[700] text-3xl text-black">
               Log in
             </p>
-            <form onSubmit={() => handleLogin()}>
+            <form onSubmit={(e) => handleLogin(e)}>
               <div className="mt-6 mx-20  w-[450]">
                 <label className="" htmlFor="email">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
@@ -107,11 +107,12 @@ function LogIn() {
                     placeholder="Enter your email address"
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     onChange={(e) => validateEmail(e.target.value)}
-                    onKeyUp={(e) => validateEmail(e.target.value)}
+                    // onKeyUp={(e) => validateEmail(e.target.value)}
                   />
                 </label>
                 {isEmailValid ? null : displayEmailErrorText()}
               </div>
+
               <div className="mt-6 mx-20 w-[450]">
                 <label className="" htmlFor="password">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
@@ -152,23 +153,23 @@ function LogIn() {
                 </button>
               </div>
               <div className="mt-6 mx-20 w-[450]">
-                {/* <button
+                <button
                   type="submit"
                   title="submit"
+                  onClick={(e) => handleLogin(e)}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
-                  onClick={() => handleLogin()}
                 >
                   Continue
-                </button> */}
+                </button>
 
-                <button
+                {/* <button
                   type="submit"
                   disabled={password === ""}
                   onClick={(e) => handleLogin(e)}
                   className="h-11 mt-14 mb-20 text-lg w-full rounded-sm text-white py-2 bg-green-400 outline-none"
                 >
                   Log In
-                </button>
+                </button> */}
 
                 <div className="mt-6 mx- w-[450] ">
                   <button
@@ -204,7 +205,7 @@ function LogIn() {
 
   const logInMobile = () => {
     return (
-      <div className="md:hidden lg:hidden w-[390px]">
+      <div className="md:hidden lg:hidden w-full">
         <nav className="fixed h-2 w-full">
           {" "}
           <Header />
@@ -214,7 +215,7 @@ function LogIn() {
             <p className="mt-[120px] ml-6 font-Inter font-[700] text-2xl text-black">
               Log in
             </p>
-            <form onSubmit={() => handleLogin()}>
+            <form onSubmit={(e) => handleLogin(e)}>
               <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="email">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
@@ -224,9 +225,10 @@ function LogIn() {
                     id="mobile-mail"
                     type="email"
                     placeholder="Enter your email"
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176]  appearance-none focus:outline-none"
                     onChange={(e) => setEmail(e.target.value)}
-                    onKeyUp={(e) => validateEmail(e.target.value)}
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176]  appearance-none focus:outline-none"
+
+                    // onKeyUp={(e) => validateEmail(e.target.value)}
                   />
                 </label>
                 {isEmailValid ? null : displayEmailErrorText()}
@@ -242,8 +244,8 @@ function LogIn() {
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Enter your password"
                     value={password}
-                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     onChange={(e) => setPassword(e.target.value)}
+                    className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                   />
                   <span className="absolute inset-y-[1667/100] mr-9">
                     {showPassword ? (
@@ -276,8 +278,8 @@ function LogIn() {
                 <button
                   type="submit"
                   title="Continue"
+                  onClick={(e) => handleLogin(e)}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
-                  onClick={() => handleLogin()}
                 >
                   Continue
                 </button>
