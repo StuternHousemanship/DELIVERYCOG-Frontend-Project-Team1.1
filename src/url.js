@@ -2,6 +2,7 @@
 const AuthRoutes = {
   dashboard: "/dashboard",
   addTrip: "/addTrip",
+  onboardingPage: "/onboardingPage",
 };
 
 /** Non Authenticated URL Routes */
