@@ -7,6 +7,7 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import Header from "../header";
 import OnboardingFooter from "../footer";
+import AccountError from "../components/errors/createAccountErrorLayout";
 // import SuccessAccount from "../components/success/createAccountSuccessLayout";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
@@ -67,31 +68,31 @@ function SignUp() {
     } else {
       setIsPasswordValid(false);
     }
-    // checks for lowercase in password
+    /** checks for lowercase in password */
     if (/[a-z]/.test(password)) {
       setHasLowerCase(true);
     } else {
       setHasLowerCase(false);
     }
-    // checks for uppercase in password
+    /** checks for uppercase in password */
     if (/[A-Z]/.test(password)) {
       setHasUpperCase(true);
     } else {
       setHasUpperCase(false);
     }
-    // checks length is up to 8
+    /** checks length is up to 8 */
     if (password.length >= 8) {
       setHasEightCharacters(true);
     } else {
       setHasEightCharacters(false);
     }
-    // checks for number in password
+    /** checks for number in password */
     if (/\d/.test(password)) {
       setHasNumber(true);
     } else {
       setHasNumber(false);
     }
-    // checks for symbol in password
+    /** checks for symbol in password */
     const regex = /[ `!@#$%^&*()_+\-=\\[\]{};':"\\|,.<>\\/?~]/;
     if (regex.test(password)) {
       setHasSymbol(true);
@@ -148,28 +149,28 @@ function SignUp() {
   const handleSignUp = async (e) => {
     e.preventDefault();
     setButtonIsLoading(true);
-    console.log(
-      "handleSignUp Data",
-      email,
-      firstName,
-      lastName,
-      phoneNumber,
-      password
-    );
+    // console.log(
+    //   "handleSignUp Data",
+    //   email,
+    //   firstName,
+    //   lastName,
+    //   phoneNumber,
+    //   password
+    // );
     try {
       await onboarding
         .SignUp(email, firstName, lastName, phoneNumber, password)
         .then((response) => {
           if (response.status === 200) {
-            setButtonIsLoading(false);
-            console.log("handleSignUp response", response);
-            // navigate(NonAuthRoutes.emailVerificationPage);
+            // setButtonIsLoading(false);
+            // console.log("handleSignUp response", response);
+            navigate(NonAuthRoutes.emailVerificationPage);
           }
         });
     } catch (error) {
       setButtonIsLoading(false);
-      console.error("handleSignUp Error", error);
-      // navigate(NonAuthRoutes.createAccountErrorLayout);
+      // console.error("handleSignUp Error", error);
+      <AccountError />;
     }
   };
 
@@ -349,7 +350,7 @@ function SignUp() {
               </div>
               {isEmailValid ? null : displayEmailErrorText()}
               <div className="mt-6 mx-20 w-[450]">
-                <label className="" htmlFor="mobile">
+                <label className="" htmlFor="tel">
                   <p className="mb-2 text-base font-sans font-[400] text-black">
                     Phone number
                   </p>
@@ -428,13 +429,7 @@ function SignUp() {
                   onClick={(e) => handleSignUp(e)}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
-                  {buttonIsLoading ? (
-                    <div>
-                      <LoadingButton />
-                    </div>
-                  ) : (
-                    <p>Create account</p>
-                  )}
+                  {buttonIsLoading ? true : <p>Create account</p>}
                 </button>
                 <button
                   type="submit"
