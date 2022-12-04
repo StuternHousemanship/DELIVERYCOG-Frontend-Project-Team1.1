@@ -44,10 +44,6 @@ function dropDown() {
       </div>
     );
   };
-  // const pickup = () => {
-  //   return (
-  //             );
-  // };
   return <div className="">{departure}</div>;
 }
 

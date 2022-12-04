@@ -377,7 +377,7 @@ function SignUp() {
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
-                  <span>
+                  <span className="cursor-pointer">
                     {showPassword ? (
                       <PasswordShow
                         className="absolute -mt-10 pr-2 ml-[420px]"
@@ -407,7 +407,7 @@ function SignUp() {
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
-                  <span>
+                  <span className="cursor-pointer">
                     {showConfirmPassword ? (
                       <PasswordShow
                         className="-mt-10 pr-2 ml-[420px]"
@@ -550,7 +550,7 @@ function SignUp() {
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
-                  <span className="absolute inset-y-[1667/100] mr-9">
+                  <span className="absolute inset-y-[1667/100] mr-9 cursor-pointer">
                     {showPassword ? (
                       <PasswordShow
                         className="absolute -ml-7 pr-2 mt-4"
@@ -583,10 +583,10 @@ function SignUp() {
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176]  appearance-none focus:outline-none"
                     required
                   />
-                  <span className="absolute inset-y-[1667/100] mr-9 ">
+                  <span className="absolute inset-y-[1667/100] mr-9 cursor-pointer">
                     {showConfirmPassword ? (
                       <PasswordShow
-                        className="absolute  -ml-7 pr-2 mt-4"
+                        className="absolute  -ml-7 pr-2 mt-4 cusor-pointer"
                         onClick={() => handleShowConfirmPassword()}
                       />
                     ) : (

@@ -19,7 +19,6 @@ function addTrip() {
           <ToggleDown className="mr-2.5" />
         </div>
         <div>
-          {/* <title> Departure date</title> */}
           <DropDown />
         </div>
       </section>
