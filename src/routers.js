@@ -39,6 +39,12 @@ const RequestTrip = React.lazy(() => import("./pages/requestTrip"));
 // const ResetPasswordSuccess = React.lazy(() =>
 //   import("./components/success/resetPasswordSuccessLayout")
 // );
+// const RequestTripErrorLayout = React.lazy(() =>
+//   import("./components/errors/requestTripErrorLayout")
+// );
+// const RequestTripSuccessLayout = React.lazy(() =>
+//   import("./components/success/requestTripSuccessLayout")
+// );
 
 function Routers() {
   return (

@@ -1,8 +1,9 @@
 import React from "react";
 import OnboardingHeader from "../components/header/onboardingHeader";
 import OnboardingHamburgerHeader from "../components/header/onboardingHamburgerHeader";
+// import ToggledownSmallIcon from "../assets/svg/toggleSmall.svg";
 
-function requestTrip() {
+function RequestTrip() {
   const [pickupAddress, setPickupAddress] = React.useState("");
   const [departureDate, setDepartureDate] = React.useState("");
   const [dropoffAddress, setDropoffAddress] = React.useState("");
@@ -80,15 +81,37 @@ function requestTrip() {
                       <p className="text-base font-sans font-[400] text-black leading-[50px]">
                         Item category
                       </p>
-                      <input
+                      <select
                         id="itemCategory"
                         type="itemCategory"
                         placeholder="Select item"
                         value={itemCategory}
                         onChange={(e) => setItemCategory(e.target.value)}
-                        className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-[496px] border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
+                        className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-[496px] border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none cursor-pointer"
                         required
-                      />
+                      >
+                        <option className=" ">Select item</option>
+                        <option>Books</option>
+                        <option>Film, Tv & Music</option>
+                        <option>Games</option>
+                        <option>Electronics & Computers</option>
+                        <option>Phones & Gadgets</option>
+                        <option>Home, Garden, Pets & DIY</option>
+                        <option>Toys, Children & Baby</option>
+                        <option>Clothing</option>
+                        <option>Shoes</option>
+                        <option>Accessories</option>
+                        <option>Jewellery</option>
+                        <option>Documents</option>
+                        <option>Sports</option>
+                        <option>Outdoors</option>
+                        <option>Health</option>
+                        <option>Beuty</option>
+                        <option>Household Items</option>
+                        <option>Automobile & Parts</option>
+                        <option>Food</option>
+                        <option>Others</option>
+                      </select>
                     </label>
                   </div>
                 </div>
@@ -188,15 +211,39 @@ function requestTrip() {
                       <p className="text-[16px] font-sans font-[400] text-black leading-[50px]">
                         Item category
                       </p>
-                      <input
+                      <select
                         id="itemCategory"
                         type="itemCategory"
                         placeholder="Select item"
                         value={itemCategory}
                         onChange={(e) => setItemCategory(e.target.value)}
-                        className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-[40px] w-[342px] border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
+                        className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-[342px] border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none cursor-pointer"
                         required
-                      />
+                      >
+                        <option className="text-[#bdbdbd] text-opacity-100 ">
+                          Select item
+                        </option>
+                        <option>Books</option>
+                        <option>Film, Tv & Music</option>
+                        <option>Games</option>
+                        <option>Electronics & Computers</option>
+                        <option>Phones & Gadgets</option>
+                        <option>Home, Garden, Pets & DIY</option>
+                        <option>Toys, Children & Baby</option>
+                        <option>Clothing</option>
+                        <option>Shoes</option>
+                        <option>Accessories</option>
+                        <option>Jewellery</option>
+                        <option>Documents</option>
+                        <option>Sports</option>
+                        <option>Outdoors</option>
+                        <option>Health</option>
+                        <option>Beuty</option>
+                        <option>Household Items</option>
+                        <option>Automobile & Parts</option>
+                        <option>Food</option>
+                        <option>Others</option>
+                      </select>
                     </label>
                   </div>
                 </div>
@@ -231,4 +278,4 @@ function requestTrip() {
   );
 }
 
-export default requestTrip;
+export default RequestTrip;
