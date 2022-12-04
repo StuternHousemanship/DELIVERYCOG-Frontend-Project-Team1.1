@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import OnboardingHeader from "../components/header/onboardingHeader";
 import OnboardingHamburgerHeader from "../components/header/onboardingHamburgerHeader";
+import { AuthRoutes } from "../url";
 // import ToggledownSmallIcon from "../assets/svg/toggleSmall.svg";
 
 function RequestTrip() {
+  const navigate = useNavigate();
   const [pickupAddress, setPickupAddress] = React.useState("");
   const [departureDate, setDepartureDate] = React.useState("");
   const [dropoffAddress, setDropoffAddress] = React.useState("");
@@ -11,7 +14,7 @@ function RequestTrip() {
 
   const requestTripLargeScreen = () => {
     return (
-      <div className="bg-deliverycog-background-grey-color h-[100vh] my-0 mx-auto">
+      <div className="bg-[#FBFAFA] h-[918px]">
         <div className="hidden md:block lg:block">
           <OnboardingHeader />
           <div className=" ">
@@ -29,12 +32,12 @@ function RequestTrip() {
                   <div>
                     <label className="mb-0" htmlFor="pickupAddress">
                       <p className="mb-2 text-base font-sans font-[400] text-black leading-[50px] mt-[40px]">
-                        Pickup address
+                        Pick up address
                       </p>
                       <input
                         id="pickupAddress"
                         type="pickupAddress"
-                        placeholder="Enter pick-up address here"
+                        placeholder="Enter pick up address here"
                         value={pickupAddress}
                         onChange={(e) => setPickupAddress(e.target.value)}
                         className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-[496px] border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
@@ -121,6 +124,7 @@ function RequestTrip() {
                   id="continue-button"
                   type="submit"
                   className="py-2 px-2 font-sans font-[700] text-[#FBFAFA] bg-[#12AE62] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-[496px] border rounded border-[#16D176] appearance-none focus:outline-none cursor-pointer mt-[50px]"
+                  // onClick={}
                 >
                   Continue
                 </button>
@@ -128,6 +132,7 @@ function RequestTrip() {
                   id="cancel-button"
                   type="submit"
                   className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-[496px] border rounded border-[#16D176] appearance-none focus:outline-none cursor-pointer mt-[50px]"
+                  onClick={() => navigate(AuthRoutes.dashboard)}
                 >
                   Cancel
                 </button>
@@ -141,7 +146,7 @@ function RequestTrip() {
 
   const requestTripSmallScreen = () => {
     return (
-      <div className="bg-deliverycog-background-grey-color h-[100%] mt-0 pt-0 pl-[10px] pr-[10px] mx-auto">
+      <div className="bg-[#FBFAFA] h-[844px] ">
         <div className="md:hidden lg:hidden ">
           <OnboardingHamburgerHeader />
           <div className=" ">
@@ -260,6 +265,7 @@ function RequestTrip() {
                   id="cancel-button-mobile"
                   type="submit"
                   className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-[14px] h-[40px] w-[342px] border rounded border-[#16D176] appearance-none focus:outline-none cursor-pointer mt-[20px] mb-[20px]"
+                  onClick={() => navigate(AuthRoutes.dashboard)}
                 >
                   Cancel
                 </button>
