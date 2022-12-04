@@ -1,11 +1,15 @@
 import { React } from "react";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as AddTripImage } from "../assets/svg/add-a-trip.svg";
 import { ReactComponent as RequestDeliveryImage } from "../assets/svg/request-delivery.svg";
 import { ReactComponent as MobileImages } from "../assets/svg/onboarding-page-mobile-images.svg";
 import OnboardingHeader from "../components/header/onboardingHeader";
 import OnboardingHamburgerHeader from "../components/header/onboardingHamburgerHeader";
+import { AuthRoutes } from "../url";
 
 function OnboardingPage() {
+  const navigate = useNavigate();
+
   const onboardingPageLargeScreen = () => {
     return (
       <div className=" hidden md:block lg:block">
@@ -20,8 +24,11 @@ function OnboardingPage() {
             </p>
           </div>
           <div className=" flex   gap-[132px] mt-[63px] mb-32">
-            <AddTripImage className=" w-[408px] h-[369px] " />
-            <RequestDeliveryImage className=" w-[408px] h-[369px] " />
+            <AddTripImage className=" w-[408px] h-[369px] cursor-pointer " />
+            <RequestDeliveryImage
+              className=" w-[408px] h-[369px] cursor-pointer"
+              onClick={() => navigate(AuthRoutes.requestTrip)}
+            />
           </div>
         </div>
       </div>
