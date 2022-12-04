@@ -14,6 +14,7 @@ const AccountRecovered = React.lazy(() => import("./pages/accountRecovered"));
 const ForgotPassword = React.lazy(() => import("./pages/forgotPassword"));
 const AddTrip = React.lazy(() => import("./pages/addTrip"));
 const OnboardingPage = React.lazy(() => import("./pages/onboardingPage"));
+const RequestTrip = React.lazy(() => import("./pages/requestTrip"));
 // const CreateAccountErrorLayout = React.lazy(() =>
 //   import("./components/errors/createAccountErrorLayout")
 // );
@@ -56,6 +57,7 @@ function Routers() {
             path={AuthRoutes.onboardingPage}
             element={<OnboardingPage />}
           />
+          <Route path={AuthRoutes.requestTrip} element={<RequestTrip />} />
           <Route path={NonAuthRoutes.landingPage} element={<LandingPage />} />
           <Route path={NonAuthRoutes.signUp} element={<SignUp />} />
           <Route path={NonAuthRoutes.logIn} element={<LogIn />} />
