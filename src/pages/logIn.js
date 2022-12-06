@@ -140,13 +140,14 @@ function LogIn() {
                   </span>
                 </label>
               </div>
-              <div className="mt-3 mb-10 w-[450] text-right underline mr-20">
+              <div className="mt-3 mb-10 w-[450] text-right mr-20">
                 <button
                   type="button"
                   title="Forgot password"
                   onClick={() => {
                     navigate(NonAuthRoutes.forgotPassword);
                   }}
+                  className="hover:underline"
                 >
                   Forgot password
                 </button>
@@ -259,11 +260,12 @@ function LogIn() {
                   onClick={() => {
                     navigate(NonAuthRoutes.forgotPassword);
                   }}
+                  className="hover:underline"
                 >
                   Forgot password
                 </button>
               </div>
-              <div className="mt-6 mx-6 w-[342] ">
+              <div className="mt-6 mx-6 w-[342]">
                 <button
                   type="submit"
                   title="Continue"
