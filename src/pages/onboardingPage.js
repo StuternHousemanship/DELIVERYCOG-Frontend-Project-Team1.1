@@ -13,7 +13,10 @@ function OnboardingPage() {
   const onboardingPageLargeScreen = () => {
     return (
       <div className=" hidden md:block lg:block">
-        <OnboardingHeader />
+        <nav className="fixed w-full">
+          <OnboardingHeader />
+        </nav>
+
         <div className=" flex  flex-col justify-center items-center ">
           <div>
             <h1 className=" mt-[115px] w-[383px] h-10 font-Inter font-bold text-[32px] leading-10 align-middle text-[#000000] ml-5">
@@ -24,7 +27,10 @@ function OnboardingPage() {
             </p>
           </div>
           <div className=" flex   gap-[132px] mt-[63px] mb-32">
-            <AddTripImage className=" w-[408px] h-[369px] cursor-pointer " />
+            <AddTripImage
+              className=" w-[408px] h-[369px] cursor-pointer "
+              onClick={() => navigate(AuthRoutes.addTrip)}
+            />
             <RequestDeliveryImage
               className=" w-[408px] h-[369px] cursor-pointer"
               onClick={() => navigate(AuthRoutes.requestTrip)}

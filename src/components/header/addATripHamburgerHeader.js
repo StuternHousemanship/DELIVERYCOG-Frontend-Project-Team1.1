@@ -1,18 +1,23 @@
 import { React, useState } from "react";
-import { ReactComponent as DeliverycoglogoMobile } from "../../assets/svg/delivery-cog-logo-mobile.svg";
+// import { ReactComponent as DeliverycoglogoMobile } from "../../assets/svg/delivery-cog-logo-mobile.svg";
 import { ReactComponent as MenuIcon } from "../../assets/svg/hamburger-icon.svg";
 import { ReactComponent as CrossIcon } from "../../assets/svg/cross-icon.svg";
 
-function OnboardingHamburgerHeader() {
+function addATripHamburgerHeader() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false); // initiate isNavbarOpen state with false
-  // handle isNavbarOpen state on click
+  /** handle isNavbarOpen state on click */
   const handleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
   };
   return (
     <div>
-      <nav className="flex  justify-between items-center">
-        <DeliverycoglogoMobile className=" mt-[40px] ml-6" />
+      <nav className="flex  justify-between">
+        <div className="mx-6 my-5">
+          <h3 className="text-xl font-[700] text-[#282828]">Add a trip</h3>
+          <p className="text-[#6D6464] text-sm mt-3">
+            kindly provide the information below to help you add a trip
+          </p>
+        </div>
         <section className="MOBILE-MENU flex lg:hidden ">
           <div>
             <button
@@ -20,7 +25,7 @@ function OnboardingHamburgerHeader() {
               className="HAMBURGER-ICON space-y-2"
               onClick={() => handleNavbar()}
             >
-              <MenuIcon className=" mt-[40px] mr-7" />
+              <MenuIcon className=" mt-[20px] mr-7" />
             </button>
           </div>
           {/* toggle class based on isNavbarOpen state */}
@@ -71,4 +76,4 @@ function OnboardingHamburgerHeader() {
   );
 }
 
-export default OnboardingHamburgerHeader;
+export default addATripHamburgerHeader;
