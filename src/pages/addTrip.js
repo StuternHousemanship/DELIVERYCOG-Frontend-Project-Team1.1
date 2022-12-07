@@ -1,7 +1,7 @@
-import React from "react";
+import { React, useState } from "react";
 import AddATripHamburgerHeader from "../components/header/addATripHamburgerHeader";
 import { ReactComponent as ToggleDown } from "../assets/svg/toggleDown.svg";
-// import { ReactComponent as ToggleUp } from "../assets/svg/toggleUp.svg";
+import { ReactComponent as ToggleUp } from "../assets/svg/toggleUp.svg";
 import Departure from "../components/dropdown/departure/departure";
 import DepartureMobile from "../components/dropdown/departure/departureMobile";
 import PickUp from "../components/dropdown/pickup/pickUp";
@@ -14,9 +14,24 @@ import OnboardingHeader from "../components/header/onboardingHeader";
 
 function addTrip() {
   // const [isActive, setIsActive] = useState(false);
-  // const handleToggle = () => {
-  //   setIsActive(!isActive);
-  // };
+  // const [open, setOpen ] = useState(false);
+  // const [showContent, setShowContent] = useState(false);
+  const [toggle, setToggle] = useState(true);
+  const [toggle1, setToggle1] = useState(true);
+  const [toggle2, setToggle2] = useState(true);
+  const [toggle3, setToggle3] = useState(true);
+  const handleDepartureToggle = () => {
+    setToggle(!toggle);
+  };
+  const handlePickUpToggle = () => {
+    setToggle1(!toggle1);
+  };
+  const handleDeliveryToggle = () => {
+    setToggle2(!toggle2);
+  };
+  const handlePriceToggle = () => {
+    setToggle3(!toggle3);
+  };
   const addTripLargeScreen = () => {
     return (
       <div className="">
@@ -29,60 +44,127 @@ function addTrip() {
             </p>
           </div>
           <form action="" method="get">
-            <section className="mx-[181px] mt-8 w-[1078px] h-[293px] flex flex-col items-start px-8 py-8 bg-white">
-              <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
-                <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
-                  Departure
-                </p>
-                <ToggleDown
-                  className="mr-2.5"
-                  // onClick={(e) => handleToggle(e)}
-                />
-                {/* {isActive ? <ToggleDown className="mr-2.5" /> : null}{" "}
-                {setIsActive ? <ToggleUp className="mr-2.5" /> : null} */}
-              </div>
-              <div>
-                <Departure />
-              </div>
-              {/* {isActive && (
+            {toggle ? (
+              <section className="mx-[181px] mt-8 w-[1078px] h-[293px] flex flex-col items-start px-8 py-8 bg-white">
+                <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
+                  <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
+                    Departure
+                  </p>
+                  <ToggleUp
+                    className="mr-2.5"
+                    onClick={(e) => handleDepartureToggle(e)}
+                  />
+                </div>
                 <div>
                   <Departure />
                 </div>
-              )} */}
-            </section>
-            <section className="mx-[181px] mt-8 w-[1078px] h-[361px] flex flex-col items-start px-8 py-8 bg-white">
-              <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
-                <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
-                  Pickup
-                </p>
-                <ToggleDown className="mr-2.5" />
-              </div>
-              <div>
-                <PickUp />
-              </div>
-            </section>
-            <section className="mx-[181px] mt-8 w-[1078px] h-[361px] flex flex-col items-start px-8 py-8 bg-white">
-              <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
-                <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
-                  Delivery
-                </p>
-                <ToggleDown className="mr-2.5" />
-              </div>
-              <div>
-                <Delivery />
-              </div>
-            </section>
-            <section className="mx-[181px] mt-8 w-[1078px] h-[237px] flex flex-col items-start px-8 py-8 bg-white">
-              <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
-                <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
-                  Price
-                </p>
-                <ToggleDown className="mr-2.5" />
-              </div>
-              <div>
+              </section>
+            ) : (
+              <section className="mx-[181px] mt-8 w-[1078px] h-[93px] flex flex-col items-start px-8 py-8 bg-white">
+                <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
+                  <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
+                    Departure
+                  </p>
+                  <ToggleDown
+                    className="mr-2.5"
+                    onClick={(e) => handleDepartureToggle(e)}
+                  />
+                </div>
+              </section>
+            )}
+            {toggle1 ? (
+              <section className="mx-[181px] mt-8 w-[1078px] h-[361px] flex flex-col items-start px-8 py-8 bg-white">
+                <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
+                  <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
+                    Pickup
+                  </p>
+                  <ToggleUp
+                    className="mr-2.5"
+                    onClick={(e) => handlePickUpToggle(e)}
+                  />
+                </div>
+                <div>
+                  <PickUp />
+                </div>
+              </section>
+            ) : (
+              <section className="mx-[181px] mt-8 w-[1078px] h-[93px] flex flex-col items-start px-8 py-8 bg-white">
+                <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
+                  <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
+                    Pickup
+                  </p>
+                  <ToggleDown
+                    className="mr-2.5"
+                    onClick={(e) => handlePickUpToggle(e)}
+                  />
+                </div>
+                {/* <div>
+                  <PickUp />
+                </div> */}
+              </section>
+            )}
+            {toggle2 ? (
+              <section className="mx-[181px] mt-8 w-[1078px] h-[361px] flex flex-col items-start px-8 py-8 bg-white">
+                <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
+                  <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
+                    Delivery
+                  </p>
+                  <ToggleUp
+                    className="mr-2.5"
+                    onClick={(e) => handleDeliveryToggle(e)}
+                  />
+                </div>
+                <div>
+                  <Delivery />
+                </div>
+              </section>
+            ) : (
+              <section className="mx-[181px] mt-8 w-[1078px] h-[93px] flex flex-col items-start px-8 py-8 bg-white">
+                <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
+                  <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
+                    Delivery
+                  </p>
+                  <ToggleDown
+                    className="mr-2.5"
+                    onClick={(e) => handleDeliveryToggle(e)}
+                  />
+                </div>
+                {/* <div>
+                  <Delivery />
+                </div> */}
+              </section>
+            )}
+            {toggle3 ? (
+              <section className="mx-[181px] mt-8 w-[1078px] h-[237px] flex flex-col items-start px-8 py-8 bg-white">
+                <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
+                  <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
+                    Price
+                  </p>
+                  <ToggleUp
+                    className="mr-2.5"
+                    onClick={(e) => handlePriceToggle(e)}
+                  />
+                </div>
+                <div>
+                  <Price />
+                </div>
+              </section>
+            ) : (
+              <section className="mx-[181px] mt-8 w-[1078px] h-[93px] flex flex-col items-start px-8 py-8 bg-white">
+                <div className="flex justify-between items-center w-[1013px] h-12 text-black border-red-500">
+                  <p className="text-black mt-8 font-[700] mb-12 text-xl font-lato">
+                    Price
+                  </p>
+                  <ToggleDown
+                    className="mr-2.5"
+                    onClick={(e) => handlePriceToggle(e)}
+                  />
+                </div>
+                {/* <div>
                 <Price />
-              </div>
-            </section>
+              </div> */}
+              </section>
+            )}
             <div className=" flex items-center mt-10 mb-[46px] mx-[181px] w-[1078px]  bg-[#FFFFFF]">
               <button
                 type="submit"
@@ -111,50 +193,119 @@ function addTrip() {
         <div className="sm:block md:hidden lg:hidden">
           <AddATripHamburgerHeader />
           <form action="" method="get">
-            <section className="mt-6 w-[390px] h-[392px] flex flex-col items-start px-5 py-6 bg-white">
-              <div className="flex justify-between items-center w-[382px] h-8">
-                <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
-                  Departure
-                </p>
-                <ToggleDown className="mr-[11.7px]" />
-              </div>
-              <div>
-                <DepartureMobile />
-              </div>
-            </section>
-            <section className="mt-6 w-[390px] h-[392px] flex flex-col items-start px-5 py-6 bg-white">
-              <div className="flex justify-between items-center w-[382px] h-8">
-                <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
-                  Pickup
-                </p>
-                <ToggleDown className="mr-[11.7px]" />
-              </div>
-              <div>
-                <PickUpMobile />
-              </div>
-            </section>
-            <section className="mt-6 w-[390px] h-[392px] flex flex-col items-start px-5 py-6 bg-white">
-              <div className="flex justify-between items-center w-[382px] h-8">
-                <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
-                  Delivery
-                </p>
-                <ToggleDown className="mr-[11.7px]" />
-              </div>
-              <div>
-                <DeliveryMobile />
-              </div>
-            </section>
-            <section className="mt-6 w-[390px] h-[189px] flex flex-col items-start px-5 py-6 bg-white">
-              <div className="flex justify-between items-center w-[382px] h-8">
-                <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
-                  Price
-                </p>
-                <ToggleDown className="mr-[11.7px]" />
-              </div>
-              <div>
-                <PriceMobile />
-              </div>
-            </section>
+            {toggle ? (
+              <section className="mt-6 w-[390px] h-[392px] flex flex-col items-start px-5 py-6 bg-white">
+                <div className="flex justify-between items-center w-[382px] h-8">
+                  <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
+                    Departure
+                  </p>
+                  <ToggleUp
+                    className="mr-[11.7px]"
+                    onClick={(e) => handleDepartureToggle(e)}
+                  />
+                </div>
+                <div>
+                  <DepartureMobile />
+                </div>
+              </section>
+            ) : (
+              <section className="mt-6 w-[390px] h-[68px] flex flex-col items-start px-5 py-6 bg-white">
+                <div className="flex justify-between items-center w-[382px] h-8">
+                  <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
+                    Departure
+                  </p>
+                  <ToggleDown
+                    className="mr-[11.7px]"
+                    onClick={(e) => handleDepartureToggle(e)}
+                  />
+                </div>
+              </section>
+            )}
+            {toggle1 ? (
+              <section className="mt-6 w-[390px] h-[392px] flex flex-col items-start px-5 py-6 bg-white">
+                <div className="flex justify-between items-center w-[382px] h-8">
+                  <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
+                    Pickup
+                  </p>
+                  <ToggleUp
+                    className="mr-[11.7px]"
+                    onClick={(e) => handlePickUpToggle(e)}
+                  />
+                </div>
+                <div>
+                  <PickUpMobile />
+                </div>
+              </section>
+            ) : (
+              <section className="mt-6 w-[390px] h-[68px] flex flex-col items-start px-5 py-6 bg-white">
+                <div className="flex justify-between items-center w-[382px] h-8">
+                  <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
+                    Pickup
+                  </p>
+                  <ToggleDown
+                    className="mr-[11.7px]"
+                    onClick={(e) => handlePickUpToggle(e)}
+                  />
+                </div>
+              </section>
+            )}
+            {toggle2 ? (
+              <section className="mt-6 w-[390px] h-[392px] flex flex-col items-start px-5 py-6 bg-white">
+                <div className="flex justify-between items-center w-[382px] h-8">
+                  <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
+                    Delivery
+                  </p>
+                  <ToggleUp
+                    className="mr-[11.7px]"
+                    onClick={(e) => handleDeliveryToggle(e)}
+                  />
+                </div>
+                <div>
+                  <DeliveryMobile />
+                </div>
+              </section>
+            ) : (
+              <section className="mt-6 w-[390px] h-[68px] flex flex-col items-start px-5 py-6 bg-white">
+                <div className="flex justify-between items-center w-[382px] h-8">
+                  <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
+                    Delivery
+                  </p>
+                  <ToggleDown
+                    className="mr-[11.7px]"
+                    onClick={(e) => handleDeliveryToggle(e)}
+                  />
+                </div>
+              </section>
+            )}
+            {toggle3 ? (
+              <section className="mt-6 w-[390px] h-[189px] flex flex-col items-start px-5 py-6 bg-white">
+                <div className="flex justify-between items-center w-[382px] h-8">
+                  <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
+                    Price
+                  </p>
+                  <ToggleUp
+                    className="mr-[11.7px]"
+                    onClick={(e) => handlePriceToggle(e)}
+                  />
+                </div>
+                <div>
+                  <PriceMobile />
+                </div>
+              </section>
+            ) : (
+              <section className="mt-6 w-[390px] h-[68px] flex flex-col items-start px-5 py-6 bg-white">
+                <div className="flex justify-between items-center w-[382px] h-8">
+                  <p className="text-[#282828] mt-8 font-[700] mb-12 text-xl font-lato">
+                    Price
+                  </p>
+                  <ToggleDown
+                    className="mr-[11.7px]"
+                    onClick={(e) => handlePriceToggle(e)}
+                  />
+                </div>
+              </section>
+            )}
+
             <div className=" flex flex-col items-center mt-10 mb-[46px] w-[390px] h-[189px]">
               <button
                 type="submit"

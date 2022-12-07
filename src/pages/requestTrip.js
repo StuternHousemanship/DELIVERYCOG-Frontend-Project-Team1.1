@@ -93,7 +93,7 @@ function RequestTrip() {
                         className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-[496px] border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none cursor-pointer"
                         required
                       >
-                        <option className=" ">Select item</option>
+                        <option className=" ">Select Item</option>
                         <option>Books</option>
                         <option>Film, Tv & Music</option>
                         <option>Games</option>

@@ -158,15 +158,20 @@ function SignUp() {
     //   password
     // );
     try {
-      await onboarding
-        .SignUp(email, firstName, lastName, phoneNumber, password)
-        .then((response) => {
-          if (response.status === 200) {
-            // setButtonIsLoading(false);
-            // console.log("handleSignUp response", response);
-            navigate(NonAuthRoutes.emailVerificationPage);
-          }
-        });
+      await onboarding.SignUp(
+        email,
+        firstName,
+        lastName,
+        phoneNumber,
+        password
+      );
+      // .then((response) => {
+      //   if (response.status === 200) {
+      //     // setButtonIsLoading(false);
+      //     // console.log("handleSignUp response", response);
+      //     navigate(NonAuthRoutes.emailVerificationPage);
+      //   }
+      // });
     } catch (error) {
       setButtonIsLoading(false);
       // console.error("handleSignUp Error", error);

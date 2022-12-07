@@ -1,5 +1,23 @@
 [
-  {
+    {
+      "signup": [ {
+      "email": "namacab@gmail.com",
+      "firstName": "Samuel",
+      "lastName": "Omolaja",
+      "phoneNumber": "08161228946",
+      "password": "Gxo@k.123ftz-f"
+      }
+      ]
+    }
+    ,{
+     "login": [{
+      "email": "johndoe@gmail.com",
+      "password": "Password123@."
+     }
+     ] 
+    }
+  
+   ,{
     "name": "Abia",
     "id": 1,
     "cities": [
