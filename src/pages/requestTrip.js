@@ -14,7 +14,7 @@ function RequestTrip() {
 
   const requestTripLargeScreen = () => {
     return (
-      <div className="bg-[#FBFAFA] h-[918px]">
+      <div className="bg-[#FBFAFA]">
         <div className="hidden md:block lg:block">
           <OnboardingHeader />
           <div className=" ">
@@ -119,7 +119,7 @@ function RequestTrip() {
                   </div>
                 </div>
               </form>
-              <div className="grid grid-cols-2 gap-[126px] leading-10">
+              <div className="grid grid-cols-2 gap-[126px] leading-10 mb-[207px]">
                 <button
                   id="continue-button"
                   type="submit"
@@ -146,10 +146,10 @@ function RequestTrip() {
 
   const requestTripSmallScreen = () => {
     return (
-      <div className="bg-[#FBFAFA] h-[844px] ">
+      <div className="bg-[#FBFAFA]">
         <div className="md:hidden lg:hidden ">
           <OnboardingHamburgerHeader />
-          <div className=" ">
+          <div className=" w-[342px] mx-6">
             <h3 className="font-[700] text-[#282828] text-[24px] leading-[52px] mt-[35px]">
               Request delivery
             </h3>
@@ -157,7 +157,7 @@ function RequestTrip() {
               Kindly provide the information below to help you request delivery
             </p>
           </div>
-          <div className=" ">
+          <div className="w-[342px] mx-6 ">
             <section>
               <form>
                 <div>
@@ -253,7 +253,7 @@ function RequestTrip() {
                   </div>
                 </div>
               </form>
-              <div>
+              <div className="mb-[76px]">
                 <button
                   id="continue-button-mobile"
                   type="submit"
