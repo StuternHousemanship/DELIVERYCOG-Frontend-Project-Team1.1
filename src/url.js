@@ -1,8 +1,8 @@
 /** Authenticated URL Routes */
 const AuthRoutes = {
   dashboard: "/dashboard",
-  addTrip: "/addTrip",
-  onboardingPage: "/onboardingPage",
+  addTrip: "/add-trip",
+  onboardingPage: "/dashboard",
   requestTrip: "/request-trip",
 };
 

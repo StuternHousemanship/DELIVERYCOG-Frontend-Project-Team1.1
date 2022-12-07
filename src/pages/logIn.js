@@ -94,7 +94,7 @@ function LogIn() {
             <p className="mt-12 ml-60 font-Inter font-[700] text-3xl text-black">
               Log in
             </p>
-            <form onSubmit={() => handleLogin()}>
+            <form onSubmit={(e) => handleLogin(e)}>
               <div className="mt-6 mx-20  w-[450]">
                 <label className="" htmlFor="email">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
@@ -156,7 +156,7 @@ function LogIn() {
                 <button
                   type="submit"
                   title="submit"
-                  onClick={() => handleLogin()}
+                  onClick={(e) => handleLogin(e)}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
                   Continue
@@ -205,7 +205,7 @@ function LogIn() {
             <p className="mt-[120px] ml-6 font-Inter font-[700] text-2xl text-black">
               Log in
             </p>
-            <form onSubmit={() => handleLogin()}>
+            <form onSubmit={(e) => handleLogin(e)}>
               <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="email">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
@@ -269,7 +269,7 @@ function LogIn() {
                 <button
                   type="submit"
                   title="Continue"
-                  onClick={() => handleLogin()}
+                  onClick={(e) => handleLogin(e)}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
                   Continue
