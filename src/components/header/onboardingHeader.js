@@ -1,13 +1,14 @@
-import React, { AuthRoutes } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Deliverycoglogo } from "../../assets/svg/delivery-cog-logo.svg";
 import { ReactComponent as ProfileImage } from "../../assets/svg/profile-Image.svg";
+import { AuthRoutes } from "../../url";
 
 function OnboardingHeader() {
   const navigate = useNavigate();
   return (
     <div className="sticky top-0 z-50 ">
-      <div className=" h-[112px] bg-white border-b-1 pb-2 pt-2">
+      <div className=" h-[112px] bg-white border-b-1 pb-2 pt-2 hidden md:block lg:">
         <nav className=" flex  ">
           <button
             type="button"

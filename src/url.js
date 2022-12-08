@@ -2,7 +2,7 @@
 const AuthRoutes = {
   dashboard: "/dashboard",
   addTrip: "/add-trip",
-  onboardingPage: "/dashboard",
+  onboardingPage: "/onboarding-page",
   requestTrip: "/request-trip",
 };
 

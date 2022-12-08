@@ -18,17 +18,17 @@ function RequestTrip() {
         <div className="hidden md:block lg:block">
           <OnboardingHeader />
           <div className=" ">
-            <h3 className="font-[700] text-[#282828] text-[32px] leading-[52px] mt-[35px] ml-[150px]">
+            <h3 className="font-[700] text-[#282828] text-[32px] leading-[52px] mt-[35px] ml-[142px]">
               Request delivery
             </h3>
-            <p className="text-[18px] text-[#6D6464] leading-[52px] ml-[150px]">
+            <p className="text-[18px] text-[#6D6464] leading-[52px] ml-[142px]">
               Kindly provide the information below to help you request delivery
             </p>
           </div>
-          <div className=" flex flex-col justify-center items-center ">
+          <div className=" flex flex-col justify-center items-center mx-[142px] ">
             <section>
               <form>
-                <div className="grid grid-cols-2 gap-[126px]">
+                <div className="grid grid-cols-2 gap-[116px]">
                   <div>
                     <label className="mb-0" htmlFor="pickupAddress">
                       <p className="mb-2 text-base font-sans font-[400] text-black leading-[50px] mt-[40px]">

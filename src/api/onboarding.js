@@ -14,7 +14,7 @@ export default {
     };
     const stringifiedData = JSON.stringify(data);
 
-    return deliverycogOnboarding.post("/signUp", stringifiedData);
+    return deliverycogOnboarding.post("/register", stringifiedData);
   },
 
   /** Send a POST request to Verify Email Account OTP Code for Users */

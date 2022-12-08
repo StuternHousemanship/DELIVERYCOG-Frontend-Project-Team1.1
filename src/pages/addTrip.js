@@ -1,4 +1,6 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthRoutes } from "../url";
 import AddATripHamburgerHeader from "../components/header/addATripHamburgerHeader";
 import { ReactComponent as ToggleDown } from "../assets/svg/toggleDown.svg";
 import { ReactComponent as ToggleUp } from "../assets/svg/toggleUp.svg";
@@ -11,8 +13,10 @@ import DeliveryMobile from "../components/dropdown/delivery/deliveryMobile";
 import Price from "../components/dropdown/price/price";
 import PriceMobile from "../components/dropdown/price/priceMobile";
 import OnboardingHeader from "../components/header/onboardingHeader";
+import AddTripSuccessLayout from "../components/success/addTripSuccessLayout";
 
 function addTrip() {
+  const navigate = useNavigate();
   // const [isActive, setIsActive] = useState(false);
   // const [open, setOpen ] = useState(false);
   // const [showContent, setShowContent] = useState(false);
@@ -32,6 +36,21 @@ function addTrip() {
   const handlePriceToggle = () => {
     setToggle3(!toggle3);
   };
+  useEffect(() => {
+    const ac = new AbortController();
+
+    document.title = "Add Trip • Deliverycog";
+
+    return function cleanup() {
+      ac.abort();
+    };
+  }, []);
+
+  const handleAddTrip = (e) => {
+    e.preventDefault();
+    navigate.apply(<AddTripSuccessLayout />);
+  };
+
   const addTripLargeScreen = () => {
     return (
       <div className="">
@@ -168,14 +187,14 @@ function addTrip() {
             <div className=" flex items-center mt-10 mb-[46px] mx-[181px] w-[1078px]  bg-[#FFFFFF]">
               <button
                 type="submit"
-                // onClick={() => navigate(NonAuthRoutes.landingPage)}
+                onClick={() => navigate(AuthRoutes.onboardingPage)}
                 className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-12 w-[493px] border rounded border-[#16D176] appearance-none focus:outline-none"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                // onClick={(e) => handleSignUp(e)}
+                onClick={() => handleAddTrip()}
                 className="py-2 px-2 ml-[92px] font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-12 w-[493px] border rounded border-[#16D176] appearance-none focus:outline-none"
               >
                 Continue
@@ -309,14 +328,14 @@ function addTrip() {
             <div className=" flex flex-col items-center mt-10 mb-[46px] w-[390px] h-[189px]">
               <button
                 type="submit"
-                // onClick={() => navigate(NonAuthRoutes.landingPage)}
+                onClick={() => navigate(AuthRoutes.onboardingPage)}
                 className="py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-10 w-[342px] border rounded border-[#16D176] appearance-none focus:outline-none"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                // onClick={(e) => handleSignUp(e)}
+                onClick={() => <AddTripSuccessLayout />}
                 className="py-2 px-2 mt-4 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-10 w-[342px] border rounded border-[#16D176] appearance-none focus:outline-none"
               >
                 Continue
