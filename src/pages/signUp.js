@@ -2,12 +2,13 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from "react";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import Header from "../header";
 import OnboardingFooter from "../footer";
+import AccountError from "../components/errors/createAccountErrorLayout";
+// import SuccessAccount from "../components/success/createAccountSuccessLayout";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 import { ReactComponent as LoadingButton } from "../assets/svg/loading-icon.svg";
@@ -67,31 +68,31 @@ function SignUp() {
     } else {
       setIsPasswordValid(false);
     }
-    // checks for lowercase in password
+    /** checks for lowercase in password */
     if (/[a-z]/.test(password)) {
       setHasLowerCase(true);
     } else {
       setHasLowerCase(false);
     }
-    // checks for uppercase in password
+    /** checks for uppercase in password */
     if (/[A-Z]/.test(password)) {
       setHasUpperCase(true);
     } else {
       setHasUpperCase(false);
     }
-    // checks length is up to 8
+    /** checks length is up to 8 */
     if (password.length >= 8) {
       setHasEightCharacters(true);
     } else {
       setHasEightCharacters(false);
     }
-    // checks for number in password
+    /** checks for number in password */
     if (/\d/.test(password)) {
       setHasNumber(true);
     } else {
       setHasNumber(false);
     }
-    // checks for symbol in password
+    /** checks for symbol in password */
     const regex = /[ `!@#$%^&*()_+\-=\\[\]{};':"\\|,.<>\\/?~]/;
     if (regex.test(password)) {
       setHasSymbol(true);
@@ -140,32 +141,41 @@ function SignUp() {
   };
 
   /** Validates Users Mobile Number */
-  const handleMobileNumber = () => {
-    setPhoneNumber(false);
+  const handleMobileNumber = (userPhoneNumber) => {
+    setPhoneNumber(userPhoneNumber);
   };
 
   /** Handles The Sign Up Button */
   const handleSignUp = async (e) => {
     e.preventDefault();
     setButtonIsLoading(true);
+    // console.log(
+    //   "handleSignUp Data",
+    //   email,
+    //   firstName,
+    //   lastName,
+    //   phoneNumber,
+    //   password
+    // );
     try {
-      await onboarding
-        .SignUp(firstName, lastName, phoneNumber, password, confirmPassword)
-        .then((response) => {
-          if (response.status === 200) {
-            const accessToken = response.access_token;
-            const refreshToken = response.refresh_token;
-            Cookies.set("accessToken", accessToken);
-            localStorage.setItem("token", refreshToken);
-            setButtonIsLoading(false);
-            navigate(NonAuthRoutes.createAccountSuccessLayout);
-          }
-        });
+      await onboarding.SignUp(
+        email,
+        firstName,
+        lastName,
+        phoneNumber,
+        password
+      );
+      // .then((response) => {
+      //   if (response.status === 200) {
+      //     // setButtonIsLoading(false);
+      //     // console.log("handleSignUp response", response);
+      //     navigate(NonAuthRoutes.emailVerificationPage);
+      //   }
+      // });
     } catch (error) {
-      setTimeout(() => {
-        setButtonIsLoading(false);
-      }, 5000);
-      navigate(NonAuthRoutes.createAccountErrorLayout);
+      setButtonIsLoading(false);
+      // console.error("handleSignUp Error", error);
+      <AccountError />;
     }
   };
 
@@ -291,10 +301,10 @@ function SignUp() {
         </nav>
         <div className="flex justify-center">
           <div className="my-[71px] h-914 w-[609px] bg-white">
-            <p className="mt-[72px] ml-20 font-Inter font-[700] text-4xl text-black">
+            <p className="mt-[72px] ml-20 font-Inter font-[700] text-3xl text-black">
               Sign up with us
             </p>
-            <form onSubmit={() => handleSignUp()}>
+            <form onSubmit={(e) => handleSignUp(e)}>
               <div className="mt-10 mx-20 w-[450]">
                 <label className="" htmlFor="firstName">
                   <p className="mb-2 text-base font-sans font-[400] text-black">
@@ -345,7 +355,7 @@ function SignUp() {
               </div>
               {isEmailValid ? null : displayEmailErrorText()}
               <div className="mt-6 mx-20 w-[450]">
-                <label className="" htmlFor="mobile">
+                <label className="" htmlFor="tel">
                   <p className="mb-2 text-base font-sans font-[400] text-black">
                     Phone number
                   </p>
@@ -353,7 +363,7 @@ function SignUp() {
                     id="mobile"
                     type="tel"
                     value={phoneNumber}
-                    onChange={() => handleMobileNumber()}
+                    onChange={(e) => handleMobileNumber(e)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                   />
                 </label>
@@ -372,7 +382,7 @@ function SignUp() {
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
-                  <span>
+                  <span className="cursor-pointer">
                     {showPassword ? (
                       <PasswordShow
                         className="absolute -mt-10 pr-2 ml-[420px]"
@@ -402,7 +412,7 @@ function SignUp() {
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
-                  <span>
+                  <span className="cursor-pointer">
                     {showConfirmPassword ? (
                       <PasswordShow
                         className="-mt-10 pr-2 ml-[420px]"
@@ -420,15 +430,13 @@ function SignUp() {
               {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
               <div className="mt-10 mx-20 w-[450] bg-[#FFFFFF]">
                 <button
-                  id="createAccount-button"
                   type="submit"
-                  onClick={() => handleSignUp()}
+                  onClick={(e) => handleSignUp(e)}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
-                  {buttonIsLoading ? <LoadingButton /> : <p>Create account</p>}
+                  {buttonIsLoading ? true : <p>Create account</p>}
                 </button>
                 <button
-                  id="cancel-button"
                   type="submit"
                   onClick={() => navigate(NonAuthRoutes.landingPage)}
                   className="mt-4 py-2 px-2 font-sans font-[600] text-[#16D176] bg-[#ffffff] hover:bg-[#8AE8BA] active:bg-[#EBF6F0] text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
@@ -450,22 +458,24 @@ function SignUp() {
             </form>
           </div>
         </div>
-        <OnboardingFooter />
+        <div className="">
+          <OnboardingFooter />
+        </div>
       </div>
     );
   };
   const signUpSmallScreenLayout = () => {
     return (
-      <div className="md:hidden lg:hidden   w-[390px]">
+      <div className="md:hidden lg:hidden w-full">
         <nav className="fixed w-full">
           <Header />
         </nav>
-        <div className="flex justify-start items-center ">
+        <div className="flex justify-center items-center">
           <div className="h-[890px]  w-[390px] bg-white mb-12">
             <p className="ml-6 mt-[120px] font-Inter font-[700] text-2xl text-black">
               Create account
             </p>
-            <form onSubmit={() => handleSignUp()}>
+            <form onSubmit={(e) => handleSignUp(e)}>
               <div className="mt-6 mx-6 w-[342]">
                 <label className="" htmlFor="firstName-mobile">
                   <p className="mb-2 text-base font-sans font-[400] text-black">
@@ -545,7 +555,7 @@ function SignUp() {
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176] appearance-none focus:outline-none"
                     required
                   />
-                  <span className="absolute inset-y-[1667/100] mr-9">
+                  <span className="absolute inset-y-[1667/100] mr-9 cursor-pointer">
                     {showPassword ? (
                       <PasswordShow
                         className="absolute -ml-7 pr-2 mt-4"
@@ -578,10 +588,10 @@ function SignUp() {
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#d9d6d6] hover:border-[#16D176]  appearance-none focus:outline-none"
                     required
                   />
-                  <span className="absolute inset-y-[1667/100] mr-9 ">
+                  <span className="absolute inset-y-[1667/100] mr-9 cursor-pointer">
                     {showConfirmPassword ? (
                       <PasswordShow
-                        className="absolute  -ml-7 pr-2 mt-4"
+                        className="absolute  -ml-7 pr-2 mt-4 cusor-pointer"
                         onClick={() => handleShowConfirmPassword()}
                       />
                     ) : (
@@ -598,12 +608,19 @@ function SignUp() {
                 : displayConfirmPasswordErrorTextMobile()}
               <div className="mt-6 mx-6 w-[342] ">
                 <button
-                  id="createAccount-button-mobile"
+                  id="createAccountButtonMobile"
                   type="submit"
-                  onClick={() => handleSignUp()}
+                  onClick={(e) => handleSignUp(e)}
                   className="py-2 px-2 font-sans font-[600] bg-[#16D176] hover:bg-[#3DD98D] active:bg-[#12AE62] text-deliverycog-white-text-color text-base h-14 w-full border rounded border-[#16D176] appearance-none focus:outline-none"
                 >
-                  {buttonIsLoading ? <LoadingButton /> : <p>Create account</p>}
+                  {buttonIsLoading ? (
+                    <div>
+                      {" "}
+                      <LoadingButton />{" "}
+                    </div>
+                  ) : (
+                    <p>Create account</p>
+                  )}
                 </button>
               </div>
               <div className="mt-6 mx-6 w-[342] ">
@@ -633,11 +650,10 @@ function SignUp() {
       </div>
     );
   };
+
   return (
     <div>
-      {/* {Large Screen} */}
       {signUpLargeScreenLayout()}
-      {/* Small Screen */}
       {signUpSmallScreenLayout()}
     </div>
   );

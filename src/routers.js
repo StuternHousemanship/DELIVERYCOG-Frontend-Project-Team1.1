@@ -12,30 +12,39 @@ const VerifyEmail = React.lazy(() => import("./pages/emailVerificationPage"));
 const ResetPassword = React.lazy(() => import("./pages/resetPassword"));
 const AccountRecovered = React.lazy(() => import("./pages/accountRecovered"));
 const ForgotPassword = React.lazy(() => import("./pages/forgotPassword"));
-const CreateAccountErrorLayout = React.lazy(() =>
-  import("./components/errors/createAccountErrorLayout")
-);
-const CreateAccountSuccessLayout = React.lazy(() =>
-  import("./components/success/createAccountSuccessLayout")
-);
-const LogOutErrorLayout = React.lazy(() =>
-  import("./components/errors/logOutErrorLayout")
-);
-const LogOutSuccessLayout = React.lazy(() =>
-  import("./components/success/logOutSuccessLayout")
-);
-const VerifyEmailSuccess = React.lazy(() =>
-  import("./components/success/verifyEmailSuccessLayout")
-);
-const VerifyEmailFailure = React.lazy(() =>
-  import("./components/errors/verifyEmailErrorLayout")
-);
-const ResetPasswordFailure = React.lazy(() =>
-  import("./components/errors/resetPasswordErrorLayout")
-);
-const ResetPasswordSuccess = React.lazy(() =>
-  import("./components/success/resetPasswordSuccessLayout")
-);
+const AddTrip = React.lazy(() => import("./pages/addTrip"));
+const OnboardingPage = React.lazy(() => import("./pages/onboardingPage"));
+const RequestTrip = React.lazy(() => import("./pages/requestTrip"));
+// const CreateAccountErrorLayout = React.lazy(() =>
+//   import("./components/errors/createAccountErrorLayout")
+// );
+// const CreateAccountSuccessLayout = React.lazy(() =>
+//   import("./components/success/createAccountSuccessLayout")
+// );
+// const LogOutErrorLayout = React.lazy(() =>
+//   import("./components/errors/logOutErrorLayout")
+// );
+// const LogOutSuccessLayout = React.lazy(() =>
+//   import("./components/success/logOutSuccessLayout")
+// );
+// const VerifyEmailSuccess = React.lazy(() =>
+//   import("./components/success/verifyEmailSuccessLayout")
+// );
+// const VerifyEmailFailure = React.lazy(() =>
+//   import("./components/errors/verifyEmailErrorLayout")
+// );
+// const ResetPasswordFailure = React.lazy(() =>
+//   import("./components/errors/resetPasswordErrorLayout")
+// );
+// const ResetPasswordSuccess = React.lazy(() =>
+//   import("./components/success/resetPasswordSuccessLayout")
+// );
+// const RequestTripErrorLayout = React.lazy(() =>
+//   import("./components/errors/requestTripErrorLayout")
+// );
+// const RequestTripSuccessLayout = React.lazy(() =>
+//   import("./components/success/requestTripSuccessLayout")
+// );
 
 function Routers() {
   return (
@@ -49,6 +58,12 @@ function Routers() {
       >
         <Routes>
           <Route path={AuthRoutes.dashboard} element={<Dashboard />} />
+          <Route path={AuthRoutes.addTrip} element={<AddTrip />} />
+          <Route
+            path={AuthRoutes.onboardingPage}
+            element={<OnboardingPage />}
+          />
+          <Route path={AuthRoutes.requestTrip} element={<RequestTrip />} />
           <Route path={NonAuthRoutes.landingPage} element={<LandingPage />} />
           <Route path={NonAuthRoutes.signUp} element={<SignUp />} />
           <Route path={NonAuthRoutes.logIn} element={<LogIn />} />
@@ -67,38 +82,6 @@ function Routers() {
           <Route
             path={NonAuthRoutes.forgotPassword}
             element={<ForgotPassword />}
-          />
-          <Route
-            path={NonAuthRoutes.createAccountErrorLayout}
-            element={<CreateAccountErrorLayout />}
-          />
-          <Route
-            path={NonAuthRoutes.createAccountSuccessLayout}
-            element={<CreateAccountSuccessLayout />}
-          />
-          <Route
-            path={NonAuthRoutes.logOutErrorLayout}
-            element={<LogOutErrorLayout />}
-          />
-          <Route
-            path={NonAuthRoutes.logOutSuccessLayout}
-            element={<LogOutSuccessLayout />}
-          />
-          <Route
-            path={NonAuthRoutes.verifyEmailSuccessLayout}
-            element={<VerifyEmailSuccess />}
-          />
-          <Route
-            path={NonAuthRoutes.verifyEmailErrorLayout}
-            element={<VerifyEmailFailure />}
-          />
-          <Route
-            path={NonAuthRoutes.resetPasswordErrorLayout}
-            element={<ResetPasswordFailure />}
-          />
-          <Route
-            path={NonAuthRoutes.resetPasswordSuccessLayout}
-            element={<ResetPasswordSuccess />}
           />
         </Routes>
       </Suspense>

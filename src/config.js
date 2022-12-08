@@ -9,7 +9,8 @@ import TokenValidate from "./tokenvalidate";
 // const imageBaseUrl = "https://deliverycog.beargaze.com/";
 
 /** Base Url for Images STAGING */
-const apiUrl = "https://deliverycog.beargaze.com/api";
+const apiUrl = "http://localhost:3000";
+// const apiUrl = "https://deliverycog.beargaze.com/api/v1/auth";
 // const megalectricsImageUrl = "https://deliverycog.beargaze.com/";
 
 /** creating an Axios Base Url for all Onboarding Request */

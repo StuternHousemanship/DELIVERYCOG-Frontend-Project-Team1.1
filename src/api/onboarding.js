@@ -4,27 +4,27 @@ import { deliverycogOnboarding } from "../config";
 
 export default {
   /** Send a POST request to Sign Up Users */
-  async SignUp(firstName, lastName, email, phoneNumber, password) {
+  async SignUp(email, firstName, lastName, phoneNumber, password) {
     const data = {
+      email,
       firstName,
       lastName,
-      email,
       phoneNumber,
       password,
     };
     const stringifiedData = JSON.stringify(data);
 
-    return deliverycogOnboarding.post("/users/signUp", stringifiedData);
+    return deliverycogOnboarding.post("/signUp", stringifiedData);
   },
 
   /** Send a POST request to Verify Email Account OTP Code for Users */
-  async VerifyEmail(OtpCode) {
+  async VerifyEmail(userId) {
     const data = {
-      OtpCode,
+      userId,
     };
     const stringifiedData = JSON.stringify(data);
 
-    return deliverycogOnboarding.post("/Verify/OtpCode", stringifiedData);
+    return deliverycogOnboarding.post("/account-activation", stringifiedData);
   },
 
   /** Send a POST request to Login users */
@@ -35,6 +35,6 @@ export default {
     };
     const stringifiedData = JSON.stringify(data);
 
-    return deliverycogOnboarding.post("/users/login", stringifiedData);
+    return deliverycogOnboarding.post("/login", stringifiedData);
   },
 };

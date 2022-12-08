@@ -15,6 +15,7 @@ function ResetPassword() {
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [hasUpperCase, setHasUpperCase] = useState(false);
   const [hasLowerCase, setHasLowerCase] = useState(false);
   const [hasEightCharacters, setHasEightCharacters] = useState(false);
@@ -77,6 +78,10 @@ function ResetPassword() {
       setHasSymbol(false);
     }
   }, [password]);
+  /** handles show Confirm Password text */
+  const handleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   const displayPasswordCriteria = () => {
     return (
@@ -84,8 +89,8 @@ function ResetPassword() {
         <p
           className={
             hasUpperCase && hasLowerCase
-              ? "text-green-600 text-xs font-semibold"
-              : "text-red-600 text-xs font-semibold"
+              ? "text-green-600 text-xs font-semibold mx-2"
+              : "text-red-600 text-xs font-semibold mx-2"
           }
         >
           *Must include one uppercase and one lowercase
@@ -93,8 +98,8 @@ function ResetPassword() {
         <p
           className={
             hasEightCharacters
-              ? "text-green-600 text-xs font-semibold"
-              : "text-red-600 text-xs font-semibold"
+              ? "text-green-600 text-xs font-semibold mx-2"
+              : "text-red-600 text-xs font-semibold mx-2"
           }
         >
           *Contain at least 8 characters
@@ -102,8 +107,8 @@ function ResetPassword() {
         <p
           className={
             hasNumber || hasSymbol
-              ? "text-green-600 text-xs font-semibold"
-              : "text-red-600 text-xs font-semibold"
+              ? "text-green-600 text-xs font-semibold mx-2"
+              : "text-red-600 text-xs font-semibold mx-2"
           }
         >
           *Contain a number or symbol
@@ -118,8 +123,8 @@ function ResetPassword() {
       <p
         className={
           matchFirstPassword
-            ? "text-green-600 text-xs font-semibold mt-[6px]"
-            : "text-red-600 text-xs font-semibold mt-[6px]"
+            ? "text-green-600 text-xs font-semibold mx-2"
+            : "text-red-600 text-xs font-semibold mx-2"
         }
       >
         *Must match first password
@@ -131,10 +136,12 @@ function ResetPassword() {
   const displayResetPasswordLargeScreen = () => {
     return (
       <div className="hidden md:block lg:block">
-        <Header />
+        <nav className="fixed w-full">
+          <Header />
+        </nav>
         <div className="flex justify-center items-center">
-          <div className="my-[71px] h-[490px] w-[609px] bg-white">
-            <p className="mt-12 font-Inter font-[700] text-4xl text-black text-center">
+          <div className="my-[88px] h-[490px] w-[609px] bg-white">
+            <p className="mt-12 font-Inter font-[700] text-3xl text-black text-center">
               Reset Password
             </p>
             <p className="text-center font-sans font-[500] text-[#898989] mt-[24px]">
@@ -144,15 +151,16 @@ function ResetPassword() {
               <div className="mt-6 mx-20  w-[450]">
                 <label className="" htmlFor="password">
                   <p className="mb-2 text-base font-sans font-[400] text-deliverycog-grey-text-color">
-                    password
+                    Password
                   </p>
                   <input
                     id="lostpass"
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    placeholder="new password"
+                    placeholder=" enter new password"
                     onChange={(e) => setPassword(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    required
                   />
                   <span>
                     {showPassword ? (
@@ -178,27 +186,33 @@ function ResetPassword() {
                   </p>
                   <input
                     id="repass"
-                    type="password"
-                    placeholder="Password"
+                    type={showConfirmPassword ? "text" : "password"}
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    placeholder="re-enter paassword"
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     className="py-2 px-2 font-sans font-[600] text-deliverycog-grey-text-color text-base h-14 w-full border rounded border-[#717171] appearance-none focus:outline-none"
+                    required
                   />
                   <span>
-                    {showPassword ? (
+                    {showConfirmPassword ? (
                       <PasswordShow
                         className="absolute -mt-10 pr-2 ml-[420px]"
-                        onClick={() => handleShowPassword()}
+                        onClick={() => handleShowConfirmPassword()}
                       />
                     ) : (
                       <PasswordHide
                         className="absolute -mt-10 pr-2 ml-[420px]"
-                        onClick={() => handleShowPassword()}
+                        onClick={() => handleShowConfirmPassword()}
                       />
                     )}
                   </span>
                 </label>
-                {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
               </div>
+              {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
+              <p className=" mt-2 mx-20 font-sans font-[600] text-blue-700 text-xs">
+                Must include uppercase letters (A-Z), lowercase letters (a-z)
+                and number (0-9)
+              </p>
               <div className="mt-6 mx-20 w-[450] ">
                 <button
                   type="button"
@@ -247,7 +261,7 @@ function ResetPassword() {
                     password
                   </p>
                   <input
-                    id="lostpass"
+                    id="lostpassMobile"
                     type={showPassword ? "text" : "password"}
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="new password"
@@ -277,7 +291,7 @@ function ResetPassword() {
                     Re-enter Password
                   </p>
                   <input
-                    id="repass"
+                    id="repassMobile"
                     type="password"
                     placeholder="Password"
                     onChange={(e) => setConfirmPassword(e.target.value)}
@@ -297,8 +311,8 @@ function ResetPassword() {
                     )}
                   </span>
                 </label>
-                {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
               </div>
+              {matchFirstPassword ? null : displayConfirmPasswordErrorText()}
               <div className="mt-6 mx-20 w-[450] ">
                 <button
                   type="button"
