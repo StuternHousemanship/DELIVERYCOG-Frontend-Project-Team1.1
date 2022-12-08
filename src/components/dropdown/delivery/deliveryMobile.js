@@ -1,5 +1,4 @@
 import React from "react";
-import { ReactComponent as ToggleDownSmallIcon } from "../../../assets/svg/toggleSmall.svg";
 
 function deliveryMobile() {
   return (
@@ -9,18 +8,28 @@ function deliveryMobile() {
           <p className="mt-4  text-sm text-[#282828] font-[400] font-lato">
             Destination state
           </p>
-          <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[346px] h-9 border-spacing-1 border-[#b7b5b5] border-2">
-            <p className="text-sm font-[400] text-[#282828] my-2 mx-4">State</p>
-            <ToggleDownSmallIcon className="my-2 mr-[14.7px]" />
+          <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[346px] h-9 border-spacing-1 border-[#b7b5b5]">
+            <input
+              type="text"
+              name="deliveryState"
+              id="deliveryState2"
+              placeholder="State"
+              className="px-4 py-2 h-9 w-full border-[#b7b5b5] border-2 rounded-none border-spacing-1 text-[#282828] text-sm font-[400]"
+            />
           </div>
         </div>
         <div className="w-[382px]">
           <p className="mt-[18px]  text-sm text-[#282828] font-[400] font-lato">
             Destination city
           </p>
-          <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[346px] h-9 border-spacing-1 border-[#b7b5b5] border-2">
-            <p className="text-sm font-[400] text-[#282828] my-2 mx-4">City</p>
-            <ToggleDownSmallIcon className="my-2 mr-[14.7px]" />
+          <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[346px] h-9 border-spacing-1 border-[#b7b5b5]">
+            <input
+              type="text"
+              name="deliveryCity"
+              id="deliveryCity"
+              placeholder="City"
+              className="px-4 py-2 h-9 w-full border-[#b7b5b5] border-2 rounded-none border-spacing-1 text-[#282828] text-sm font-[400]"
+            />
           </div>
         </div>
         <div className="w-[382px]">

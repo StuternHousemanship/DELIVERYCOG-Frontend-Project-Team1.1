@@ -1,6 +1,4 @@
 import React from "react";
-// import AsyncSelect from "react-select/async";
-// import { ReactComponent as ToggleDownSmallIcon } from "../../../assets/svg/toggleSmall.svg";
 
 function delivery() {
   // const [name, setNames] = useState(null);
@@ -27,12 +25,10 @@ function delivery() {
             Delivery state
           </p>
           <div className="dropDownBtn flex justify-between items-center mt-[9px] w-full h-12 border-spacing-1 border-[#b7b5b5] ">
-            {/* <p className="text-sm font-[400] text-[#282828] my-3 mx-4">State</p>
-            <ToggleDownSmallIcon className="my-3 mr-[20.7px]" /> */}
             <input
               type="text"
               name="deliveryState"
-              id="pickup"
+              id="deliveryState"
               placeholder="State"
               className="px-4 py-2 h-12 w-full border-[#b7b5b5] border-2 rounded-none border-spacing-1 text-[#282828] text-sm font-[400]"
             />
@@ -43,8 +39,6 @@ function delivery() {
             Delivery city
           </p>
           <div className="dropDownBtn flex justify-between items-center mt-[9px] w-full h-12 border-spacing-1 border-[#b7b5b5] ">
-            {/* <p className="text-sm font-[400] text-[#282828] my-3 mx-4">City</p>
-            <ToggleDownSmallIcon className="my-3 mr-[20.7px]" /> */}
             <input
               type="text"
               name="deliveryCity"

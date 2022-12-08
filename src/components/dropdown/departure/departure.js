@@ -1,5 +1,4 @@
 import React from "react";
-// import { ReactComponent as ToggleDownSmallIcon } from "../../../assets/svg/toggleSmall.svg";
 
 function depature() {
   return (
@@ -10,8 +9,6 @@ function depature() {
             Departure date
           </p>
           <div className="dropDownBtn flex justify-between items-center mt-[9px] w-full h-12 border-spacing-1 border-[#b7b5b5] rounded-sm border-none cursor-pointer ">
-            {/* <p className="text-sm font-[400] text-[#282828] my-3 mx-4">Date</p> */}
-            {/* <ToggleDownSmallIcon className="my-3 mr-[20.7px]" /> */}
             <input
               type="date"
               name="depatureDate"
@@ -26,8 +23,6 @@ function depature() {
             Departure Time
           </p>
           <div className="dropDownBtn flex justify-between items-center mt-[9px] w-full h-12 border-spacing-1 border-[#b7b5b5] rounded-sm border-none cursor-pointer">
-            {/* <p className="text-sm font-[400] text-[#282828] my-3 mx-4">Time</p>
-            <ToggleDownSmallIcon className="my-3 mr-[20.7px]" /> */}
             <input
               type="time"
               name="depatureDate"
@@ -42,8 +37,6 @@ function depature() {
             Estimated duration of trip
           </p>
           <div className="dropDownBtn flex justify-between items-center mt-[9px] w-full h-12 border-spacing-1 border-[#b7b5b5] rounded-sm border-none cursor-pointer">
-            {/* <p className="text-sm font-[400] text-[#282828] my-3 mx-4">Hours</p>
-            <ToggleDownSmallIcon className="my-3 mr-[20.7px]" /> */}
             <input
               type="hour"
               name="depatureDate"

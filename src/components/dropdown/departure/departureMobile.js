@@ -1,5 +1,4 @@
 import React from "react";
-import { ReactComponent as ToggleDownSmallIcon2 } from "../../../assets/svg/toggleSmall.svg";
 
 function departureMobile() {
   return (
@@ -9,33 +8,53 @@ function departureMobile() {
           <p className="mt-4  text-sm text-[#282828] font-[400] font-lato">
             Departure date
           </p>
-          <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[346px] h-9 border-spacing-1 border-[#b7b5b5] border-2 ">
-            <p className="text-sm font-[400] text-[#282828] my-2 mx-4">Date</p>
-            <ToggleDownSmallIcon2 className="my-2 mr-[14.7px]" />
+          <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[346px] h-9 border-spacing-1 border-[#b7b5b5] ">
+            <input
+              type="date"
+              name="depatureDate"
+              id="departureDate"
+              placeholder="Date"
+              className="px-4 py-2 h-9 w-full border-[#b7b5b5] border-2 rounded-none border-spacing-1 text-[#282828] text-sm font-[400]"
+            />
           </div>
         </div>
         <div className="w-[382px] ">
           <p className="mt-[18px]  text-sm text-[#282828] font-[400] font-lato">
             Departure Time
           </p>
-          <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[342px] h-9 border-spacing-1 border-[#b7b5b5] border-2 ">
-            <p className="text-sm font-[400] text-[#282828] my-2 mx-4">Time</p>
-            <ToggleDownSmallIcon2 className="my-2 mr-[14.7px]" />
+          <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[342px] h-9 border-spacing-1 border-[#b7b5b5] ">
+            <input
+              type="time"
+              name="depatureTime"
+              id="departure2"
+              placeholder="Time"
+              className="px-4 py-2 h-9 w-full border-[#b7b5b5] border-2 rounded-none border-spacing-1 text-[#282828] text-sm font-[400]"
+            />
           </div>
         </div>
         <div className="w-[382px]">
           <p className="mt-[18px]  text-sm text-[#282828] font-[400] font-lato">
             Estimated duration of trip
           </p>
-          <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[342px] h-9 border-spacing-1 border-[#b7b5b5] border-2 ">
-            <p className="text-sm font-[400] text-[#282828] my-2 mx-4">Hours</p>
-            <ToggleDownSmallIcon2 className="my-2 mr-[14.7px]" />
+          <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[342px] h-9 border-spacing-1 border-[#b7b5b5] ">
+            <input
+              type="hour"
+              name="depatureDate"
+              id="departure3"
+              placeholder="Hour"
+              className="px-4 py-2 h-9 w-full border-[#b7b5b5] border-2 rounded-none border-spacing-1 text-[#282828] text-sm font-[400]"
+            />
           </div>
         </div>
         <div className="w-[382px]">
-          <div className="dropDownBtn flex justify-between items-center mt-[10px] w-[342px] h-9 border-spacing-1 border-[#b7b5b5] border-2 ">
-            <p className="text-sm font-[400] text-[#282828] my-2 mx-4">Mins</p>
-            <ToggleDownSmallIcon2 className="my-2 mr-[14.7px]" />
+          <div className="dropDownBtn flex justify-between items-center mt-[10px] w-[342px] h-9 border-spacing-1 border-[#b7b5b5] ">
+            <input
+              type="mins"
+              name="depatureDate"
+              id="departure4"
+              placeholder="Mins"
+              className="px-4 py-2 h-9 w-full border-[#b7b5b5] border-2 rounded-none border-spacing-1 text-[#282828] text-sm font-[400]"
+            />
           </div>
         </div>
       </div>
