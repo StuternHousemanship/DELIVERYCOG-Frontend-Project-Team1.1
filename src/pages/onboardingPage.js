@@ -19,7 +19,7 @@ function OnboardingPage() {
 
         <div className=" flex  flex-col justify-center items-center ">
           <div>
-            <h1 className=" mt-[115px] w-[383px] h-10 font-Inter font-bold text-[32px] leading-10 align-middle text-[#000000] ml-5">
+            <h1 className=" mt-[227px] w-[383px] h-10 font-Inter font-bold text-[32px] leading-10 align-middle text-[#000000] ml-5">
               Welcome to Delivery Cog
             </h1>
             <p className=" mt-6 font-normal text-[18px] leading-6 align-middle text-[#6D6464] w-[438px] h-6">

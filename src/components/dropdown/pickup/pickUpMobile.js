@@ -7,7 +7,7 @@ function pickUpMobile() {
       <div className="flex flex-col items-center ">
         <div className="w-[382px] ">
           <p className="mt-4 text-sm text-[#282828] font-[400] font-lato">
-            Departure state
+            Pickup state
           </p>
           <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[346px] h-9 border-spacing-1 border-[#b7b5b5] border-2">
             <p className="text-sm font-[400] text-[#282828] my-2 mx-4">State</p>
@@ -16,7 +16,7 @@ function pickUpMobile() {
         </div>
         <div className="w-[382px]">
           <p className="mt-[18px]  text-sm text-[#282828] font-[400] font-lato">
-            Departure city
+            Pickup city
           </p>
           <div className="dropDownBtn flex justify-between items-center mt-[6px] w-[346px] h-9 border-spacing-1 border-[#b7b5b5] border-2 ">
             <p className="text-sm font-[400] text-[#282828] my-2 mx-4">City</p>

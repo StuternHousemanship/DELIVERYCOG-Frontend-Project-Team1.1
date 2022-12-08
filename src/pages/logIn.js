@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import OnboardingFooter from "../footer";
 import Header from "../header";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
-import { NonAuthRoutes } from "../url";
+import { NonAuthRoutes, AuthRoutes } from "../url";
 // eslint-disable-next-line import/no-cycle
-import onboarding from "../api/onboarding";
+// import onboarding from "../api/onboarding";
 
 function LogIn() {
   const navigate = useNavigate();
@@ -59,28 +59,29 @@ function LogIn() {
   /** Handle Login to Dashboard */
   const handleLogin = async (e) => {
     e.preventDefault();
-    // setButtonIsLoading(true);
-    // console.log("handleLogin Data", email, password);
-    try {
-      onboarding.Login(email, password).then((response) => {
-        if (response.status === 200) {
-          // console.log("handleLogin response", response);
-          const accessToken = response.access_token;
-          const refreshToken = response.refresh_token;
-          Cookies.set("accessToken", accessToken);
-          localStorage.setItem("token", refreshToken);
-          // setButtonIsLoading(false);
-          // navigate(AuthRoutes.dashboard);
-        }
-      });
-    } catch (error) {
-      // console.error("handleLogin error", error);
-      //   // setTimeout(() => {
-      //   //   setButtonIsLoading(false);
-      //   // }, 5000);
-      //   // navigate(NonAuthRoutes.logOutErrorLayout);
-      // }
-    }
+    navigate(AuthRoutes.onboardingPage);
+    // // setButtonIsLoading(true);
+    // // console.log("handleLogin Data", email, password);
+    // try {
+    //   onboarding.Login(email, password).then((response) => {
+    //     if (response.status === 200) {
+    //       // console.log("handleLogin response", response);
+    //       const accessToken = response.access_token;
+    //       const refreshToken = response.refresh_token;
+    //       Cookies.set("accessToken", accessToken);
+    //       localStorage.setItem("token", refreshToken);
+    //       // setButtonIsLoading(false);
+    //       // navigate(AuthRoutes.dashboard);
+    //     }
+    //   });
+    // } catch (error) {
+    //   // console.error("handleLogin error", error);
+    //   //   // setTimeout(() => {
+    //   //   //   setButtonIsLoading(false);
+    //   //   // }, 5000);
+    //   //   // navigate(NonAuthRoutes.logOutErrorLayout);
+    //   // }
+    // }
   };
 
   const logInLargeScreen = () => {
