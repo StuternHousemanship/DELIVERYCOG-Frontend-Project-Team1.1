@@ -4,6 +4,7 @@ const AuthRoutes = {
   addTrip: "/add-trip",
   onboardingPage: "/onboarding-page",
   requestTrip: "/request-trip",
+  viewAccount: "/account",
 };
 
 /** Non Authenticated URL Routes */

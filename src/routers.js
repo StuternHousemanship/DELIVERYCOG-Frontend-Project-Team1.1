@@ -15,6 +15,7 @@ const ForgotPassword = React.lazy(() => import("./pages/forgotPassword"));
 const AddTrip = React.lazy(() => import("./pages/addTrip"));
 const OnboardingPage = React.lazy(() => import("./pages/onboardingPage"));
 const RequestTrip = React.lazy(() => import("./pages/requestTrip"));
+const ViewAccount = React.lazy(() => import("./pages/viewAccount"));
 // const CreateAccountErrorLayout = React.lazy(() =>
 //   import("./components/errors/createAccountErrorLayout")
 // );
@@ -57,6 +58,7 @@ function Routers() {
         }
       >
         <Routes>
+          <Route path={AuthRoutes.viewAccount} element={<ViewAccount />} />
           <Route path={AuthRoutes.dashboard} element={<Dashboard />} />
           <Route path={AuthRoutes.addTrip} element={<AddTrip />} />
           <Route
