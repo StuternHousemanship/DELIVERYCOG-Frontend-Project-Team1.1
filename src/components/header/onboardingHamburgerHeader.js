@@ -1,10 +1,13 @@
 import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthRoutes } from "../../url";
 import { ReactComponent as DeliverycoglogoMobile } from "../../assets/svg/delivery-cog-logo-mobile.svg";
 import { ReactComponent as MenuIcon } from "../../assets/svg/hamburger-icon.svg";
 import { ReactComponent as CrossIcon } from "../../assets/svg/cross-icon.svg";
 
 function OnboardingHamburgerHeader() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false); // initiate isNavbarOpen state with false
+  const navigate = useNavigate();
   // handle isNavbarOpen state on click
   const handleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
@@ -12,7 +15,14 @@ function OnboardingHamburgerHeader() {
   return (
     <div>
       <nav className="flex  justify-between items-center">
-        <DeliverycoglogoMobile className=" mt-[40px] ml-6" />
+        <button
+          type="button"
+          onClick={() => {
+            navigate(AuthRoutes.onboardingPage);
+          }}
+        >
+          <DeliverycoglogoMobile className=" mt-[40px] ml-6" />
+        </button>
         <section className="MOBILE-MENU flex lg:hidden ">
           <div>
             <button
@@ -25,7 +35,7 @@ function OnboardingHamburgerHeader() {
           </div>
           {/* toggle class based on isNavbarOpen state */}
           <div className={isNavbarOpen ? "showMenuNav" : "hideMenuNav"}>
-            <div>
+            <div className="hover:bg-[#3DD98D]">
               <button
                 type="submit"
                 className="CROSS-ICON absolute top-0 right-0 px-8 py-8"

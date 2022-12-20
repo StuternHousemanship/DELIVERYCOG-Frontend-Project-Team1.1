@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 // import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import OnboardingFooter from "../footer";
-import Header from "../header";
+import OnboardingFooter from "../components/footer/onboardingFooter";
+import Header from "../components/header/header";
 import { ReactComponent as PasswordShow } from "../assets/svg/password-eye-show-icon.svg";
 import { ReactComponent as PasswordHide } from "../assets/svg/password-eye-hide-icon.svg";
 import { NonAuthRoutes, AuthRoutes } from "../url";

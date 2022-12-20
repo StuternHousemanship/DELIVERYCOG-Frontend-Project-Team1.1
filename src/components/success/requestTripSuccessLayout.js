@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthRoutes } from "../../url";
-import Header from "../../header";
+import Header from "../header/header";
 import { ReactComponent as SuccessIcon } from "../../assets/svg/successIcon.svg";
 import { ReactComponent as SuccessIconMobile } from "../../assets/svg/successIconMobile.svg";
 // import onboarding from "../../api/onboarding";

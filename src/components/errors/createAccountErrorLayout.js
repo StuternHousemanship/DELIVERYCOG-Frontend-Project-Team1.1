@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { NonAuthRoutes } from "../../url";
-import Header from "../../header";
+import Header from "../header/header";
 import FailureIcon from "../../assets/svg/failureIcon.svg";
 import FailureIconMobile from "../../assets/svg/failureIconMobile.svg";
 

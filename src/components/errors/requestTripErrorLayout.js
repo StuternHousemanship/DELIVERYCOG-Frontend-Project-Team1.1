@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthRoutes } from "../../url";
-import Header from "../../header";
+import Header from "../header/header";
 import { ReactComponent as FailureIcon } from "../../assets/svg/failureIcon.svg";
 import { ReactComponent as FailureIconMobile } from "../../assets/svg/failureIconMobile.svg";
 

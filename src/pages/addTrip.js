@@ -20,7 +20,7 @@ function addTrip() {
   // const [isActive, setIsActive] = useState(false);
   // const [open, setOpen ] = useState(false);
   // const [showContent, setShowContent] = useState(false);
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
   const [toggle1, setToggle1] = useState(false);
   const [toggle2, setToggle2] = useState(false);
   const [toggle3, setToggle3] = useState(false);

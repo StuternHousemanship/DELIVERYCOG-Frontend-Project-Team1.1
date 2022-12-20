@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NonAuthRoutes } from "../url";
 import forgotImage from "../assets/Images/HandsGive.png";
-import Header from "../header";
+import Header from "../components/header/header";
 
 function ForgotPassword() {
   const navigate = useNavigate();
